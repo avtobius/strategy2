@@ -1815,14 +1815,14 @@ function snapshot() {
     bl: Object.keys(G.bld).map(k => [+k].concat(G.bld[k])), q: G.queue.map(e => [e.p, e.i, e.k, Math.round(e.left * 10) / 10]),
     tq: G.trainingQueue.map(e => [e.id, e.p, e.i, Math.round(e.left * 10) / 10, Math.round(e.total * 10) / 10, e.name, e.slots, e.gold, e.rec, e.sup]),
     us: G.units.map(u => [u.id, u.p, u.prov, u.sl, Math.round(u.hp * 10) / 10, Math.round(u.org * 10) / 10, u.xp, u.g, u.bt, u.ret,
-      u.mv ? u.mv.path : 0, u.mv ? u.mv.s : 0, u.mv ? Math.round(u.mv.t0 * 1000) / 1000 : 0, u.mv ? Math.round(u.mv.dur * 1000) / 1000 : 0, u.nm || '', Math.round(u.ent || 0), u.ship || 0, u.amph || 0, u.sx != null ? Math.round(u.sx * 10) / 10 : null, u.sx != null ? Math.round(u.sy * 10) / 10 : null, u.mv && u.mv.tx != null ? [Math.round(u.mv.tx * 10) / 10, Math.round(u.mv.ty * 10) / 10] : 0, u.mv && u.mv.x0 != null ? [Math.round(u.mv.x0 * 10) / 10, Math.round(u.mv.y0 * 10) / 10] : 0, u.lm ? u.lm.map(v => Math.round(v * 1000) / 1000) : 0]),
+      u.mv ? u.mv.path : 0, u.mv ? u.mv.s : 0, u.mv ? Math.round(u.mv.t0 * 1000) / 1000 : 0, u.mv ? Math.round(u.mv.dur * 1000) / 1000 : 0, u.nm || '', Math.round(u.ent || 0), u.ship || 0, u.amph || 0, u.sx != null ? Math.round(u.sx * 10) / 10 : null, u.sx != null ? Math.round(u.sy * 10) / 10 : null, u.mv && u.mv.tx != null ? [Math.round(u.mv.tx * 10) / 10, Math.round(u.mv.ty * 10) / 10] : 0, u.mv && u.mv.x0 != null ? [Math.round(u.mv.x0 * 10) / 10, Math.round(u.mv.y0 * 10) / 10] : 0, u.lm ? u.lm.map(v => Math.round(v * 1000) / 1000) : 0, !u.ship && u.prov >= 0 && supBlock(u.prov, u.p) ? 1 : 0]),
     cu: (() => { const c = []; if (G.cutDays) for (let i = 0; i < PROV.n; i++) if (G.tiles[i].o >= 0 && cutPenalty(i)) c.push(i); return c; })(),
     fl: G.fleets.map(f => [f.id, f.p, f.prov, f.ships.map(x => x.c + ':' + Math.round(x.hp)).join(','), f.mv ? [f.mv.path, f.mv.s, Math.round(f.mv.t0 * 1000) / 1000, Math.round(f.mv.dur * 1000) / 1000] : 0, f.adm ? 1 : 0, f.retreat ? 1 : 0, f.noRuns ? 1 : 0]),
     sq: G.shipQ.map(e => [e.id, e.p, e.i, e.c, Math.round(e.left * 10) / 10, e.total]), bk: G.blk,
     bat: Object.keys(G.bat).map(k => [+k, Math.round(G.bat[k] * 10) / 10]), hq: G.hq, ww: G.ww.map(v => Math.round(v * 10) / 10), ki: G.kia.map(Math.round),
     tr: G.tr, ay: G.ally, of: G.offers.map(o => [o.id, o.k, o.a, o.b, Math.round(o.t), o.g || 0, o.n || 0, o.price || 0]),
     cv: G.convoys.map(c => [c.id, c.a, c.b, c.g, c.amt, c.path, c.s, Math.round(c.t0 * 1000) / 1000, Math.round(c.dur * 1000) / 1000, c.k === 'run' ? 1 : 0, c.leg || 0]),
-    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], fa: G.fac || null, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
+    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], fa: G.fac || null, wc: G.wc || {}, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
     pb: (() => { const b = new Array(NP()).fill(0); for (let i = 0; i < G.tiles.length; i++) { const o = G.tiles[i].o; if (o >= 0) b[o] += PROV.pop[i]; } return b.map(Math.round); })(),
     rt: ecoRatesAll().map(r => [Math.round(r.gold * 10) / 10, Math.round(r.supply), Math.round(r.recruits)]) };
 }
@@ -1831,7 +1831,7 @@ function applyState(m) {
   if (typeof m.os === 'string' && m.os.length === n) for (let i = 0; i < n; i++) G.tiles[i].o = m.os.charCodeAt(i) - 49;
   if (Array.isArray(m.us)) G.units = m.us.map(r => ({ id: r[0], p: r[1], prov: r[2], sl: String(r[3]), hp: r[4], org: r[5], xp: r[6], g: r[7], bt: r[8], ret: r[9],
     mv: Array.isArray(r[10]) ? { path: r[10], s: r[11], t0: r[12], dur: r[13], tx: Array.isArray(r[20]) ? r[20][0] : undefined, ty: Array.isArray(r[20]) ? r[20][1] : undefined, x0: Array.isArray(r[21]) ? r[21][0] : undefined, y0: Array.isArray(r[21]) ? r[21][1] : undefined } : null, nm: String(r[14] || 'Дивизия'), ent: r[15] | 0, ship: r[16] | 0, amph: r[17] | 0,
-    sx: Number.isFinite(r[18]) ? r[18] : undefined, sy: Number.isFinite(r[19]) ? r[19] : undefined, lm: Array.isArray(r[22]) && r[22].length === 6 ? r[22] : null }));
+    sx: Number.isFinite(r[18]) ? r[18] : undefined, sy: Number.isFinite(r[19]) ? r[19] : undefined, lm: Array.isArray(r[22]) && r[22].length === 6 ? r[22] : null, ns: r[23] === 1 ? 1 : 0 }));
   if (Array.isArray(m.gf)) G.gf = m.gf;
   if (Array.isArray(m.cu)) { G.cutDays = new Float32Array(PROV.n); for (const i of m.cu) if (i >= 0 && i < PROV.n) G.cutDays[i] = 99; }
   if (Array.isArray(m.cl)) { G.col = m.cl.map(P => Array.isArray(P) ? P.map(L => Array.isArray(L) ? L.map(c => c && typeof c === 'object' ? (c.v ? (c.dead ? { v: 1, dead: 1, nm: clip(c.nm, 40), id: c.id | 0, pk: typeof c.pk === 'string' && c.pk.startsWith('CU|') ? clip(c.pk, 40) : undefined } : { v: 1, promo: 1, up: c.up ? 1 : 0 }) : { nm: clip(c.nm, 40), id: c.id | 0, u: c.u | 0, t: +c.t || 0, nob: c.nob == null ? undefined : (c.nob ? 1 : 0), pk: typeof c.pk === 'string' ? clip(c.pk, 60) : undefined }) : null) : [null, null]) : null); colRebuild(); }
@@ -1847,6 +1847,7 @@ function applyState(m) {
   if (Array.isArray(m.mp)) G.myParty = m.mp.map(v => typeof v === 'string' && PARTIES[v] ? v : null);
   if (Array.isArray(m.cpt)) G.capt = m.cpt.filter(c => c && typeof c === 'object' && Array.isArray(c.ppl)).slice(0, 30).map(c => ({ id: c.id | 0, by: c.by | 0, from: c.from | 0, t: +c.t || 0, ppl: c.ppl.slice(0, 20).map(x => ({ pid: clip(x.pid, 12), nm: clip(x.nm, 30), key: clip(x.key, 60), kind: x.kind | 0, was: clip(x.was, 50), h: Number.isInteger(x.h) ? x.h : -1, id: x.id | 0 })) }));
   if (m.tf && typeof m.tf === 'object') { G.tacF = {}; for (const k in m.tf) if (Number.isFinite(+m.tf[k])) G.tacF[k] = +m.tf[k]; }
+  if (m.wc && typeof m.wc === 'object') { G.wc = {}; for (const k in m.wc) if (Number.isFinite(+m.wc[k])) G.wc[k] = +m.wc[k]; }
   if (Array.isArray(m.fa)) G.fac = m.fa.filter(f => f && Array.isArray(f.m)).map(f => ({ id: f.id | 0, name: clip(f.name, 40) || 'Союз', lead: f.lead | 0, m: f.m.filter(Number.isInteger), t: Number.isInteger(f.t) ? f.t : -1, since: +f.since || 0 }));
   if (m.qo && typeof m.qo === 'object') { G.qo = {}; for (const k in m.qo) if (Array.isArray(m.qo[k]) && m.qo[k].length === 4) G.qo[k] = m.qo[k].map(v => v | 0); }
   if (m.to && typeof m.to === 'object') { G.tacO = {}; for (const k in m.to) if (Number.isFinite(+m.to[k])) G.tacO[k] = +m.to[k]; }
@@ -2334,7 +2335,7 @@ function walkHome(u) {
   const n = PROV.n, acc = accArr(u.p), so = G.tiles[i].o, pv = new Int32Array(n).fill(-2), q = [i]; pv[i] = -1; let end = -1;
   for (let h = 0; h < q.length && end < 0; h++) for (const v of PROV.adj[q[h]]) {
     if (pv[v] !== -2) continue; const t = G.tiles[v]; if (t.t >= 4) continue;
-    if (!(t.o < 0 || acc[t.o] || t.o === so)) continue;
+    if (!(t.o < 0 || acc[t.o] || t.o === so || !atWar(u.p, t.o))) continue;
     pv[v] = q[h]; if (t.o === u.p) { end = v; break; } q.push(v);
   }
   if (end < 0) return false;
@@ -4372,7 +4373,7 @@ const defI = i => {
 // ----- бои: ежедневный обмен уроном по здоровью и организации -----
 const vetM = u => u.xp >= 3 ? 1.25 : 1;   // ветераны: +25% ко всем характеристикам
 // дивизия отрезана от столицы (котёл): в провинции без связи со столицей дольше, чем держит Склад
-const unitCut = u => { const i = u.prov >= 0 ? u.prov : (u.mv ? u.mv.path[u.mv.s] : -1); return encircled(i, u.p) || (!u.ship && supBlock(i, u.p)); };
+const unitCut = u => { const i = u.prov >= 0 ? u.prov : (u.mv ? u.mv.path[u.mv.s] : -1); return encircled(i, u.p) || (!u.ship && (supBlock(i, u.p) || u.ns === 1)); };
 const STACK = 10, WIDTH = 8;   // больше 10 дивизий в провинции — перегруз; в бою с каждой стороны участвуют не больше 8
 // сила дивизии: здоровье, ветеранство, снабжение (в котле — половина и без снабжения страны), теснота в провинции
 const uEff = u => (0.3 + 0.7 * Math.max(0, u.hp) / uStats(u.sl).hp) * vetM(u) * cmdMul(u) * (unitCut(u) ? 0.5 * (0.5 + 0.5 * G.res[u.p].morale / 100) : strMul(u.p)) * (u._crowd || 1);
@@ -4546,9 +4547,9 @@ function settle(u, i) {
   if (t.t < 4 && t.o >= 0 && !atWar(u.p, t.o)) { setProv(u, i); if (walkHome(u)) return; }   // мир: уходит домой пешком
   const to = PROV.adj[i].find(r => G.tiles[r].t < 4 && access(u.p, G.tiles[r].o));
   if (to !== undefined) { setProv(u, to); return; }
-  const near = nearestOwn(u.p, i);
-  if (near >= 0 && !(t.o >= 0 && atWar(u.p, t.o))) { setProv(u, near); return; }   // мир: дивизия возвращается домой
-  setProv(u, i); killUnit(u);   // окружена в чужой земле — разбита и взята в плен
+  setProv(u, i);
+  if (t.t < 4 && t.o >= 0 && atWar(u.p, t.o)) { u.bt = i; if (G.bat[i] === undefined) G.bat[i] = G.gt; return; }   // в обороняемой вражеской провинции — бой, а не гибель
+  if (t.t >= 4 && !u.ship) { const near = nearestOwn(u.p, i); if (near >= 0) setProv(u, near); }   // на воде без корабля — на берег
 }
 function nearestOwn(p, from) {
   const seen = new Uint8Array(PROV.n), q = [from]; seen[from] = 1;
@@ -4565,6 +4566,7 @@ function fixStray() {
     if (t.o === u.p || t.o < 0 && t.t >= 4 || access(u.p, t.o)) continue;
     if (G.qo && G.qo[u.prov] && G.qo[u.prov].some(o => qFriend(o, u.p))) continue;
     if (t.t >= 4) continue;
+    if (G.bat[u.prov] !== undefined || (G.tacF && G.tacF[u.prov])) continue;   // там идёт бой — дивизия в нём участвует
     if (t.o >= 0 && atWar(u.p, t.o) && supBlock(u.prov, u.p)) continue;   // застряли вне снабжения — тают, но стоят
     if (t.o >= 0 && !atWar(u.p, t.o) && walkHome(u)) continue;   // союзник не пускает / мир — уходят пешком
     settle(u, u.prov); if (u.dead) dead = true;
@@ -4696,6 +4698,7 @@ function battleStep(dd) {
       const battles = new Set(att.keys());
       for (const u of De.concat(Ae)) {
         if (u.hp <= 0) { killUnit(u); died = true; continue; }
+        if (u.bt === j && u.org < orgMax(u) * 0.1 && A.some(v => v !== u && v.bt === j && v.org >= orgMax(v) * 0.3)) { u.bt = -1; u.mv = null; continue; }   // выдохся — уходит в резерв, в бой идут свежие
         if (u.org > 0) continue;
         u.org = 0;
         const wasDef = u.bt < 0;
@@ -4718,7 +4721,7 @@ function battleStep(dd) {
   // восстановление вне боя: организация, здоровье (за рекрутов); котёл и перегруз — истощение
   for (const u of G.units) {
     const n = u.prov >= 0 ? stk.get(u.prov * 128 + u.p) : 0, over = n > STACK ? n / STACK - 1 : 0;
-    u._crowd = over > 0 ? Math.sqrt(STACK / n) : 1;   // в тесноте каждая дивизия воюет хуже
+    u._crowd = over > 0 ? Math.max(0.75, Math.sqrt(STACK / n)) : 1;   // в тесноте каждая дивизия воюет немного хуже
     if (u.mv || u.bt >= 0 || u.prov < 0) u.ent = 0; else u.ent = Math.min(30, (u.ent || 0) + dd);   // стоящие на месте окапываются
     const om = orgMax(u), st = uStats(u.sl), R = G.res[u.p];
     if (unitCut(u)) {   // котёл: нет снабжения — организация и личный состав тают каждый день, пополнений нет
@@ -4726,9 +4729,9 @@ function battleStep(dd) {
       if (u.hp <= 0) { killUnit(u); starved = true; }
       continue;
     }
-    if (over > 0) u.hp = Math.max(st.hp * 0.3, u.hp - st.hp * Math.min(0.06, 0.02 * over) * dd);   // перегруз: потери от болезней и голода
+    if (over > 0) u.hp = Math.max(st.hp * 0.75, u.hp - st.hp * Math.min(0.015, 0.004 * over) * dd);   // перегруз: болезни (не ниже 75% состава)
     if (inBattle.has(u)) continue;
-    const cap = over > 0 ? om * 0.6 : om;
+    const cap = over > 0 ? om * 0.8 : om;
     if (u.org < cap) u.org = Math.min(cap, u.org + om * (u.mv ? 0.03 : 0.1) * dd);
     if (R.supply <= 0 || R.gold <= 0) { u.hp = Math.max(st.hp * 0.4, u.hp - st.hp * 0.01 * dd); continue; }   // голод и дезертирство: без снабжения или жалованья армия тает
     if (!over && !u.mv && u.hp < st.hp && R.supply > 0 && R.recruits > 0) {
@@ -5914,10 +5917,10 @@ function cmdMoveIds(p, ids, to, pt) {
     if (u.p !== p || !set.has(u.id) || u.prov >= 0 || !u.mv || u.ret || u.bt >= 0) continue;
     const m = u.mv, a = m.path[m.s], b = m.path[m.s + 1];
     if (to === a) { reverseMv(u, now); n++; continue; }
-    if (to === b) { m.path = [a, b]; m.s = 0; n++; continue; }
+    if (to === b) { mvRebase(u, [a, b], now); n++; continue; }
     const rest = findPath(p, b, to);
     if (!rest) continue;
-    m.path = [a].concat(rest); m.s = 0; n++;
+    mvRebase(u, [a].concat(rest), now); n++;
   }
   if (n) G.rate = null;
   return n;
@@ -6212,8 +6215,13 @@ function botFronts(p, lv) {
 }
 // доля пройденного отрезка пути
 function uProgress(u, now) { const m = u.mv; return Math.max(0, Math.min(1, (now - m.t0) / m.dur)); }
+// новый маршрут для дивизии в пути: продолжает движение ровно с того места, где она сейчас на карте
+function mvRebase(u, path, now, dur) {
+  const m = u.mv, P = uDrawPos(u, now) || wayPt(m, m.s), k = uProgress(u, now);
+  u.mv = { path, s: 0, t0: now, dur: Math.max(0.05, dur != null ? dur : m.dur * (1 - k)), x0: P[0], y0: P[1] };
+}
 // развернуть дивизию на текущем отрезке — она вернётся в провинцию, из которой вышла
-function reverseMv(u, now) { const m = u.mv, k = uProgress(u, now), a = m.path[m.s], b = m.path[m.s + 1]; u.mv = { path: [b, a], s: 0, t0: now - (1 - k) * m.dur, dur: m.dur }; }
+function reverseMv(u, now) { const m = u.mv, k = uProgress(u, now), a = m.path[m.s], b = m.path[m.s + 1]; mvRebase(u, [b, a], now, m.dur * k); }
 // СТОП: идущие дивизии встают в ближайшей провинции (меньше половины пути — возвращаются), атакующие прекращают наступление
 function stopUnits(p, ids) {
   if (G.winner !== -1) return 0;
@@ -6224,7 +6232,7 @@ function stopUnits(p, ids) {
     if (!u.mv || u.prov >= 0) continue;
     const m = u.mv;
     if (uProgress(u, now) < 0.5) reverseMv(u, now);
-    else { m.path = m.path.slice(m.s, m.s + 2); m.s = 0; }
+    else mvRebase(u, m.path.slice(m.s, m.s + 2), now);
     n++;
   }
   if (n) G.rate = null;
@@ -7237,7 +7245,7 @@ function draw() {
     if (atk.length) lines.push('⚔ Бой: атакуют ' + atk.length + ' див. (' + G.players[atk[0].p].name + ')' + (riverBetween(atk[0].prov, hover) ? ' · форсирование реки' : ''));
     if (t.o >= 0 && cutPenalty(hover)) lines.push('⛓ Отрезано от столицы: нет снабжения, налогов и рекрутов' + (here.length ? '; дивизии: сила ×0.5, организация не восстанавливается и медленно падает, −0.6% состава в день (блокада держится месяцами), отступать некуда — без организации штурм их уничтожит; марш в 1.5 раза медленнее' : ''));
     if (here.length && !here[0].mv) { const e2 = Math.max(...here.map(u => u.ent || 0)); if (e2 >= 1) lines.push('⛏ Окопы: +' + Math.round(60 * Math.min(1, e2 / 30)) + '% к обороне (растут 30 дней, пока войска стоят на месте)'); }
-    if (here.length > STACK) lines.push('⚠ Перегруз: ' + here.length + '/' + STACK + ' дивизий — каждая слабее, болезни и голод, организация не выше 60%');
+    if (here.length > STACK) lines.push('⚠ Перегруз: ' + here.length + '/' + STACK + ' дивизий — в бою участвуют только ' + WIDTH + ', остальные болеют; организация не выше 80%');
     if (t.t < 4) {
       const b = G.bld[hover];
       lines.push('Население: ' + Math.round(popOf(hover)).toLocaleString('ru-RU') + ' · налог ' + (ECO.TAX * popOf(hover) / 1000 * (isHost ? integ(hover) : 1)).toFixed(1) + '/день' + (isHost && t.o >= 0 && integ(hover) < 1 ? ' · освоено ' + Math.floor(integ(hover) * 100) + '%' : '') + (PROV.coast[hover] ? ' · побережье' : ''));
@@ -8963,6 +8971,8 @@ function tutTick() {
   Object.assign(ring.style, { display: 'block', left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' });
 }
 setInterval(tutTick, 200);
+let _gSupDay = -1;   // гость сам считает линии снабжения для подсказок
+setInterval(() => { if (!G || isHost || !PROV || !G.tiles) return; const d = Math.floor(G.gt); if (d === _gSupDay) return; _gSupDay = d; try { supDay(); } catch (e) {} }, 1000);
 $('tutNext').onclick = () => { const st = TUT_STEPS[TUT.k]; if (st.last) { tutEnd(true); return; } tutShow(TUT.k + 1); };
 $('tutPrev').onclick = () => tutShow(TUT.k - 1);
 $('tutQuit').onclick = () => { if (confirm('Закончить обучение? Партия продолжится без подсказок.')) tutEnd(TUT.k >= TUT_STEPS.length - 3); };
