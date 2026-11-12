@@ -174,7 +174,8 @@ details.fed summary{cursor:pointer;font-weight:600}
 .fm-lab.sec{background:none;border:none;color:#5a4a2a;font-size:22px;cursor:default}
 .fm-lab{transform:scale(var(--lz,1));transform-origin:0 100%;z-index:2;position:absolute;padding:4px 12px;border-left:8px solid #888;background:#2a2418;color:#f3d48a;font-weight:700;font-size:14px;letter-spacing:1px;border-radius:4px;cursor:pointer;white-space:nowrap}
 .fm-card{position:absolute;width:130px;height:150px;box-sizing:border-box;background:#fffaf0;border:3.5px solid #1a1a1a;display:flex;flex-direction:column;align-items:center;padding:4px 3px;cursor:pointer;color:#1a1408;text-align:center}
-.fm-card img{width:52px;height:65px;object-fit:cover;border:1px solid #6a5a34}.fm-card b{font-size:12px;line-height:1.1;margin-top:3px;max-height:27px;overflow:hidden}.fm-card span{font-size:11px;color:#4a3a20}.fm-card i{font-size:9.5px;font-style:normal;color:#7a5010;line-height:1.1}
+.fm-card img{width:52px;height:65px;object-fit:cover;border:1px solid #6a5a34}.fm-card b{font-size:12px;line-height:1.1;margin-top:3px;max-height:27px;overflow:hidden}.fm-card .fm-sn{font-size:10px;font-style:italic;color:#6a4a20;line-height:1.1;max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.fm-card span{font-size:11px;color:#4a3a20}.fm-card i{font-size:9.5px;font-style:normal;color:#7a5010;line-height:1.1}
 .fm-card.dead{opacity:.8;filter:grayscale(1);background:#e8e4da;overflow:hidden}.fm-card .fm-rib{position:absolute;left:-30px;top:14px;width:110px;transform:rotate(-45deg);background:#111;color:#fff;text-align:center;font-size:15px;line-height:20px;font-weight:700;box-shadow:0 1px 3px #0008;z-index:2}.fm-card em{font-style:normal;font-size:10px;font-weight:800;color:#5a0a0a;line-height:1.15;margin-top:1px}.fm-ended{position:sticky;top:0;left:0;z-index:5;background:#1b1b1b;color:#f0d8b0;border-bottom:2px solid #7a2a2a;padding:8px 14px;font-weight:700;font-size:14px;text-align:center}.fm-dead{background:#2a1010;border:1px solid #7a2a2a;color:#ffb0a0;border-radius:6px;padding:6px 8px;margin:4px 0 8px;font-size:12px;text-align:center}.fm-card.sel{outline:4px solid #e0a020;outline-offset:2px}.fm-card.away{border-style:dashed}
 .fm-bl{display:flex;width:100%;height:5px;margin-top:auto;border:1px solid #1a1a1a}.fm-bl u{display:block;height:100%}
 #fmSide img{width:120px;height:150px;object-fit:cover;display:block;margin:0 auto 6px;border:2px solid #6a5a34}#fmSide h3{margin:2px 0 8px;text-align:center;color:#f3d48a;font-size:16px}
@@ -591,6 +592,7 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
 #roleBar .rb-t{display:flex;flex-direction:column;margin-right:6px}#roleBar .rb-t b{color:#ffd98a;font-size:14px}#roleBar .rb-t span{color:#cfc2a0;font-size:12px}
 #roleBar button{font-size:12px;padding:5px 9px}#roleBar select{max-width:280px;font-size:12px}
 .cnode.council:has(.cf-bar){height:94px}.cnode.council.cfg .cf-bar{margin-right:46px}.cnode.council>div{position:relative}.cf-bar{position:relative;height:14px;margin-top:3px;background:#0006;border-radius:7px;overflow:hidden;min-width:0}.cf-bar u{position:absolute;left:0;top:0;bottom:0;text-decoration:none;opacity:.75}.cf-bar em{position:relative;font-style:normal;font-size:10px;font-weight:700;color:#fff;padding-left:6px;line-height:14px;text-shadow:0 1px 2px #000}.cf-gift{position:absolute;right:0;bottom:0;font-size:10px;padding:0 5px;height:16px;border-radius:5px;border:1px solid #8a7a4a;background:#2a2416;color:#f0dca0;cursor:pointer;white-space:nowrap}.cf-gift:disabled{opacity:.55;cursor:default}
+#cpanel .photobox{position:relative;overflow:hidden}.cp-rib{position:absolute;left:0;right:0;bottom:0;background:#111e;color:#fff;font-weight:800;font-size:15px;letter-spacing:1px;text-align:center;padding:6px 0;border-top:2px solid #7a2a2a}
 </style>
 </head>
 <body>
@@ -658,9 +660,10 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
         <div class="photobox"><img id="leaderImg" alt=""><span id="leaderPh">ФОТО ЛИДЕРА</span></div>
         <div style="display:flex;gap:6px"><button id="btnLeaderPhoto" type="button" style="flex:1">Загрузить фото…</button><button id="btnLeaderGen" type="button" title="Нарисовать случайный портрет в духе XIX века">🎲 Портрет</button></div>
         <input id="cLeader" maxlength="28" placeholder="Имя лидера">
+        <input id="cSurname" maxlength="24" placeholder="Фамилия династии (пусто — случайная)" style="margin-top:6px">
         <div class="spbox"><label>💍 Супруг(а) правителя</label>
           <div class="sprow"><div class="photobox spph"><img id="spImg" alt=""><span id="spPh">ФОТО</span></div>
-          <div class="spcol"><select id="cSpF"><option value="1">Жена</option><option value="0">Муж</option></select><input id="cSpName" maxlength="28" placeholder="Имя (пусто — случайное)"><div style="display:flex;gap:6px"><button id="btnSpPhoto" type="button" style="flex:1">Фото…</button><button id="btnSpGen" type="button" title="Случайный портрет">🎲</button></div></div></div></div>
+          <div class="spcol"><select id="cSpF"><option value="1">Жена</option><option value="0">Муж</option></select><input id="cSpName" maxlength="28" placeholder="Имя (пусто — случайное)"><input id="cSpSurname" maxlength="24" placeholder="Девичья фамилия (пусто — случайная)" title="Фамилия до брака. После свадьбы супруг(а) берёт фамилию правителя"><div style="display:flex;gap:6px"><button id="btnSpPhoto" type="button" style="flex:1">Фото…</button><button id="btnSpGen" type="button" title="Случайный портрет">🎲</button></div></div></div></div>
       </div>
       <div class="edright">
         <div><label>Название страны</label><input id="cName" maxlength="28" placeholder="Например: Новая Эрландия"></div>
@@ -1193,7 +1196,7 @@ window.addEventListener('resize', resizeView);
 const SAVE_KEY = 'empire_save_v1';
 function defaultCountry() {
   return {
-    name: '', title: '', leader: '', capital: '', ideo: 3, rel: 0, iv: 2, color: COLORS[0], photo: null, thumb: null, spName: '', spF: 1, spPhoto: null, spThumb: null,
+    name: '', title: '', leader: '', capital: '', ideo: 3, rel: 0, iv: 2, color: COLORS[0], photo: null, thumb: null, spName: '', spF: 1, spPhoto: null, spThumb: null, surname: '', spSurname: '',
     generals: [
       { role: 'Адмирал флота', cls: null, name: '', photo: null },
       { role: 'Сухопутный генерал', cls: 0, name: '', photo: null },
@@ -1226,6 +1229,7 @@ function updIdeoDesc() {
   const rs = $('religionSelect'); if (rs && rs.options) for (const op of rs.options) { const ok = relOK(c.ideo, +op.value); op.disabled = !ok; op.textContent = REL[+op.value].name + (ok ? '' : ' — недоступно'); }
   if (!relOK(c.ideo, c.rel)) { c.rel = IDEO[c.ideo].rels[0]; if (rs) rs.value = c.rel; }
   const t = $('cTitleAuto'); if (t) t.innerHTML = titleFor(c.ideo, c.rel) + (o.noRuler ? '<small>при анархизме правителя нет — страной правит собрание</small>' : '<small>титул зависит от идеологии и веры</small>');
+  { const sn0 = $('cSurname'); if (sn0) sn0.disabled = !!o.noRuler; }
   const ld = $('cLeader'); if (ld) { ld.disabled = !!o.noRuler; ld.placeholder = o.noRuler ? 'Правителя нет (анархизм)' : 'Имя лидера'; }
   try { hierTitles(); } catch (e) {}
   try { updEdDecs(); } catch (e) {}   // список решений появится, когда загрузятся данные решений
@@ -1497,6 +1501,8 @@ $('btnLeaderPhoto').onclick = () => pickImage((d, th) => { CO().photo = d; CO().
 $('btnSpPhoto').onclick = () => pickImage((d, th) => { CO().spPhoto = d; CO().spThumb = th; showPhoto($('spImg'), $('spPh'), d); }, 240, 300);
 $('btnSpGen').onclick = () => { const f = $('cSpF').value === '0' ? 0 : 3, d = portraitURL('RS' + Math.random(), f); if (!d) return; CO().spPhoto = d; showPhoto($('spImg'), $('spPh'), d); makeThumb(d, th => { CO().spThumb = th; persistSoon(); }); };
 $('cSpName').oninput = () => { CO().spName = $('cSpName').value; persistSoon(); };
+$('cSpSurname').oninput = () => { CO().spSurname = $('cSpSurname').value; persistSoon(); };
+$('cSurname').oninput = () => { CO().surname = $('cSurname').value; persistSoon(); };
 $('cSpF').onchange = () => { CO().spF = +$('cSpF').value; persistSoon(); };
 $('btnLeaderGen').onclick = () => { const d = portraitURL('R' + Math.random(), 0); if (!d) return; CO().photo = d; showPhoto($('leaderImg'), $('leaderPh'), d); makeThumb(d, th => { CO().thumb = th; persistSoon(); }); };
 // 4 командующих: адмирал флота и три сухопутных генерала (пока никак не влияют на игру)
@@ -1532,7 +1538,7 @@ function fillUI(c) {
   $('cIdeo').value = c.ideo; $('religionSelect').value = c.rel; updIdeoDesc(); $('countryColorPicker').value = c.color;
   $('fPat').value = c.flag.pat; $('fEm').value = c.flag.em; $('fC1').value = c.flag.c1; $('fC2').value = c.flag.c2; $('fC3').value = c.flag.c3;
   showPhoto($('leaderImg'), $('leaderPh'), c.photo);
-  try { $('cSpName').value = c.spName || ''; $('cSpF').value = c.spF === 0 ? '0' : '1'; showPhoto($('spImg'), $('spPh'), c.spPhoto); } catch (e) {}
+  try { $('cSurname').value = c.surname || ''; $('cSpSurname').value = c.spSurname || ''; $('cSpName').value = c.spName || ''; $('cSpF').value = c.spF === 0 ? '0' : '1'; showPhoto($('spImg'), $('spPh'), c.spPhoto); } catch (e) {}
   c.generals.forEach((g, i) => {
     cmdUI[i].nm.value = g.name; if (cmdUI[i].sel) cmdUI[i].sel.value = g.cls | 0;
     showPhoto(cmdUI[i].im, cmdUI[i].ph, g.photo);
@@ -1683,7 +1689,7 @@ function readCountry() {
   const c = gameState.country;
   return {
     name: c.name.trim() || 'Безымянная страна', title: titleFor(c.ideo, relFix(c.ideo, c.rel)), leader: IDEO[c.ideo].noRuler ? '' : c.leader.trim() || 'Неизвестный',
-    ideo: c.ideo, rel: relFix(c.ideo, c.rel), color: c.color, capital: c.capital.trim() || 'Столица', photo: c.photo, thumb: c.thumb, spName: (c.spName || '').trim(), spF: c.spF === 0 ? 0 : 1, spPhoto: c.spPhoto || null, spThumb: c.spThumb || null,
+    ideo: c.ideo, rel: relFix(c.ideo, c.rel), color: c.color, capital: c.capital.trim() || 'Столица', photo: c.photo, thumb: c.thumb, surname: (c.surname || '').trim(), spSurname: (c.spSurname || '').trim(), spName: (c.spName || '').trim(), spF: c.spF === 0 ? 0 : 1, spPhoto: c.spPhoto || null, spThumb: c.spThumb || null,
     generals: c.generals.map(g => Object.assign({}, g)), genNames: c.generals.map(g => g.name || ''), flag: Object.assign({}, c.flag), hier: cleanHier(c.hier)
   };
 }
@@ -1709,6 +1715,7 @@ function cleanCountry0(c) {
     genNames: [0, 1, 2, 3].map(k => c && Array.isArray(c.genNames) ? s(c.genNames[k], '') : ''),
     genPhotos: [0, 1, 2, 3].map(k => { const v = c && Array.isArray(c.genPhotos) ? c.genPhotos[k] : null; return (typeof v === 'string' && v.length < 40000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(v)) ? v : null; }),
     flag: cleanFlag(c && c.flag), hier: c && c.hier ? cleanHier(c.hier) : null,
+    surname: c && typeof c.surname === 'string' ? c.surname.trim().slice(0, 24) : '', spSurname: c && typeof c.spSurname === 'string' ? c.spSurname.trim().slice(0, 24) : '',
     spName: c && typeof c.spName === 'string' ? c.spName.trim().slice(0, 28) : '', spF: c && c.spF === 0 ? 0 : 1, spPhoto: c && typeof c.spPhoto === 'string' && c.spPhoto.length < 40000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(c.spPhoto) ? c.spPhoto : null
   };
 }
@@ -1951,7 +1958,7 @@ function snapshot() {
     bat: Object.keys(G.bat).map(k => [+k, Math.round(G.bat[k] * 10) / 10]), hq: G.hq, ww: G.ww.map(v => Math.round(v * 10) / 10), ki: G.kia.map(Math.round),
     tr: G.tr, ay: G.ally, of: G.offers.map(o => [o.id, o.k, o.a, o.b, Math.round(o.t), o.g || 0, o.n || 0, o.price || 0, o.pv || 0]),
     cv: G.convoys.map(c => [c.id, c.a, c.b, c.g, c.amt, c.path, c.s, Math.round(c.t0 * 1000) / 1000, Math.round(c.dur * 1000) / 1000, c.k === 'run' ? 1 : 0, c.leg || 0]),
-    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], cf: G.cf || [], ih: G.inh || [], iT: G.inhT || [], iC: G.inhC || {}, fx: G.fac || null, fm: famSnap(), wt: G.wt || {}, pu: G.pup || null, trc: G.truce || {}, wc: G.wc || {}, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
+    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], dy: { r: G.dyn || [], t: G.dynT || [] }, cf: G.cf || [], ih: G.inh || [], iT: G.inhT || [], iC: G.inhC || {}, fx: G.fac || null, fm: famSnap(), wt: G.wt || {}, pu: G.pup || null, trc: G.truce || {}, wc: G.wc || {}, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
     pb: (() => { const b = new Array(NP()).fill(0); for (let i = 0; i < G.tiles.length; i++) { const o = G.tiles[i].o; if (o >= 0) b[o] += PROV.pop[i]; } return b.map(Math.round); })(),
     rt: ecoRatesAll().map(r => [Math.round(r.gold * 10) / 10, Math.round(r.supply), Math.round(r.recruits)]) };
 }
@@ -1971,7 +1978,7 @@ function applyState(m) {
   if (Array.isArray(m.lo)) { const old = JSON.stringify(G.leaderOv || []); G.leaderOv = m.lo.map(o => o && typeof o === 'object' ? { key: clip(o.key, 60), nm: clip(o.nm, 28), kind: o.kind | 0 } : null); if (JSON.stringify(G.leaderOv) !== old) leaderVer++; }
   if (Array.isArray(m.pa)) G.parl = m.pa.map(P => P && typeof P === 'object' && P.seats && typeof P.seats === 'object' ? { seats: Object.fromEntries(Object.entries(P.seats).filter(([k, v]) => typeof k === 'string' && k.length < 12 && Number.isInteger(v))), t: +P.t || 0, next: +P.next || 0 } : null);
   if (Array.isArray(m.cp)) G.camp = m.cp.map(v => +v || 0);
-  if (Array.isArray(m.ro)) G.role = m.ro.map(R => R && typeof R === 'object' && ['ruler', 'opp', 'gen', 'min', 'dead', 'exile', 'pris'].includes(R.kind) && Number.isInteger(R.c) ? { c: R.c, kind: R.kind, k: R.k | 0, sl: typeof R.sl === 'string' ? R.sl : undefined, by: R.by | 0 } : null);
+  if (Array.isArray(m.ro)) G.role = m.ro.map(R => R && typeof R === 'object' && ['ruler', 'opp', 'dyn', 'gen', 'min', 'dead', 'exile', 'pris'].includes(R.kind) && Number.isInteger(R.c) ? { c: R.c, kind: R.kind, k: R.k | 0, sl: typeof R.sl === 'string' ? R.sl : undefined, by: R.by | 0 } : null);
   if (Array.isArray(m.gv)) G.gov = m.gv.map(v => typeof v === 'string' && PARTIES[v] ? v : null);
   if (Array.isArray(m.mp)) G.myParty = m.mp.map(v => typeof v === 'string' && PARTIES[v] ? v : null);
   if (Array.isArray(m.cpt)) G.capt = m.cpt.filter(c => c && typeof c === 'object' && Array.isArray(c.ppl)).slice(0, 30).map(c => ({ id: c.id | 0, by: c.by | 0, from: c.from | 0, t: +c.t || 0, ppl: c.ppl.slice(0, 20).map(x => ({ pid: clip(x.pid, 12), nm: clip(x.nm, 30), key: clip(x.key, 60), kind: x.kind | 0, was: clip(x.was, 50), h: Number.isInteger(x.h) ? x.h : -1, id: x.id | 0 })) }));
@@ -1992,9 +1999,10 @@ function applyState(m) {
   if (Array.isArray(m.ih)) G.inh = m.ih.slice(0, 200).filter(c => c && typeof c === 'object').map(c => ({ id: c.id | 0, p: c.p | 0, q: c.q | 0, x: c.x | 0, w: c.w === 'death' ? 'death' : 'wed', t: +c.t || 0, u: c.u & 15 }));
   if (Array.isArray(m.iT)) G.inhT = m.iT.slice(0, 64).map(L => Array.isArray(L) ? L.slice(0, 20).filter(t => t && typeof t === 'object').map(t => ({ q: t.q | 0, nm: clip(t.nm, 60) })) : null);
   if (m.iC && typeof m.iC === 'object' && !Array.isArray(m.iC)) { G.inhC = {}; for (const k in m.iC) if (/^\d+:\d+$/.test(k)) G.inhC[k] = 1; }
+  if (m.dy && typeof m.dy === 'object') { G.dyn = Array.isArray(m.dy.r) ? m.dy.r.slice(0, 64).map(L => Array.isArray(L) ? L.slice(0, 50).map(x => x | 0) : null) : []; G.dynT = Array.isArray(m.dy.t) ? m.dy.t.slice(0, 64).map(x => +x || 0) : []; }
   if (Array.isArray(m.cf)) G.cf = m.cf.slice(0, 64).map(v => v == null ? null : Math.max(0, Math.min(100, +v || 0)));
   if (Array.isArray(m.vl)) G.vacL = m.vl.map(v => v ? 1 : 0);
-  if (Array.isArray(m.gu)) G.genUp = m.gu.map(P => Array.isArray(P) ? P.map(v => v === 2 ? 2 : v ? 1 : 0) : null);
+  if (Array.isArray(m.gu)) G.genUp = m.gu.map(P => Array.isArray(P) ? P.map(v => v === 2 || v === 3 ? v : v ? 1 : 0) : null);
   if (Array.isArray(m.war)) G.war = m.war;
   if (Array.isArray(m.rl)) G.rel = m.rl;
   if (Array.isArray(m.js)) G.just = m.js;
@@ -2044,6 +2052,7 @@ function onData(m, from) {
   if (isHost && G && okP !== false && Number.isInteger(from) && G.role && G.role[from] && G.role[from].kind !== 'ruler') {   // игрок не правит своей страной — только то, что позволяет его роль
     const R = G.role[from];
     if (m.t === 'opp') { if (doOpp(from, m.a)) pushSnap(); return; }
+    if (m.t === 'dynrev') { if (dynRevolt(from)) pushSnap(); return; }
     if (m.t === 'emig') { if (emigrate(from, m.q | 0, m.kind, m.k | 0, m.sl)) pushSnap(); return; }
     if (R.kind === 'gen' && ['mvu', 'stop', 'gfront', 'gfMode', 'hq', 'rename', 'tacOpen', 'tacRes'].includes(m.t)) {
       if (Array.isArray(m.ids)) m.ids = m.ids.filter(id => G.units.some(u => u.id === id && u.p === R.c && u.g === R.k));
@@ -3200,7 +3209,7 @@ function hemigTxt(q, n) {
 }
 function hemigAccept(q, o, n) {   // правитель q принимает игрока o.a на пост n
   const pi = o.a, R = roleOf(pi);
-  if (!R || !(R.kind === 'opp' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
+  if (!R || !(R.kind === 'opp' || R.kind === 'dyn' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
   if (!hemigPosts(q).includes(n)) return false;
   const wasKind = R.kind, from = R.c, pl = G.players[pi], nm = (pl.humanName || pl.leader || 'Эмигрант').slice(0, 24), key = 'EMI|' + pi;
   let txt;
@@ -3225,7 +3234,7 @@ function hemigAccept(q, o, n) {   // правитель q принимает и�
   return true;
 }
 function emigrate(pi, q, kind, k, sl) {
-  const R = roleOf(pi); if (!R || !(R.kind === 'opp' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
+  const R = roleOf(pi); if (!R || !(R.kind === 'opp' || R.kind === 'dyn' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
   const wasKind = R.kind;
   const o = emigOffers(pi).find(x => x.q === q && x.kind === kind && (kind === 'gen' ? x.k === k : kind === 'ask' ? true : x.sl === sl)); if (!o) return false;
   if (kind === 'ask') {
@@ -3279,7 +3288,7 @@ function exileVacs(q) {
 }
 function exileSlotTxt(q, n) {
   if (n >= 20) { const k = (n - 20) >> 1, i = (n - 20) & 1, c = colOf(q)[k][i]; return (k ? 'полковником армии №' + k : 'капитаном 1-го ранга флота') + (c && c.dead ? ' — вместо 💀 ' + stripRank(c.nm) : ' — офицер ушёл на повышение'); }
-  if (n >= 10) { const k = n - 10, nm = (G.players[q].genNames && G.players[q].genNames[k]) || (q === G.me ? genName(k) : ''); return (k ? 'генералом армии №' + k : 'адмиралом флота') + (G.genUp && G.genUp[q] && G.genUp[q][k] === 2 ? ' — вместо перебежчика ' + (stripRank(nm) || '') : G.genUp && G.genUp[q] && G.genUp[q][k] ? ' — генерал ушёл в правительство' : ' — вместо 💀 ' + (stripRank(nm) || 'погибшего')); }
+  if (n >= 10) { const k = n - 10, nm = (G.players[q].genNames && G.players[q].genNames[k]) || (q === G.me ? genName(k) : ''); return (k ? 'генералом армии №' + k : 'адмиралом флота') + (G.genUp && G.genUp[q] && G.genUp[q][k] === 2 ? ' — вместо перебежчика ' + (stripRank(nm) || '') : G.genUp && G.genUp[q] && G.genUp[q][k] === 1 ? ' — генерал ушёл в правительство' : ' — вместо 💀 ' + (stripRank(nm) || 'погибшего')); }
   const sl = COURT_SLOTS[n], D = G.cdead && G.cdead[q] && G.cdead[q][sl];
   return courtTitle(q, sl) + (D ? (D.gone ? ' — вместо перебежчика ' : ' — вместо 💀 ') + D.nm : ' — пост пуст');
 }
@@ -3399,12 +3408,16 @@ function defectWhy(p, gl) {
 }
 function defectDay(p) {
   if (!G.alive[p]) return;
-  const base = discontent(p), pl = G.players[p], nmC = pname(p);
+  if (!G.dfT) G.dfT = []; if (G.gt < (G.dfT[p] || 0)) return;   // после бегства — затишье 60 дней
+  const base = Math.max(0, discontent(p) - 0.25), pl = G.players[p], nmC = pname(p);   // лёгкое недовольство — никто не бежит
+  const fled = () => { G.dfT[p] = G.gt + 60; };
   // министры
   const C = courtOf(p);
   for (const sl of COURT_SLOTS) {
+    if (G.gt < G.dfT[p]) return;
     const c = C[sl]; if (!c || Number.isInteger(c.human) || G.gt - c.t < 60) continue;
-    if (Math.random() >= base / 600) continue;
+    if (Math.random() >= base / 2400) continue;
+    fled();
     const ttl = courtTitle(p, sl);
     if (!G.cdead) G.cdead = []; if (!G.cdead[p]) G.cdead[p] = {};
     const key = c.pk || ('C|' + (pl.baseName || pl.name) + '|' + sl + '|' + c.id), kind = c.pk ? c.pkind | 0 : (sl === 'war' ? 1 : 0);
@@ -3414,12 +3427,15 @@ function defectDay(p) {
     addNews('crisis', 'Министр бежал за границу!', ttl + ' страны ' + nmC + ' ' + c.nm + ' бежал за границу, ' + defectWhy(p) + '. Пост пустует — повысьте кого-нибудь из подчинённых.', p === myP(), 'Бонус должности пропал', { k: 'person', p, key, kind, ps: [p] });
   }
   // адмирал — тоже может сбежать, если страна в смуте
-  if (!G.genDead[p][0] && Math.random() < base / 1200) admLeave(p, '', 1);
+  if (G.gt < G.dfT[p]) return;
+  if (!G.genDead[p][0] && Math.random() < base / 3600 && admLeave(p, '', 1)) { fled(); return; }
   // генералы
   for (let k = 1; k < 4; k++) {
     if (G.genDead[p][k] || humanArmy(p, k)) continue;
-    const gl = G.genLoy && G.genLoy[p] ? G.genLoy[p][k] : 100, d = base + Math.max(0, 50 - gl) / 40;
-    if (Math.random() >= d / 700) continue;
+    if (G.gt < G.dfT[p]) return;
+    const gl = G.genLoy && G.genLoy[p] ? G.genLoy[p][k] : 100, d = base + Math.max(0, 40 - gl) / 50;
+    if (Math.random() >= d / 2400) continue;
+    fled();
     const ov = G.genOv && G.genOv[p] && G.genOv[p][k], nm = stripRank((pl.genNames && pl.genNames[k]) || (p === G.me ? genName(k) : 'Генерал ' + k)), key = ov ? ov.key : 'CU|' + p + '|g|' + k;
     G.genDead[p][k] = 1; if (!G.genUp) G.genUp = []; if (!G.genUp[p]) G.genUp[p] = [0, 0, 0, 0]; G.genUp[p][k] = 2;
     for (const u of G.units) if (u.p === p && u.g === k) u.g = 0; if (G.gf[p]) G.gf[p][k] = null; if (G.hq && G.hq[p]) G.hq[p][k] = 0;
@@ -3447,14 +3463,14 @@ function fillVac(q, n, e, human) {   // e = { nm, key, kind, id }; human — н�
 /* ===== ПЛЕННОЕ ПРАВИТЕЛЬСТВО: победитель решает судьбу правителя, министров и генералов павшей страны ===== */
 function captureGov(q, by) {
   const pl = G.players[q], ppl = [], base = pl.baseName || pl.name;
-  const hum = pi => (G.role && G.role[pi] && G.role[pi].c === q && ['ruler', 'opp'].includes(G.role[pi].kind)) ? pi : -1;
+  const hum = pi => (G.role && G.role[pi] && G.role[pi].c === q && ['ruler', 'opp', 'dyn'].includes(G.role[pi].kind)) ? pi : -1;
   if (!noRuler(q) && !(G.vacL && G.vacL[q])) { const ov = G.leaderOv && G.leaderOv[q], h = ov ? -1 : hum(q), key = ov ? ov.key : (h >= 0 || (G.role && G.role[q]) ? 'EMI|' + q : leaderKey(q));
     ppl.push({ pid: 'L', nm: stripRank(pl.leader || pl.humanName || 'Правитель'), key, kind: ov ? ov.kind | 0 : 0, was: pl.title || 'правитель', h }); }
   const C = courtOf(q); for (const sl of COURT_SLOTS) { const c = C[sl]; if (!c) continue; ppl.push({ pid: 'c:' + sl, nm: stripRank(c.nm), key: c.pk || ('C|' + base + '|' + sl + '|' + c.id), kind: c.pk ? c.pkind | 0 : (sl === 'war' ? 1 : 0), was: courtTitle(q, sl).toLowerCase(), h: Number.isInteger(c.human) ? c.human : -1 }); }
   for (let k = 0; k < 4; k++) if (!G.genDead[q][k]) { const ov = G.genOv && G.genOv[q] && G.genOv[q][k], nm = stripRank((pl.genNames && pl.genNames[k]) || (k ? 'Генерал ' + k : 'Адмирал')), hg = G.role ? G.role.findIndex(R => R && R.kind === 'gen' && R.c === q && R.k === k) : -1;
     ppl.push({ pid: 'g:' + k, nm, key: ov ? ov.key : 'CU|' + q + '|g|' + k, kind: k ? 1 : 2, was: k ? 'генерал армии №' + k : 'адмирал флота', h: hg }); }
   // живые игроки в оппозиции павшей страны тоже попадают в плен
-  if (G.role) G.role.forEach((R, pi) => { if (R && R.c === q && R.kind === 'opp' && !ppl.some(x => x.h === pi)) ppl.push({ pid: 'o:' + pi, nm: stripRank(G.players[pi].humanName || G.players[pi].leader || 'Лидер оппозиции'), key: 'EMI|' + pi, kind: 0, was: 'лидер оппозиции', h: pi }); });
+  if (G.role) G.role.forEach((R, pi) => { if (R && R.c === q && (R.kind === 'opp' || R.kind === 'dyn') && !ppl.some(x => x.h === pi)) ppl.push({ pid: 'o:' + pi, nm: stripRank(G.players[pi].humanName || G.players[pi].leader || 'Лидер оппозиции'), key: 'EMI|' + pi, kind: 0, was: 'лидер оппозиции', h: pi }); });
   ppl.forEach((x, i) => { x.id = 1 + Math.floor(Math.random() * 1e9); if (x.h >= 0) setRole(x.h, { c: q, kind: 'pris', by }); });
   if (!ppl.length) return;
   if (!G.capt) G.capt = [];
@@ -3497,11 +3513,61 @@ function captDay() {   // кто ждёт решения дольше 60 дне�
   for (const cp of G.capt.slice()) if (G.gt - cp.t > 60 || !G.alive[cp.by]) for (const x of cp.ppl.slice()) captAct(cp.by, cp.id, x.pid, 'free');
 }
 // ежедневно: касса партии в оппозиции пополняется, погибшие эмигранты — в наблюдатели
+// ===================== ИГРА ЗА РОД =====================
+const DYN_REV = 300, DYN_CD = 120;
+const dynChance = c => Math.max(0.1, Math.min(0.8, 0.25 + (55 - loyalty(c)) / 100));
+function dynCheck(pi) {   // правит ли ещё род игрока его страной
+  const c = pi; if (!G.fam || !G.dyn || !G.dyn[pi] || !G.alive[c] || noRuler(c) || (G.vacL && G.vacL[c])) return;
+  const r = famRuler(c); if (!r || dynIn(pi, r)) return;
+  setRole(pi, { c, kind: 'dyn' });
+  if (!bots[pi]) bots[pi] = { level: 1, next: G.gt + 1, nextDip: 0, target: -1, oppOf: 1 };   // страну ведёт ИИ
+  if (!G.pfund) G.pfund = []; G.pfund[pi] = Math.max(G.pfund[pi] || 0, 150);
+  const sn = dynSn(pi);
+  addNews('crisis', 'Трон потерян!', 'Престол страны ' + pname(c) + ' занял чужой род: ' + G.players[c].title + ' ' + G.players[c].leader + '. Род ' + (sn || 'игрока') + ' больше не правит — страной управляет ИИ. Глава рода может поднять восстание, чтобы вернуть трон, или поступить на службу за границей.', pi === G.meOrig, 'Вы — глава рода в опале');
+  G.rate = null;
+}
+function dynWhy(pi) {
+  const R = roleOf(pi); if (!R || R.kind !== 'dyn') return 'Ваш род у власти';
+  if (!G.alive[R.c]) return 'Страны больше нет';
+  if (!G.pfund) G.pfund = []; if ((G.pfund[pi] || 0) < DYN_REV) return 'В казне рода ' + Math.floor(G.pfund[pi] || 0) + ' из ' + DYN_REV;
+  if (G.dynT && G.gt < (G.dynT[pi] || 0)) return 'Сторонники ещё не оправились: ' + Math.ceil(G.dynT[pi] - G.gt) + ' дн.';
+  return null;
+}
+function dynRestore(pi, h) {   // род игрока снова на троне
+  const c = pi, pl = G.players[c], old = famRuler(c);
+  if (old && old !== h) famKill(old, 'свергнут восставшими');
+  if (h.post) famUnassign(h.p, h, false);
+  h.p = c; h.free = 0; dynRoot(pi, h);
+  pl.leader = famFirst(h).slice(0, 28); if (!G.leaderOv) G.leaderOv = []; G.leaderOv[c] = { key: 'F|' + h.id, nm: pl.leader, kind: h.f ? 3 : 0 }; leaderVer++;
+  G.fam.r[c] = h.id; G.fam.rk[c] = famRK(c); G.fam.v++; if (G.vacL) G.vacL[c] = 0;
+  setRole(pi, { c, kind: 'ruler' }); if (bots[pi] && bots[pi].oppOf) delete bots[pi];
+  G.rate = null;
+}
+function dynRevolt(pi) {
+  if (dynWhy(pi)) return false;
+  const c = roleOf(pi).c, ch = dynChance(c), L = dynAlive(pi), head = L.find(x => x.p === c) || L[0] || null, sn = dynSn(pi);
+  G.pfund[pi] -= DYN_REV; if (!G.dynT) G.dynT = []; G.dynT[pi] = G.gt + DYN_CD;
+  if (Math.random() < ch) {
+    const h = head || famNew({ nm: (G.players[pi].humanName || 'Претендент').slice(0, 24), f: 0, b: G.gt - 30 * 365, c, p: c, bl: { [c]: 1 }, sn: sn || undefined });
+    const was = G.players[c].title + ' ' + G.players[c].leader;
+    dynRestore(pi, h);
+    addNews('crisis', 'Реставрация!', 'Восстание сторонников рода ' + (h.sn || sn || '') + ' победило: ' + was + ' свергнут, на трон страны ' + pname(c) + ' вернулся ' + famFull(h) + '.', true, 'Ваш род снова правит');
+  } else {
+    const ex = head && Math.random() < 0.5; if (ex) famKill(head, 'казнён после неудачного восстания');
+    addNews('crisis', 'Восстание подавлено!', 'Сторонники рода ' + (sn || 'прежних правителей') + ' подняли мятеж в стране ' + pname(c) + ', но войска остались верны новому правителю.' + (ex ? ' ' + famFull(head) + ' схвачен и казнён.' : ''), pi === G.meOrig, 'Новая попытка через ' + DYN_CD + ' дн.');
+  }
+  return true;
+}
+function dynRevoltUI() { const pi = G.meOrig; if (isHost) { if (dynRevolt(pi)) pushSnap(); else flash(dynWhy(pi) || ''); } else send({ t: 'dynrev' }); roleKey = ''; }
+
 function roleDay() {
+  for (let p = 0; p < NP(); p++) if (!bots[p] && !(G.role && G.role[p])) try { dynCheck(p); } catch (e) { console.error(e); }   // одиночная игра: роли ещё нет
   if (!G.role) return;
   G.role.forEach((R, pi) => {
     if (!R) return;
     if (R.kind === 'opp') { if (!G.pfund) G.pfund = []; G.pfund[pi] = Math.min(400, (G.pfund[pi] || 0) + 2); }
+    if (R.kind === 'dyn') { if (!G.pfund) G.pfund = []; G.pfund[pi] = Math.min(1000, (G.pfund[pi] || 0) + 3); }   // казна рода в опале
+    if (R.kind === 'ruler' && R.c === pi) try { dynCheck(pi); } catch (e) { console.error(e); }
     if (R.kind === 'gen' && G.alive[R.c] && !G.genDead[R.c][R.k]) {   // правительство передаёт генералу-эмигранту часть войск (до четверти армии страны)
       const all = G.units.filter(u => u.p === R.c), mine = all.filter(u => u.g === R.k).length;
       if (mine < Math.ceil(all.length * 0.25)) { const fr = all.find(u => !u.g && u.prov >= 0 && !u.mv && u.bt < 0 && !u.ret); if (fr) { fr.g = R.k; ensureHQ(R.c, R.k); if (pi === G.meOrig) addLog('🎖 Правительство передало вам дивизию «' + (fr.nm || 'дивизия') + '»'); } }
@@ -3538,6 +3604,10 @@ function courtDies(p, sl, how) {
   addNews('crisis', ttl + ' скончался!', ttl + ' страны ' + pname(p) + ' ' + old.nm + ' ' + how + '. Пост пустует — на него нужно повысить кого-то из подчинённых.', p === myP(), 'Бонус должности пропал', { k: 'person', p, key: old.pk || ('C|' + (pl.baseName || pl.name) + '|' + sl + '|' + old.id), kind: old.pk ? (old.pkind | 0) : (sl === 'war' ? 1 : 0), dead: 1, ps: [p] });
   if (p === G.me) sndPlay('funeral');
   G.rate = null;
+}
+function genFate(p, k, own) {
+  const up = G.genUp && G.genUp[p] ? G.genUp[p][k] | 0 : 0;
+  return up === 2 ? '↗ бежал за границу' : up === 1 ? '⬆ стал министром' : up === 3 ? '✝ умер от болезни' : own ? (+k ? '✝ погиб в котле' : '✝ погиб в море') : '✝ погиб';
 }
 function leaderDies(p, how) {
   if (G.vacL && G.vacL[p]) return;
@@ -3648,6 +3718,7 @@ const HEIR_FN = ['Карл', 'Фридрих', 'Александр', 'Луи', '
 const stripRank = n => String(n || '').replace(/^(Полк|Кап|Ген|Адм)\. /, '');
 function promoCands(p, sl) {
   const C = courtOf(p), pl = G.players[p], out = [];
+  if (sl === 'head' && G.fam && G.dyn && G.dyn[p]) for (const x of Object.values(G.fam.P)) if (!x.d && x.p === p && famAge(x) >= 16 && !famIsRuler(x) && dynIn(p, x)) out.push({ src: 'fam:' + x.id, nm: famFirst(x), who: (x.f ? 'дама' : 'член') + ' вашего рода' + (x.sn ? ' ' + famSN(x) : ''), pk: 'F|' + x.id, kind: x.f ? 3 : 0, tr: 0, id: x.id });   // свой род — первым
   const H = hierOf(p), kids = sl === 'heir' ? ['second', 'faith', 'war'] : COURT_SLOTS.filter(s0 => H.par[s0] === sl);
   if (kids.length) for (const s0 of kids) { const c = C[s0]; if (c) out.push({ src: s0, nm: c.nm, who: courtTitle(p, s0), pk: c.pk || ('C|' + (pl.baseName || pl.name) + '|' + s0 + '|' + c.id), kind: c.pk ? (c.pkind | 0) : (s0 === 'war' ? 1 : 0), tr: c.tr, id: c.id }); }
   else if (sl === 'war') { for (let k = 1; k < 4; k++) if (!G.genDead[p][k]) { const nm = (pl.genNames && pl.genNames[k]) || 'Генерал ' + k, ov = G.genOv && G.genOv[p] && G.genOv[p][k]; out.push({ src: 'gen:' + k, nm, who: 'генерал армии №' + k, pk: ov ? ov.key : 'CU|' + p + '|g|' + k, kind: 1, tr: Math.floor(Math.random() * 3), id: 1 + Math.floor(Math.random() * 1e9) }); } }
@@ -3686,6 +3757,7 @@ function promoteTo(p, sl, src, force) {
   if (COURT_SLOTS.includes(src)) C[src] = null;
   else if (src.startsWith('gen:')) { const k = +src.slice(4); G.genDead[p][k] = 1; if (!G.genUp) G.genUp = []; if (!G.genUp[p]) G.genUp[p] = [0, 0, 0, 0]; G.genUp[p][k] = 1; for (const u of G.units) if (u.p === p && u.g === k) u.g = 0; if (G.gf[p]) G.gf[p][k] = null; if (G.hq && G.hq[p]) G.hq[p][k] = 0; }
   else if (src.startsWith('col:')) { const [, k, i] = src.split(':').map(Number); colOf(p)[k][i] = { v: 1, promo: 1, up: 1 }; colRebuild(); }
+  else if (src.startsWith('fam:')) { const x = famP(+src.slice(4)); if (x && x.post) famUnassign(p, x, false); }
   const ttl = sl === 'head' ? pl.title : sl === 'heir' ? 'Наследник престола' : courtTitle(p, sl);
   if (sl === 'head') {
     pl.leader = stripRank(cand.nm).slice(0, 28);
@@ -4200,6 +4272,13 @@ const FEMV = new Set(Object.values(FEM_TITLE));
 const famP = id => (G && G.fam && G.fam.P[id]) || null;
 const famAge = h => Math.max(0, Math.floor((G.gt - h.b) / 365));
 const famKey = h => h.pk || 'F|' + h.id;
+const SURN = ['Альтенберг', 'Монфор', 'Лихтенау', 'Орсини', 'Шёнфельд', 'Делакруа', 'Вальдек', 'Ласкарис', 'Бельмонте', 'Рейнбург', 'Монтегю', 'Кастельмаре', 'Фалькенштейн', 'Мирандола', 'Бранкович', 'Эстергази', 'Ракоци', 'Ростен', 'Дюваль', 'Вермонт', 'Ланской', 'Гримальди', 'Штерн', 'Ардензее', 'Валленрод', 'Корвин', 'Сфорца', 'Роанн', 'Мюрат', 'Таллеран', 'Гольдау', 'Бурбель', 'Кавендиш', 'Аркур', 'Трубецкой', 'Визенталь', 'Ловенштайн', 'Монтальто', 'Д’Эврё', 'Бельфор'];
+const rndSur = not => { let x = SURN[Math.floor(Math.random() * SURN.length)]; for (let t = 0; t < 5 && x === not; t++) x = SURN[Math.floor(Math.random() * SURN.length)]; return x; };
+const famSurOf = nm => { const w = String(nm || '').trim().split(/\s+/); const l = w[w.length - 1]; return w.length >= 2 && /^[A-ZА-ЯЁ][a-zа-яё’'-]{2,}$/.test(l) ? l : ''; };
+const snFem = s0 => /(ов|ев|ёв|ин|ын)$/.test(s0) ? s0 + 'а' : /(ский|цкий)$/.test(s0) ? s0.slice(0, -2) + 'ая' : /ской$|цкой$/.test(s0) ? s0.slice(0, -2) + 'ая' : /ой$/.test(s0) ? s0.slice(0, -2) + 'ая' : s0;
+const famSN = h => !h.sn ? '' : h.f ? snFem(h.sn) : h.sn;   // фамилия в женском роде: Романцев → Романцева
+const famFirst = h => { for (const x of [h.sn, famSN(h)]) if (x && h.nm.endsWith(' ' + x)) return h.nm.slice(0, -x.length - 1); return h.nm; };
+const famFull = h => famFirst(h) + (h.sn ? ' ' + famSN(h) : '');
 const rndName = f => { const L = f ? FEM_FN : MAL_FN; return L[Math.floor(Math.random() * L.length)]; };
 function blMix(a, b) { const o = {}; for (const k in a) o[k] = (o[k] || 0) + a[k] / 2; for (const k in b) o[k] = (o[k] || 0) + b[k] / 2; return o; }
 function blTxt(bl) { return Object.entries(bl || {}).sort((x, y) => y[1] - x[1]).map(([k, v]) => Math.round(v * 100) + '% ' + (G.players[k] ? pname(+k) : '?')).join(', '); }
@@ -4209,27 +4288,47 @@ const famIsRuler = h => { if (!G.fam || !h || h.d) return false; const p = G.fam
 function famNew(o) {
   const id = ++G.fam.n;
   const h = Object.assign({ id, nm: '', f: 0, b: G.gt, c: -1, p: -1, bl: {}, pa: [], sp: 0, ex: [], k: [], d: 0, dt: 0, post: '' }, o);
+  if (h.sn === undefined) {   // фамилия: ребёнок — от правящего родителя, иначе от отца; остальные — своя
+    const ps = h.pa.map(famP).filter(Boolean), rp = ps.find(x => famIsRuler(x)) || ps.find(x => !x.f) || ps[0];
+    h.sn = rp ? rp.sn || '' : famSurOf(h.nm) || rndSur();
+  }
   G.fam.P[id] = h; G.fam.v++; return h;
 }
-function famWedRaw(a, b) { a.sp = b.id; b.sp = a.id; G.fam.v++; }
+// род живого игрока: G.dyn[pi] — корни рода (первый правитель, вернувшиеся к власти); игрок играет за род, а не за страну
+function dynRoot(pi, h) { if (!G.dyn) G.dyn = []; if (!G.dyn[pi]) G.dyn[pi] = []; if (!G.dyn[pi].includes(h.id)) G.dyn[pi].push(h.id); }
+function dynIn(pi, h) { if (!h || !G.dyn || !G.dyn[pi]) return false; for (const id of G.dyn[pi]) { const r = famP(id); if (r && (r.id === h.id || famClan(r).has(h.id))) return true; } return false; }
+function dynAlive(pi) {   // живые взрослые члены рода игрока: сначала кровные родичи, старшие
+  if (!G.dyn || !G.dyn[pi]) return [];
+  const S = new Set(); for (const id of G.dyn[pi]) { const r = famP(id); if (r) for (const x of famClan(r)) S.add(x); }
+  return [...S].map(famP).filter(x => x && !x.d && famAge(x) >= 16).sort((a, b) => ((b.bl && b.bl[pi]) || 0) - ((a.bl && a.bl[pi]) || 0) || (a.b - b.b));
+}
+const dynSn = pi => { const r = G.dyn && G.dyn[pi] && famP(G.dyn[pi][0]); return r ? r.sn : ''; };
+function famWedRaw(a, b) {
+  a.sp = b.id; b.sp = a.id; G.fam.v++;
+  // общая фамилия: берут фамилию правителя, иначе — мужа; девичья хранится в sn0
+  const k = famIsRuler(a) ? a : famIsRuler(b) ? b : a.f && !b.f ? b : a, o = k === a ? b : a;
+  if (k.sn && o.sn !== k.sn) { if (!o.sn0) o.sn0 = o.sn; o.sn = k.sn; }
+}
 function famNewRuler(p, start) {
   G.fam.rk[p] = famRK(p);
   if (!G.alive[p] || noRuler(p) || (G.vacL && G.vacL[p])) { G.fam.r[p] = 0; return; }
   const pl = G.players[p];
   let f = 0;
-  if (start && bots[p] && Math.random() < 0.25) {   // у ботов иногда правит женщина
-    f = 1; const nm = rndName(1); pl.leader = nm;
-    const h0 = famNew({ nm, f: 1, b: G.gt - (20 + Math.random() * 10) * 365, c: p, p, bl: { [p]: 1 } });
+  const femNm = FEM_FN.includes(String(pl.leader || '').trim().split(/\s+/)[0]);   // у бота женское имя — значит правительница
+  if (bots[p] && ((start && Math.random() < 0.25) || femNm)) {   // у ботов иногда правит женщина
+    f = 1; const nm = femNm ? pl.leader : rndName(1); pl.leader = nm;
+    const h0 = famNew({ nm, f: 1, b: G.gt - ((start ? 20 : 30) + Math.random() * (start ? 10 : 20)) * 365, c: p, p, bl: { [p]: 1 }, sn: famSurOf(nm) || rndSur() });
     if (!G.leaderOv) G.leaderOv = []; G.leaderOv[p] = { key: 'F|' + h0.id, nm, kind: 3 }; leaderVer++;
     G.fam.r[p] = h0.id; G.fam.rk[p] = famRK(p);
     const s = famNew({ nm: rndName(0), f: 0, b: G.gt - (20 + Math.random() * 10) * 365, c: p, p, bl: { [p]: 1 } }); famWedRaw(h0, s);
     return;
   }
   const age = start ? 20 + Math.random() * 10 : 30 + Math.random() * 20;
-  const h = famNew({ nm: pl.leader || 'Правитель', f, b: G.gt - age * 365, c: p, p, bl: { [p]: 1 }, pk: leaderKey(p) });
+  const h = famNew({ nm: pl.leader || 'Правитель', f, b: G.gt - age * 365, c: p, p, bl: { [p]: 1 }, pk: start && !bots[p] ? 'EMI|' + p : leaderKey(p), sn: (!bots[p] && pl.surname) || famSurOf(pl.leader) || rndSur() });
   G.fam.r[p] = h.id;
+  if (!bots[p] && (start || (G.role && G.role[p] && G.role[p].kind === 'ruler' && pl.humanName && pl.leader === pl.humanName))) dynRoot(p, h);   // правитель-игрок — корень его рода
   if (start && pl.spName !== undefined && !bots[p]) {   // супруг(а) игрока — из редактора страны
-    const sf = pl.spF === 0 ? 0 : 1, s = famNew({ nm: pl.spName || rndName(sf), f: sf, b: h.b + (Math.random() * 6 - 2) * 365, c: p, p, bl: { [p]: 1 }, pk: pl.spPhoto ? 'SPH|' + p : undefined }); famWedRaw(h, s);
+    const sf = pl.spF === 0 ? 0 : 1, s = famNew({ nm: pl.spName || rndName(sf), sn: pl.spSurname || famSurOf(pl.spName) || rndSur(h.sn), f: sf, b: h.b + (Math.random() * 6 - 2) * 365, c: p, p, bl: { [p]: 1 }, pk: pl.spPhoto ? 'SPH|' + p : undefined }); famWedRaw(h, s);
   } else if (start || Math.random() < 0.7) { const s = famNew({ nm: rndName(1 - f), f: 1 - f, b: h.b + (Math.random() * 8 - 3) * 365, c: p, p, bl: { [p]: 1 } }); famWedRaw(h, s); }
 }
 function famInit() {
@@ -4382,7 +4481,7 @@ function famTrack(p) {   // помним последнего правителя
   const F = G.fam; if (!F.lr) F.lr = []; if (!F.old) F.old = [];
   const id = F.r[p]; if (!id || F.lr[p] === id) return;
   const o = famP(F.lr[p]), n = famP(id);
-  if (o && n && hierOf(p).heir && !famClan(o).has(n.id)) { /* только в монархиях смена рода — смена династии; президенты и премьеры — не династии */ const L = F.old[p] || (F.old[p] = []); if (!L.includes(o.id)) L.push(o.id); if (L.length > 8) L.shift(); }
+  if (o && n && (hierOf(p).heir || dynIn(p, o)) && !famClan(o).has(n.id)) { /* только в монархиях смена рода — смена династии; президенты и премьеры — не династии */ const L = F.old[p] || (F.old[p] = []); if (!L.includes(o.id)) L.push(o.id); if (L.length > 8) L.shift(); }
   F.lr[p] = id; F.v++;
 }
 const famLast = p => G.fam && G.fam.lr ? famP(G.fam.lr[p]) : null;
@@ -4500,7 +4599,7 @@ function famLocal(p, h, same) {   // брак с местной знатью
 function famDivorce(p, h) {
   if (!h || h.d || h.p !== p || !h.sp) return false;
   const s = famP(h.sp); h.sp = 0; if (!s) return true;
-  s.sp = 0; h.ex.push(s.id); s.ex.push(h.id); if (s.post) famUnassign(p, s, false);
+  s.sp = 0; h.ex.push(s.id); s.ex.push(h.id);   // фамилия после развода остаётся общей if (s.post) famUnassign(p, s, false);
   const home = s.c >= 0 && s.c !== p && G.alive[s.c] ? s.c : -1;
   s.p = home >= 0 ? home : p; s.nob = 0; s.free = 1;   // бывший супруг — сам по себе: свободен, может выйти замуж/жениться в другой стране
   if (home >= 0) setRel(p, home, G.rel[p][home] - 25);
@@ -4567,12 +4666,12 @@ function famSnap() {
   const now = performance.now();
   if ((G.fam.v === _famSentV || now - _famSentT < 3000) && _famSentN % 40) return undefined;
   _famSentV = G.fam.v; _famSentT = now;
-  const A = []; for (const id in G.fam.P) { const h = G.fam.P[id]; A.push([h.id, h.nm, h.f, Math.round(h.b), h.c, h.p, h.bl, h.pa, h.sp, h.ex, h.k, h.d, Math.round(h.dt), h.post, h.pk || 0, h.ps | 0, h.free ? 1 : 0, h.dr || '', h.dc || '']); }
+  const A = []; for (const id in G.fam.P) { const h = G.fam.P[id]; A.push([h.id, h.nm, h.f, Math.round(h.b), h.c, h.p, h.bl, h.pa, h.sp, h.ex, h.k, h.d, Math.round(h.dt), h.post, h.pk || 0, h.ps | 0, h.free ? 1 : 0, h.dr || '', h.dc || '', h.sn || '', h.sn0 || '']); }
   return { A, r: G.fam.r, lr: G.fam.lr || [], old: G.fam.old || [], v: G.fam.v, ph: G.famPh || {} };
 }
 function famUnsnap(m) {
   if (!m || !Array.isArray(m.A)) return null; const P = {};
-  for (const a of m.A) { if (!Array.isArray(a)) continue; const id = a[0] | 0; P[id] = { id, nm: clip(a[1], 40), f: a[2] ? 1 : 0, b: +a[3] || 0, c: a[4] | 0, p: a[5] | 0, bl: a[6] && typeof a[6] === 'object' ? a[6] : {}, pa: Array.isArray(a[7]) ? a[7] : [], sp: a[8] | 0, ex: Array.isArray(a[9]) ? a[9] : [], k: Array.isArray(a[10]) ? a[10] : [], d: a[11] ? 1 : 0, dt: +a[12] || 0, post: typeof a[13] === 'string' ? a[13] : '', pk: typeof a[14] === 'string' ? a[14] : undefined, ps: a[15] | 0, free: a[16] ? 1 : 0, dr: typeof a[17] === 'string' ? a[17].slice(0, 6) : '', dc: typeof a[18] === 'string' ? clip(a[18], 60) : '' }; }
+  for (const a of m.A) { if (!Array.isArray(a)) continue; const id = a[0] | 0; P[id] = { id, nm: clip(a[1], 40), f: a[2] ? 1 : 0, b: +a[3] || 0, c: a[4] | 0, p: a[5] | 0, bl: a[6] && typeof a[6] === 'object' ? a[6] : {}, pa: Array.isArray(a[7]) ? a[7] : [], sp: a[8] | 0, ex: Array.isArray(a[9]) ? a[9] : [], k: Array.isArray(a[10]) ? a[10] : [], d: a[11] ? 1 : 0, dt: +a[12] || 0, post: typeof a[13] === 'string' ? a[13] : '', pk: typeof a[14] === 'string' ? a[14] : undefined, ps: a[15] | 0, free: a[16] ? 1 : 0, dr: typeof a[17] === 'string' ? a[17].slice(0, 6) : '', dc: typeof a[18] === 'string' ? clip(a[18], 60) : '', sn: typeof a[19] === 'string' ? clip(a[19], 24) : '', sn0: typeof a[20] === 'string' ? clip(a[20], 24) : '' }; }
   if (m.ph && typeof m.ph === 'object') { G.famPh = {}; for (const k in m.ph) if (typeof m.ph[k] === 'string' && m.ph[k].length < 40000 && m.ph[k].startsWith('data:image/jpeg')) G.famPh[k] = m.ph[k]; }
   const ia = a => Array.isArray(a) ? a.slice(0, 64).map(x => x | 0) : [];
   return { P, r: Array.isArray(m.r) ? m.r : [], lr: ia(m.lr), old: Array.isArray(m.old) ? m.old.slice(0, 64).map(ia) : [], rk: [], tb: [], n: 0, v: m.v | 0 };
@@ -4582,7 +4681,7 @@ function famUnsnap(m) {
 const FM = { open: false, q: -1, sel: 0, key: '' };
 function openFam(q) { if (!G) return; FM.open = true; FM.q = q; FM.sel = 0; FM.key = ''; $('fmPanel').style.display = 'flex'; updFam(true); }
 function closeFam() { FM.open = false; $('fmPanel').style.display = 'none'; }
-function famPhoto(h) { const p = h.p >= 0 ? h.p : h.c; if (p >= 0 && famRuler(p) === h && G.alive[p]) return leaderPhoto(p); return portraitURL(famKey(h), kindOf(h)); }
+function famPhoto(h) { const p = h.p >= 0 ? h.p : h.c; if (p >= 0 && famRuler(p) === h && G.alive[p]) return leaderPhoto(p); if (h.pk === 'SELF' && h.c >= 0) return portraitURL('EMI|' + h.c, 0) || portraitURL(famKey(h), kindOf(h)); return portraitURL(famKey(h), kindOf(h)); }
 function famCmdUI(a, id, x) {
   if (isHost) { famCmd(G.me, a, id, x); pushSnap(); } else send({ t: 'fam', a, id, x });
   FM.key = ''; setTimeout(() => updFam(true), 120);
@@ -4592,7 +4691,7 @@ function updFam(force) {
   if (!G.fam) { setTxt($('fmTitle'), 'ДИНАСТИЯ'); $('fmTree').innerHTML = '<div class="fm-empty">Летопись династий начнётся с первого дня игры.</div>'; return; }
   const q = FM.q, ALL = q < 0, key = G.fam.v + ':' + q + ':' + FM.sel + ':' + Math.floor(G.gt / 30);
   if (!force && key === FM.key) return; FM.key = key;
-  setTxt($('fmTitle'), ALL ? '🌐 ВСЕ ДИНАСТИИ — паутина браков' : '👪 ДИНАСТИЯ · ' + pname(q));
+  setTxt($('fmTitle'), ALL ? '🌐 ВСЕ ДИНАСТИИ — паутина браков' : '👪 ДИНАСТИЯ · ' + pname(q) + (((famRuler(q) || famLast(q)) || {}).sn ? ' · дом ' + (famRuler(q) || famLast(q)).sn : ''));
   const sel = $('fmWho'); if (sel.dataset.n !== String(NP())) { sel.innerHTML = ''; sel.add(new Option('🌐 Все страны — паутина династий', -1)); for (let p = 0; p < NP(); p++) sel.add(new Option(pname(p) + (p === G.me ? ' (вы)' : ''), p)); sel.dataset.n = String(NP()); }
   sel.value = q;
   const tree = $('fmTree'), sl0 = tree.scrollLeft, st0 = tree.scrollTop, sameV = FM.lastQ === q; FM.lastQ = q; tree.innerHTML = '';
@@ -4645,7 +4744,7 @@ function updFam(force) {
       const before = new Set(pos.keys()); place(root, 0, 0, p);
       for (const e of rr.ex.map(famP)) if (e && !pos.has(e.id) && (e.p === p || e.p < 0)) { let mx = 0; for (const id of pos.keys()) if (!before.has(id) && pos.get(id)[1] === pos.get(rr.id)[1]) mx = Math.max(mx, pos.get(id)[0] + 1); pos.set(e.id, [mx, pos.get(rr.id)[1]]); clu.set(e.id, p); }
       const ids = [...pos.keys()].filter(id => !before.has(id)); let w = 0, hh = 0; for (const id of ids) { const [x, y] = pos.get(id); w = Math.max(w, x + 1); hh = Math.max(hh, y + 1); }
-      const tag = li ? ' · прежняя династия ' + rr.nm : !G.alive[p] ? ' · ✝ пала' : !famRuler(p) ? ' · ✝ род прервался' : '';
+      const tag = (rr.sn ? ' · дом ' + rr.sn : '') + (li ? ' · прежняя династия ' + famFull(rr) : !G.alive[p] ? ' · ✝ пала' : !famRuler(p) ? ' · ✝ род прервался' : '');
       CL.push({ p: li ? p + 1000 * li : p, pp: p, tag, ids, w, h: hh, nb: new Map() });
       CL[CL.length - 1].lw = (pname(p).length + tag.length + 12) * 9 / W;
       if (li) for (const id of ids) clu.set(id, p + 1000 * li);
@@ -4703,7 +4802,8 @@ function updFam(force) {
     const c = document.createElement('div'); c.className = 'fm-card' + (h.d ? ' dead' : '') + (FM.sel === h.id ? ' sel' : '') + (h.p !== hq && !h.d && !h.sp ? ' away' : '');
     c.style.left = (ox + x * W) + 'px'; c.style.top = (oy + y * H) + 'px'; c.style.borderColor = h.d || h.p < 0 ? '#9a9a9a' : colOf(h);
     const im = document.createElement('img'); im.src = famPhoto(h) || ''; c.appendChild(im);
-    const n = document.createElement('b'); n.textContent = (famIsRuler(h) ? '👑 ' : '') + h.nm; c.appendChild(n);
+    const n = document.createElement('b'); n.textContent = (famIsRuler(h) ? '👑 ' : '') + famFirst(h); c.appendChild(n);
+    if (h.sn) { const sn = document.createElement('small'); sn.className = 'fm-sn'; sn.textContent = famSN(h); c.appendChild(sn); }
     if (h.d) {   // траурная лента и кем был
       const rb = document.createElement('div'); rb.className = 'fm-rib'; rb.textContent = '✝'; c.appendChild(rb);
       const role = h.dr ? (h.dr[0] === 'r' ? (h.f ? 'правительница' : 'правитель') : h.dr[0] === 's' ? (h.f ? 'супруга правителя' : 'супруг правительницы') : 'наследник') : '';
@@ -4755,12 +4855,13 @@ function famSide(h) {
   const sd = $('fmSide'); sd.innerHTML = ''; if (!h) return;
   const q = FM.q >= 0 ? FM.q : (h.p >= 0 ? h.p : h.c), me = G.me, mine = q === me && !spect && !(G.role && G.role[G.meOrig] && G.role[G.meOrig].kind !== 'ruler'), a = famAge(h);
   const im = document.createElement('img'); im.src = famPhoto(h) || ''; if (h.d) im.style.filter = 'grayscale(1)'; sd.appendChild(im);
-  const t = document.createElement('h3'); t.textContent = (famIsRuler(h) ? G.players[q].title + ' ' : '') + h.nm; sd.appendChild(t);
+  const t = document.createElement('h3'); t.textContent = (famIsRuler(h) ? G.players[q].title + ' ' : '') + famFull(h); sd.appendChild(t);
   const L = (k, v) => { const d = document.createElement('div'); d.className = 'fm-l'; const s1 = document.createElement('small'); s1.textContent = k; const s2 = document.createElement('span'); s2.textContent = v; d.append(s1, s2); sd.appendChild(d); };
   if (h.d) { const dz = document.createElement('div'); dz.className = 'fm-dead'; dz.textContent = '✝ ' + (h.f ? 'Умерла ' : 'Умер ') + dayStr(h.dt) + ' в ' + Math.floor((h.dt - h.b) / 365) + ' л.' + (h.dc ? ' — ' + h.dc : '') + (h.dr ? (h.dr[0] === 'r' ? '. Был' + (h.f ? 'а правительницей' : ' правителем') : h.dr[0] === 's' ? '. ' + (h.f ? 'Супруга правителя' : 'Супруг правительницы') : '. Наследник престола') + ' страны ' + pname(+h.dr.slice(1)) : ''); sd.appendChild(dz); }
+  if (h.sn) L('Фамилия', famSN(h) + (h.sn0 && h.sn0 !== h.sn ? (h.f ? ' (урождённая ' : ' (урождённый ') + famSN({ sn: h.sn0, f: h.f }) + ')' : ''));
   L('Пол', h.f ? 'женщина' : 'мужчина'); L(h.d ? 'Прожил(а)' : 'Возраст', h.d ? Math.floor((h.dt - h.b) / 365) + ' л. (' + Math.floor(1850 + h.b / 365) + '–' + Math.floor(1850 + h.dt / 365) + ')' : a + ' (род. ' + Math.floor(1850 + h.b / 365) + ')');
   sd.appendChild(famPie(h.bl)); if (h.c >= 0) L('Родом из', pname(h.c));
-  const sp = h.sp ? famP(h.sp) : null; L('Супруг(а)', sp ? sp.nm + (sp.d ? ' ✝' : '') + (sp.f === h.f ? ' (однополый брак — без детей)' : '') : 'нет');
+  const sp = h.sp ? famP(h.sp) : null; L('Супруг(а)', sp ? famFull(sp) + (sp.d ? ' ✝' : '') + (sp.f === h.f ? ' (однополый брак — без детей)' : '') : 'нет');
   if (h.k.length) L('Дети', h.k.map(famP).filter(Boolean).map(c => c.nm + (c.d ? ' ✝' : ' (' + famAge(c) + ')')).join(', '));
   if (h.post) L('Должность', famPostTxt(h.p, h.post));
   if (h.d) return;
@@ -4784,12 +4885,12 @@ function famSide(h) {
       note('💍 Найти пару:');
       const cs = famCands(me, h);
       if (!cs.length) note('Свободных женихов и невест в других странах пока нет: подождите, пока подрастут принцы и принцессы, или кто-нибудь разведётся либо овдовеет (нужны отношения не хуже −20 и мир).');
-      for (const c of cs) { const why = atWar(me, c.p) ? 'война' : null; const tag = c.nob ? '' : c.ex.length ? ' · разведён(а)' : famInHouse(c.p, c) ? ' · королевский дом' : ''; const b = btn((c.f ? '♀ ' : '♂ ') + c.nm + ', ' + famAge(c) + ' — ' + pname(c.p) + tag + ' (отн. ' + G.rel[me][c.p] + ')', () => famCmdUI('propose', h.id, c.id), why); b.title = 'Кровь: ' + blTxt(c.bl) + (c.f === h.f ? '\nОднополый брак — детей не будет' : ''); }
+      for (const c of cs) { const why = atWar(me, c.p) ? 'война' : null; const tag = c.nob ? '' : c.ex.length ? ' · разведён(а)' : famInHouse(c.p, c) ? ' · королевский дом' : ''; const b = btn((c.f ? '♀ ' : '♂ ') + famFull(c) + ', ' + famAge(c) + ' — ' + pname(c.p) + tag + ' (отн. ' + G.rel[me][c.p] + ')', () => famCmdUI('propose', h.id, c.id), why); b.title = 'Кровь: ' + blTxt(c.bl) + (c.f === h.f ? '\nОднополый брак — детей не будет' : ''); }
     } else if (!h.sp && a < 16) note('💍 Жениться и выходить замуж можно с 16 лет.');
   } else if (q !== me && !spect && h.p === q && !h.sp && a >= 16 && !famIsRuler(h)) {
     const mineFree = Object.values(G.fam.P).filter(x => !x.d && !x.free && x.p === me && !x.sp && famAge(x) >= 16);
     if (!mineFree.length) note('💍 У вас при дворе нет свободных женихов и невест (16+).');
-    else { note('💍 Посвататься к ' + h.nm + ' за:'); for (const x of mineFree) btn((famIsRuler(x) ? '👑 ' : '') + x.nm + ' (' + famAge(x) + ')' + (x.f === h.f ? ' · однополый' : ''), () => famCmdUI('propose', x.id, h.id), atWar(me, q) ? 'Идёт война' : null); }
+    else { note('💍 Посвататься к ' + h.nm + ' за:'); for (const x of mineFree) btn((famIsRuler(x) ? '👑 ' : '') + famFull(x) + ' (' + famAge(x) + ')' + (x.f === h.f ? ' · однополый' : ''), () => famCmdUI('propose', x.id, h.id), atWar(me, q) ? 'Идёт война' : null); }
   }
 }
 
@@ -5808,7 +5909,7 @@ function eliminate(q) {
   let by = -1; try { const ci = PROV.cap[q]; by = ci >= 0 && G.tiles[ci] ? G.tiles[ci].o : -1; if (by === q || by < 0 || !G.alive[by]) by = -1; } catch (e) {}
   if (by >= 0) { try { captureGov(q, by); } catch (e) { console.error(e); } }
   else { try { const pl = G.players[q]; if (!noRuler(q) && !(G.role && G.role[q]) && !(G.vacL && G.vacL[q])) addExile(q, pl.leader, leaderKey(q), (G.leaderOv && G.leaderOv[q] && G.leaderOv[q].kind) | 0, 'бывший ' + (pl.title || 'правитель').toLowerCase()); } catch (e) {}
-    if (G.role) G.role.forEach((R, pi) => { if (R && R.c === q && (R.kind === 'ruler' || R.kind === 'opp')) setRole(pi, { c: q, kind: 'exile' }); }); }
+    if (G.role) G.role.forEach((R, pi) => { if (R && R.c === q && (R.kind === 'ruler' || R.kind === 'opp' || R.kind === 'dyn')) setRole(pi, { c: q, kind: 'exile' }); }); }
   G.alive[q] = 0;
   for (const u of G.units) if (u.p === q) { setProv(u, -1); u.dead = 1; }
   G.units = G.units.filter(u => !u.dead);
@@ -5835,7 +5936,7 @@ function admLeave(p, how, fled) {   // адмирал умер от болезн
   if (G.genDead[p][0] || humanArmy(p, 0)) return false;
   const pl = G.players[p], ov = G.genOv && G.genOv[p] && G.genOv[p][0], nm0 = (pl.genNames && pl.genNames[0]) || (ov && ov.nm) || 'Адмирал', nm = stripRank(nm0).replace(/^Адм\. /, ''), key = ov ? ov.key : 'CU|' + p + '|g|0';
   if (!fled && G.fam && /^F\|\d+$/.test(key)) { const h = famP(+key.slice(2)); if (h && !h.d) { h.post = ''; famKill(h, how.replace(/^(скончался|умер)\s*/, '')); } }
-  G.genDead[p][0] = 1; if (!G.genUp) G.genUp = []; if (!G.genUp[p]) G.genUp[p] = [0, 0, 0, 0]; G.genUp[p][0] = fled ? 2 : 0;
+  G.genDead[p][0] = 1; if (!G.genUp) G.genUp = []; if (!G.genUp[p]) G.genUp[p] = [0, 0, 0, 0]; G.genUp[p][0] = fled ? 2 : 3;
   if (!G.admT) G.admT = []; G.admT[p] = G.gt + 60;   // через 60 дней на флагман назначат нового
   if (fled) {
     addExile(p, nm, key, 1, 'бывший адмирал флота страны ' + pname(p), 1);
@@ -7361,7 +7462,7 @@ function noAct(kind) {
   if (R && R.kind !== 'ruler') {
     if (R.kind === 'gen' && kind === 'army') return false;
     if (R.kind === 'min' && kind === 'off:' + R.sl) return false;
-    flash(R.kind === 'pris' ? 'Вы в плену — ждите решения победителя' : R.kind === 'exile' ? 'Вы в изгнании — попроситесь на службу в другую страну' : R.kind === 'opp' ? 'Вы в оппозиции — страной правит другая партия' : R.kind === 'gen' ? 'Вы генерал армии №' + R.k + ' — командуйте только своей армией' : R.kind === 'min' ? 'Вы — ' + courtTitle(R.c, R.sl).toLowerCase() + ': доступны только поручения вашего поста' : 'Ваша служба окончена');
+    flash(R.kind === 'pris' ? 'Вы в плену — ждите решения победителя' : R.kind === 'exile' ? 'Вы в изгнании — попроситесь на службу в другую страну' : R.kind === 'opp' ? 'Вы в оппозиции — страной правит другая партия' : R.kind === 'dyn' ? 'Трон занял чужой род — страной правит ИИ. Поднимите восстание или уезжайте на службу за границу' : R.kind === 'gen' ? 'Вы генерал армии №' + R.k + ' — командуйте только своей армией' : R.kind === 'min' ? 'Вы — ' + courtTitle(R.c, R.sl).toLowerCase() + ': доступны только поручения вашего поста' : 'Ваша служба окончена');
     return true;
   }
   return false;
@@ -8356,7 +8457,7 @@ function fillCmds(box, gens, interactive, p) {
   if (interactive) genSpans = {};
   [1, 2, 3, 0].forEach(k => {
     const c = cmdCard(gens ? gens[k] : null, k === 0);
-    if (p !== undefined) { c.dataset.p = p; c.dataset.k = k; if (G && G.genDead && G.genDead[p] && G.genDead[p][k]) { c.classList.add('dead'); if (G.genUp && G.genUp[p] && G.genUp[p][k]) c.classList.add('fled'); } }
+    if (p !== undefined) { c.dataset.p = p; c.dataset.k = k; if (G && G.genDead && G.genDead[p] && G.genDead[p][k]) { c.classList.add('dead'); if (G.genUp && G.genUp[p] && (G.genUp[p][k] === 1 || G.genUp[p][k] === 2)) c.classList.add('fled'); } }
     if (interactive) {
       c.onclick = () => k ? openGenPanel(k) : toggleFleetPanel();   // адмирал — панель флота
       c.oncontextmenu = e => { e.preventDefault(); attachToGeneral(k); };
@@ -8576,8 +8677,7 @@ function openCountryPanel(p) {
   $('cpCapital').textContent = pl.capital || '—';
   $('cpPop').textContent = G.popTot[p] ? popFmt(G.popTot[p]) + ' (' + (G.popGrow[p] >= 0 ? '+' : '') + Math.round(G.popGrow[p]) + ' в день)' : '—';
   $('cpFaith').textContent = REL[pl.rel | 0].short;
-  showPhoto($('cpLeaderImg'), $('cpLeaderPh'), leaderPhoto(p));
-  $('cpLeaderName').textContent = noRuler(p) ? '🏴 ' + pl.title + ' · правителя нет' : ((pl.title || '') + ' ' + (pl.leader || '')).trim() || '—';
+  cpLeaderUpd(p);
   fillCmds($('cpCmds'), cmdGens(p), false, p);   // командующие страны с портретами
   cpKey = ''; updCpArmy();
   cpOwner = p;
@@ -8999,8 +9099,8 @@ function drawCourt(vp) {
     const x = 8 + k * 206, dead = G.genDead[p] && G.genDead[p][k];
     const nm = (pl.genNames && pl.genNames[k]) || genName(k);
     const up = G.genUp && G.genUp[p] && G.genUp[p][k];
-    const gn = node(x + 34, gy, 'gen', genPhoto(p, k), k ? 'Генерал' : 'Адмирал', (dead ? (up === 2 ? '↗ ' : up ? '⬆ ' : '💀 ') : '') + nm, dead ? (up === 2 ? 'бежал за границу' : up ? 'стал министром' : 'погиб') : k ? 'армия №' + k : 'флот');
-    if (dead && !up) gn.classList.add('dead'); if (dead && up === 2) gn.classList.add('gone2');
+    const gn = node(x + 34, gy, 'gen', genPhoto(p, k), k ? 'Генерал' : 'Адмирал', (dead ? (up === 2 ? '↗ ' : up === 1 ? '⬆ ' : '💀 ') : '') + nm, dead ? genFate(p, k, false).slice(2) : k ? 'армия №' + k : 'флот');
+    if (dead && (!up || up === 3)) gn.classList.add('dead'); if (dead && up === 2) gn.classList.add('gone2');
     if (!view) { gn.style.cursor = 'pointer'; gn.title = k ? 'Открыть армию генерала' : 'Открыть флот'; gn.onclick = () => { if (k) openGenPanel(k); else toggleFleetPanel(); }; }
     ln(bot('war'), [x + 102, gy], '#3a4152');
     P[k].forEach((c, i) => {   // офицеры под командующим
@@ -9301,19 +9401,28 @@ function updReform() {
 $('btnDec').onclick = toggleDecPanel;
 $('dClose').onclick = closeDecPanel;
 let cpOwner = -1, cpKey = '';
+function cpLeaderUpd(p) {   // портрет и имя правителя в панели страны; если престол пуст — траурная лента
+  const pl = G.players[p], img = $('cpLeaderImg'), box = img.parentNode, fell = !G.alive[p], vac = fell || (!!(G.vacL && G.vacL[p]) && !noRuler(p)), D = G.ldead && G.ldead[p], died = vac && D && D.nm === pl.leader;
+  showPhoto(img, $('cpLeaderPh'), leaderPhoto(p)); img.style.filter = vac ? 'grayscale(1) brightness(.75)' : '';
+  let rb = box.querySelector('.cp-rib'); if (vac && !rb) { rb = document.createElement('div'); rb.className = 'cp-rib'; box.appendChild(rb); }
+  if (rb) { rb.style.display = vac ? '' : 'none'; rb.textContent = fell ? '✝ СТРАНА ПАЛА' : died ? '✝ УМЕР' : '↗ СВЕРГНУТ / БЕЖАЛ'; }
+  $('cpLeaderName').textContent = fell ? '✝ ' + ((pl.title || '') + ' ' + (pl.leader || '')).trim() + ' — государство пало' : noRuler(p) ? '🏴 ' + pl.title + ' · правителя нет' : vac ? (died ? '✝ ' : '') + ((pl.title || '') + ' ' + (pl.leader || '')).trim() + (died ? ' — умер' : ' — покинул трон') + '. Престол пуст' : ((pl.title || '') + ' ' + (pl.leader || '')).trim() || '—';
+  $('cpLeaderName').style.color = vac ? '#ff9a8a' : '';
+}
 // численность армии страны в панели и дивизии у каждого её командующего (для любой страны — своей, ботов, игроков)
 function updCpArmy() {
   if (!G || !cpOpen() || cpOwner < 0) return;
   const p = cpOwner, c = [0, 0, 0, 0]; let tot = 0, war = 0;
   for (const u of G.units) if (u.p === p) { tot++; if (u.g) c[u.g]++; if (u.bt >= 0) war++; }
   const tr = G.trainingQueue.filter(e => e.p === p).length;
-  const key = p + ':' + tot + ':' + c.join(',') + ':' + war + ':' + tr + ':' + (G.genDead[p] || []).join('');
+  const key = p + ':' + tot + ':' + c.join(',') + ':' + war + ':' + tr + ':' + (G.genDead[p] || []).join('') + ':' + ((G.genUp && G.genUp[p]) || []).join('') + ':' + (G.vacL && G.vacL[p] ? 1 : 0) + ':' + (G.alive[p] ? 1 : 0) + ':' + G.players[p].leader;
+  if (key !== cpKey) cpLeaderUpd(p);
   if (key === cpKey) return; cpKey = key;
   setTxt($('cpArmy'), tot + ' див.' + (war ? ' · в бою ' + war : '') + (tr ? ' · обучается ' + tr : ''));
   $('cpCmds').querySelectorAll('.gc[data-k]').forEach(card => {
     const k = +card.dataset.k, sp = card.querySelector('.ph > span'); if (!sp) return;
     const base = k ? (p === myP() && !spect && gameState.country.generals[k] && gameState.country.generals[k].cls !== null && gameState.country.generals[k].cls !== undefined ? CMD_CLASSES[gameState.country.generals[k].cls] : 'Генерал') : 'Флот';
-    setTxt(sp, G.genDead[p] && G.genDead[p][k] ? '✝ погиб' : base + '\nдивизий: ' + (k ? c[k] : 0));
+    setTxt(sp, G.genDead[p] && G.genDead[p][k] ? genFate(p, k, false) : base + '\nдивизий: ' + (k ? c[k] : 0));
   });
 }
 (() => {   // подсказки для диаграмм веры и партий
@@ -9484,7 +9593,7 @@ function roleSync() {
   const R = myRole(); if (!R) return;
   if ((R.kind === 'gen' || R.kind === 'min') && spect) { spect = null; document.body.classList.remove('spect'); G.me = -1; }   // из изгнания — снова на службе
   if (R.kind === 'dead') { if (!spect) { spect = { orig: G.meOrig }; document.body.classList.add('spect'); addLog('👁 Ваша служба окончена — вы наблюдатель'); setView(pickView()); } return; }
-  if (!spect && R.c !== G.me && (R.kind === 'gen' || R.kind === 'min' || R.kind === 'ruler' || R.kind === 'opp')) { G.me = R.c; selClear(); initHud(); focusTile(capital(R.c), Math.min(cam.z, 0.9)); flash(R.kind === 'gen' ? 'Вы — генерал армии №' + R.k + ' страны ' + pname(R.c) : 'Вы на службе страны ' + pname(R.c)); }
+  if (!spect && R.c !== G.me && (R.kind === 'gen' || R.kind === 'min' || R.kind === 'ruler' || R.kind === 'opp' || R.kind === 'dyn')) { G.me = R.c; selClear(); initHud(); focusTile(capital(R.c), Math.min(cam.z, 0.9)); flash(R.kind === 'gen' ? 'Вы — генерал армии №' + R.k + ' страны ' + pname(R.c) : 'Вы на службе страны ' + pname(R.c)); }
   updRoleBar(R);
 }
 let roleKey = '';
@@ -9492,13 +9601,21 @@ function updRoleBar(R) {
   const bar = $('roleBar'); if (!bar) return;
   const capF = R && R.kind === 'ruler' && capFallen(R.c);
   if (!R || (R.kind === 'ruler' && !capF) || R.kind === 'dead' || (spect && R.kind !== 'exile' && R.kind !== 'pris')) { if (bar.style.display !== 'none') bar.style.display = 'none'; roleKey = ''; return; }
-  const pi = G.meOrig, key = JSON.stringify(R) + ':' + Math.floor((G.pfund && G.pfund[pi]) || 0) + ':' + Math.floor(curGT() / 5) + ':' + (G.parl && G.parl[R.c] ? G.parl[R.c].next : 0);
+  const pi = G.meOrig, key = JSON.stringify(R) + ':' + Math.floor((G.pfund && G.pfund[pi]) || 0) + ':' + (G.dynT ? G.dynT[pi] | 0 : 0) + ':' + (G.fam ? G.fam.v : 0) + ':' + Math.floor(curGT() / 5) + ':' + (G.parl && G.parl[R.c] ? G.parl[R.c].next : 0);
   if (key + capF === roleKey) return; roleKey = key + capF; bar.style.display = 'flex'; bar.innerHTML = '';
   const t = document.createElement('div'); t.className = 'rb-t';
   const two = (a, b) => { const x = document.createElement('b'), y = document.createElement('span'); x.textContent = a; y.textContent = b; t.append(x, y); bar.appendChild(t); };
   if (R.kind === 'ruler') two('🏚 Столица пала!', 'Можно остаться и сражаться — или бежать за границу и поступить на службу другой стране (страну поведёт ИИ).');
   else if (R.kind === 'exile') two('🏳 Вы в изгнании', 'Ваша страна ' + pname(R.c) + ' пала. Попроситесь на службу в другую страну — генералом или министром.');
   else if (R.kind === 'pris') two('⛓ Вы в плену у страны ' + pname(R.by), 'Победитель решает вашу судьбу: расстрел, служба или изгнание. Ждите решения.');
+  if (R.kind === 'dyn') {
+    const L = dynAlive(pi), head = L.find(x => x.p === R.c) || L[0], sn = dynSn(pi), pl = G.players[R.c];
+    two('👑 Вы — глава рода' + (sn ? ' ' + sn : '') + ' · трон занял чужой род', 'Страной ' + pname(R.c) + ' правит ' + pl.title + ' ' + pl.leader + ' (ИИ). ' + (head ? 'Вы играете за: ' + famFull(head) + ' (' + famAge(head) + ').' : 'Ваш род угас — вы играете за себя.') + ' Казна рода: ' + Math.floor((G.pfund && G.pfund[pi]) || 0) + ' 💰 (+3 в день).');
+    const why = dynWhy(pi), b = document.createElement('button'); b.type = 'button';
+    b.textContent = '⚔ Поднять восстание · ' + DYN_REV + ' 💰 · шанс ' + Math.round(dynChance(R.c) * 100) + '%';
+    b.title = (why ? '⛔ ' + why + '\n' : '') + 'Удача — ваш род снова на троне, вы снова правите страной. Неудача — деньги потеряны, а глава рода может быть казнён. Шанс выше, когда народ недоволен правителем.';
+    b.disabled = !!why; b.onclick = dynRevoltUI; bar.appendChild(b);
+  }
   if (R.kind === 'opp') {
     const P = G.parl && G.parl[R.c];
     t.appendChild(document.createElement('b')); t.appendChild(document.createElement('span')); t.children[0].textContent = '🗳 Вы — лидер оппозиции (' + partyName(R.c, G.myParty[pi]) + ')';
@@ -9507,7 +9624,7 @@ function updRoleBar(R) {
     for (const a of ['rally', 'press', 'demand']) { const A = OPP_ACT[a], why = oppWhy(pi, a), b = document.createElement('button'); b.type = 'button'; b.textContent = A.name + ' · ' + A.cost; b.title = (why ? '⛔ ' + why + '\n' : '') + A.txt; b.disabled = !!why; b.onclick = () => { if (isHost) { doOpp(pi, a); pushSnap(); } else send({ t: 'opp', a }); sndPlay('stamp'); roleKey = ''; refresh(); }; bar.appendChild(b); }
   } else if (R.kind === 'gen') { t.appendChild(document.createElement('b')); t.appendChild(document.createElement('span')); t.children[0].textContent = '🎖 Вы — генерал армии №' + R.k + ' страны ' + pname(R.c); t.children[1].textContent = 'Командуйте своей армией: выделение, приказы, фронт. Остальным управляет правительство страны.'; bar.appendChild(t); }
   else if (R.kind === 'min') { t.appendChild(document.createElement('b')); t.appendChild(document.createElement('span')); t.children[0].textContent = '🎩 Вы — ' + courtTitle(R.c, R.sl) + ' страны ' + pname(R.c); t.children[1].textContent = 'Доступны поручения вашего поста во вкладке «Государство».'; bar.appendChild(t); }
-  if (R.kind === 'opp' || R.kind === 'exile' || capF) {   // эмиграция
+  if (R.kind === 'opp' || R.kind === 'dyn' || R.kind === 'exile' || capF) {   // эмиграция
     const offs = emigOffers(pi), sel = document.createElement('select'); sel.add(new Option(offs.length ? '✈ Попроситься на службу за границу…' : '✈ За границей вакансий нет', ''));
     offs.forEach((o, i) => sel.add(new Option(o.txt, String(i))));
     sel.onchange = () => { const o = offs[+sel.value]; if (!o) return; if (!confirm(o.kind === 'ask' ? 'Попроситься в правительство страны ' + pname(o.q) + '?' : 'Покинуть свою партию и поступить на службу: ' + o.txt + '?')) { sel.value = ''; return; } if (isHost) { emigrate(pi, o.q, o.kind, o.k, o.sl); pushSnap(); } else send({ t: 'emig', q: o.q, kind: o.kind, k: o.k, sl: o.sl }); if (o.kind === 'ask') flash('Просьба отправлена правителю страны ' + pname(o.q) + ' — ждите ответа'); roleKey = ''; refresh(); };
@@ -9523,7 +9640,7 @@ function refresh() {
   if (hierView >= 0) try { drawHierView(); } catch (e) { reportErr(e); }
   if (captOpen >= 0) try { drawCapt(); } catch (e) { reportErr(e); }
   try { roleSync(); } catch (e) { reportErr(e); }
-  if (leaderVer !== leaderSeen) { leaderSeen = leaderVer; try { const lp = leaderPhoto(G.me), li = $('myLeaderImg'); if (lp) { li.src = lp; li.style.display = 'block'; } li.title = G.players[G.me].title + ' ' + G.players[G.me].leader; } catch (e) {} }
+  if (leaderVer !== leaderSeen) { leaderSeen = leaderVer; try { const lp = leaderPhoto(G.me), li = $('myLeaderImg'); if (lp) { li.src = lp; li.style.display = 'block'; } li.title = G.players[G.me].title + ' ' + G.players[G.me].leader + (G.vacL && G.vacL[G.me] ? ' — престол пуст' : ''); li.style.filter = G.vacL && G.vacL[G.me] && !noRuler(G.me) ? 'grayscale(1) brightness(.75)' : ''; } catch (e) {} }
   if (genOvVer !== genOvSeen && G.genOv) { genOvSeen = genOvVer; try { fillCmds($('cmdBar'), cmdGens(G.me), true, G.me); const tag = document.createElement('div'); tag.id = 'admTag'; tag.textContent = '◄ адмирал'; $('cmdBar').appendChild(tag); if (gpOpen()) { const k0 = genOpen; genOpen = -1; openGenPanel(k0); } } catch (e) { reportErr(e); } }
   invalidate(); warVigCheck();
   const R = G.res[G.me], r = ecoRates(G.me);
@@ -9538,7 +9655,7 @@ function refresh() {
   for (const f of [() => { if (bpOpen()) updBuildTab(); }, () => { if (apOpen()) updArmyTab(R, r); }, updGenPanel, updDipButtons, updNewsBadge, updDecPanel, updStatePanel]) { try { f(); } catch (e) { reportErr(e); } }
   setTxt($('resHappy'), Math.round(loyalty(G.me)) + '%'); $('resHappy').style.color = loyalty(G.me) < 30 ? '#ff8a7a' : loyalty(G.me) >= 65 ? '#8ee08a' : '';
   const gc = genCounts();
-  for (const k in genSpans) { const o = genSpans[k]; setTxt(o.span, G.genDead[G.me][k] ? (G.genUp && G.genUp[G.me] && G.genUp[G.me][k] === 2 ? '↗ бежал за границу' : G.genUp && G.genUp[G.me] && G.genUp[G.me][k] ? '⬆ стал министром' : +k ? '✝ погиб в котле' : '✝ погиб в море') : +k ? o.base + '\nдивизий: ' + gc[k] : 'Флот\nкораблей: ' + G.fleets.filter(f => f.p === G.me).reduce((a, f) => a + f.ships.length, 0)); }
+  for (const k in genSpans) { const o = genSpans[k]; setTxt(o.span, G.genDead[G.me][k] ? genFate(G.me, k, true) : +k ? o.base + '\nдивизий: ' + gc[k] : 'Флот\nкораблей: ' + G.fleets.filter(f => f.p === G.me).reduce((a, f) => a + f.ships.length, 0)); }
   let foe = -1, foeLoss = 0; for (let q = 0; q < NP(); q++) if (atWar(G.me, q)) { if (foe < 0) foe = q; foeLoss += G.losses[q]; }
   if (foe !== lossFoe) { lossFoe = foe; const cb = $('lossB'); if (foe >= 0) drawFlag(cb, cleanFlag(G.players[foe].flag)); else { const x = cb.getContext('2d'); x.fillStyle = '#12151c'; x.fillRect(0, 0, cb.width, cb.height); } }
   setTxt($('lossBody'), (spect ? G.players[G.me].name + ' потеряла: ' : 'Вы потеряли: ') + G.losses[G.me] + ' див. · ' + kiaFmt(G.kia ? G.kia[G.me] : 0) + ' чел.\nВраги потеряли: ' + foeLoss + ' див.\nВоенная усталость: ' + Math.round(G.ww ? G.ww[G.me] : 0) + '%' + (foe >= 0 ? '' : ' · войны нет'));
@@ -9795,7 +9912,7 @@ function normalizeCountry(c) {
     ideo: c.iv === 2 ? Math.max(0, Math.min(IDEO.length - 1, c.ideo | 0)) : IDEO_OLD[Math.max(0, Math.min(10, c.ideo | 0))], iv: 2,
     rel: Math.max(0, Math.min(REL.length - 1, c.rel | 0)),
     color: (typeof c.color === 'string' && /^#[0-9a-f]{6}$/i.test(c.color)) ? c.color.toLowerCase() : d.color,
-    photo: photo(c.photo), thumb: photo(c.thumb), hier: cleanHier(c.hier), spName: str(c.spName, 28), spF: c.spF === 0 ? 0 : 1, spPhoto: photo(c.spPhoto), spThumb: photo(c.spThumb),
+    photo: photo(c.photo), thumb: photo(c.thumb), hier: cleanHier(c.hier), surname: str(c.surname, 24), spSurname: str(c.spSurname, 24), spName: str(c.spName, 28), spF: c.spF === 0 ? 0 : 1, spPhoto: photo(c.spPhoto), spThumb: photo(c.spThumb),
     generals: d.generals.map((g, i) => {
       const s0 = (Array.isArray(c.generals) && c.generals[i]) || {};
       return { role: g.role, cls: g.cls === null ? null : Math.max(0, Math.min(CMD_CLASSES.length - 1, s0.cls | 0)), name: str(s0.name, 28), photo: photo(s0.photo), thumb: photo(s0.thumb) };
