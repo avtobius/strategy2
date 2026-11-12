@@ -72,6 +72,8 @@ button:hover:not(:disabled){background:#4366a0}button:disabled{opacity:.45;curso
 .edleft{flex:0 0 240px;display:flex;flex-direction:column;gap:10px}
 .edright{flex:1 1 420px;display:flex;flex-direction:column;gap:12px}
 .photobox{position:relative;width:100%;aspect-ratio:4/5;border:3px solid #e8e6df;border-radius:6px;background:#12151c;display:flex;align-items:center;justify-content:center;color:#9aa3b5;font-size:13px;text-align:center;overflow:hidden}
+.spbox{margin-top:8px;padding:8px;border:1px solid #3a4152;border-radius:8px}.spbox label{display:block;font-size:12px;color:#c9b07a;margin-bottom:5px}.sprow{display:flex;gap:8px}.photobox.spph{width:72px;flex:0 0 72px;font-size:10px}.spcol{flex:1;display:flex;flex-direction:column;gap:5px}.spcol input,.spcol select{width:100%;box-sizing:border-box}
+#bdPanel{display:none;position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.55);align-items:center;justify-content:center}#bdPanel .bd{width:340px;background:#1e1a12;border:3px solid #b08a3a;border-radius:12px;padding:16px 18px;color:#ece4cc;text-align:center}#bdPanel h3{margin:0 0 4px;color:#f3d48a;font-size:20px}#bdPanel small{color:#b9b2a0}#bdPanel img{width:120px;height:150px;object-fit:cover;border:3px solid #6a5a34;margin:10px auto;display:block}#bdPanel input{width:100%;box-sizing:border-box;padding:7px;font-size:15px;border-radius:6px;border:1px solid #6a5a34;background:#2e2a1c;color:#fff;text-align:center}#bdPanel .bdb{display:flex;gap:6px;margin-top:10px}#bdPanel button{flex:1;padding:7px;border-radius:7px;border:1px solid #6a5a34;background:#2e2a1c;color:#ece4cc;cursor:pointer}#bdPanel button.go{background:#6a5220;border-color:#e0b050}
 .photobox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .edtitle{margin:24px 0 10px;font-size:16px;letter-spacing:1px}
 .cmdrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
@@ -163,6 +165,29 @@ details.fed summary{cursor:pointer;font-weight:600}
 #cpCmds{display:flex;gap:6px;justify-content:space-between}
 #cpCmds .gc{width:calc(25% - 5px)}
 #cpCmds .gc .ph{height:100px}
+#fmPanel{display:none;position:fixed;inset:30px 30px 30px 30px;z-index:40;flex-direction:column;background:rgba(24,21,15,.98);border:3px solid #b08a3a;border-radius:12px;color:#ece4cc;overflow:hidden}
+.fm-head{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:2px solid #6a5a34}.fm-head span{font-size:20px;letter-spacing:3px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.fm-head select{flex:0 0 auto;max-width:320px;padding:4px 8px;border-radius:6px;background:#2e2a1c;color:#ece4cc;border:1px solid #6a5a34}.fm-head button{background:none;border:none;color:#ddd;font-size:20px;cursor:pointer}
+.fm-body{flex:1;display:flex;min-height:0}#fmTree{flex:1;overflow:auto;background:#efe7d4;position:relative}#fmSide{width:300px;overflow:auto;padding:12px 14px;border-left:2px solid #6a5a34;font-size:13px}
+.fm-foot{padding:6px 16px;font-size:12px;color:#b9b2a0;border-top:1px solid #4a4030}.fm-empty{padding:40px;color:#3a3020;font-size:16px;text-align:center}
+.fm-box{position:relative;transform-origin:0 0}.fm-sizer{position:relative;overflow:hidden}#fmTree{cursor:grab}.fm-head .fm-z{flex:0 0 auto;font-size:13px;letter-spacing:0;min-width:42px;text-align:center}.fm-head #fmZOut,.fm-head #fmZIn{font-size:18px;width:30px;height:30px;border:1px solid #6a5a34;border-radius:6px;background:#2e2a1c}.fm-svg{position:absolute;left:0;top:0;pointer-events:none}.fm-svg polyline{fill:none;stroke:#1a1a1a;stroke-width:2;stroke-linejoin:round}.fm-svg path.x{fill:none;stroke:#c0282a;stroke-width:2.5;opacity:.9}
+.fm-lab.gen{background:none;border:none;color:#3a3020;font-size:15px;letter-spacing:2px;cursor:default;transform:none}
+.fm-lab.sec{background:none;border:none;color:#5a4a2a;font-size:22px;cursor:default}
+.fm-lab{transform:scale(var(--lz,1));transform-origin:0 100%;z-index:2;position:absolute;padding:4px 12px;border-left:8px solid #888;background:#2a2418;color:#f3d48a;font-weight:700;font-size:14px;letter-spacing:1px;border-radius:4px;cursor:pointer;white-space:nowrap}
+.fm-card{position:absolute;width:130px;height:150px;box-sizing:border-box;background:#fffaf0;border:3.5px solid #1a1a1a;display:flex;flex-direction:column;align-items:center;padding:4px 3px;cursor:pointer;color:#1a1408;text-align:center}
+.fm-card img{width:52px;height:65px;object-fit:cover;border:1px solid #6a5a34}.fm-card b{font-size:12px;line-height:1.1;margin-top:3px;max-height:27px;overflow:hidden}.fm-card span{font-size:11px;color:#4a3a20}.fm-card i{font-size:9.5px;font-style:normal;color:#7a5010;line-height:1.1}
+.fm-card.dead{opacity:.8;filter:grayscale(1);background:#e8e4da;overflow:hidden}.fm-card .fm-rib{position:absolute;left:-30px;top:14px;width:110px;transform:rotate(-45deg);background:#111;color:#fff;text-align:center;font-size:15px;line-height:20px;font-weight:700;box-shadow:0 1px 3px #0008;z-index:2}.fm-card em{font-style:normal;font-size:10px;font-weight:800;color:#5a0a0a;line-height:1.15;margin-top:1px}.fm-ended{position:sticky;top:0;left:0;z-index:5;background:#1b1b1b;color:#f0d8b0;border-bottom:2px solid #7a2a2a;padding:8px 14px;font-weight:700;font-size:14px;text-align:center}.fm-dead{background:#2a1010;border:1px solid #7a2a2a;color:#ffb0a0;border-radius:6px;padding:6px 8px;margin:4px 0 8px;font-size:12px;text-align:center}.fm-card.sel{outline:4px solid #e0a020;outline-offset:2px}.fm-card.away{border-style:dashed}
+.fm-bl{display:flex;width:100%;height:5px;margin-top:auto;border:1px solid #1a1a1a}.fm-bl u{display:block;height:100%}
+#fmSide img{width:120px;height:150px;object-fit:cover;display:block;margin:0 auto 6px;border:2px solid #6a5a34}#fmSide h3{margin:2px 0 8px;text-align:center;color:#f3d48a;font-size:16px}
+.fm-pie{display:flex;align-items:center;gap:10px;margin:6px 0 8px;padding:6px;border:1px solid #3a3424;border-radius:8px;background:rgba(255,255,255,.03)}.fm-pie svg{flex:0 0 auto}.fm-pie-c{font-size:18px}.fm-pie-l{display:flex;flex-direction:column;gap:3px;font-size:12px}.fm-pie-l b{color:#f3d48a;font-size:13px}.fm-pie-l div{display:flex;align-items:center;gap:6px}.fm-pie-l i{width:12px;height:12px;border:1px solid #000;border-radius:2px;flex:0 0 auto}
+.fm-l{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px solid #3a3424}.fm-l small{color:#a99a7a}.fm-l span{text-align:right}
+.fm-act{display:flex;flex-direction:column;gap:6px;margin-top:10px}.fm-act button,.fm-act select{padding:6px 8px;border-radius:6px;border:1px solid #6a5a34;background:#2e2a1c;color:#ece4cc;cursor:pointer;font-size:12px;text-align:left}.fm-act button:disabled{opacity:.45}.fm-act button.warn{background:#6a1e1e;border-color:#e05a4a}.fm-note{font-size:12px;color:#c9b07a;margin-top:4px}
+#pcPanel{display:none;position:absolute;z-index:7;left:200px;top:96px;width:min(440px,calc(100vw - 230px));max-height:calc(100vh - 290px);overflow:auto;flex-direction:column;gap:6px;background:rgba(22,26,36,.97);border:3px solid #6a5a34;border-radius:10px;padding:14px 18px;color:#e6e2d4;font-size:13px}
+#pcPanel h2{margin:0;text-align:center;letter-spacing:4px;font-size:20px}#pcPanel h3{margin:8px 0 2px;font-size:13px;letter-spacing:2px;color:#e0b050;border-bottom:1px solid #3a4152;padding-bottom:3px}
+#pcPanel .pclose{position:absolute;right:10px;top:8px;background:none;border:none;color:#ccc;font-size:18px;cursor:pointer}
+.pc-who{text-align:center;color:#b9b2a0}.pc-sc{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}.pc-sc b{font-size:22px}
+.pc-bar{height:8px;border-radius:4px;background:#7a2a24;overflow:hidden}.pc-bar i{display:block;height:100%;background:#4a9a4a}.pc-det,.pc-hint,.pc-note{font-size:12px;color:#b9b2a0}
+.pc-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pc-row button,.pc-btns button,#pcGold{padding:4px 10px;border-radius:6px;border:1px solid #4a5164;background:#232a38;color:#eee;cursor:pointer;font-size:12px}
+.pc-pup.on{background:#5a4a1a;border-color:#e0b050}.pc-cost{font-weight:700;font-size:14px;margin-top:4px}.pc-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}.pc-btns .go{background:#6a5220;border-color:#e0b050}
 #alPanel{display:none;position:absolute;z-index:6;left:200px;top:96px;bottom:180px;width:min(600px,calc(100vw - 230px));background:rgba(22,26,36,.97);border:3px solid #3a4152;border-radius:10px;padding:14px 18px;overflow:auto;flex-direction:column;color:#e6e2d4}
 #alPanel h2{margin:0 0 6px;text-align:center;letter-spacing:5px;font-size:22px}#alPanel h3{margin:14px 0 6px;font-size:14px;letter-spacing:2px;color:#e0b050;border-bottom:1px solid #3a4152;padding-bottom:3px}
 #alPanel .pclose{position:absolute;right:10px;top:8px;background:none;border:none;color:#ccc;font-size:18px;cursor:pointer}
@@ -565,6 +590,7 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
 #roleBar{position:fixed;z-index:8;left:50%;transform:translateX(-50%);top:96px;display:none;align-items:center;gap:8px;flex-wrap:wrap;max-width:min(900px,94vw);background:linear-gradient(180deg,rgba(48,40,22,.97),rgba(26,22,14,.97));border:2px solid #b8923a;border-radius:8px;padding:7px 12px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
 #roleBar .rb-t{display:flex;flex-direction:column;margin-right:6px}#roleBar .rb-t b{color:#ffd98a;font-size:14px}#roleBar .rb-t span{color:#cfc2a0;font-size:12px}
 #roleBar button{font-size:12px;padding:5px 9px}#roleBar select{max-width:280px;font-size:12px}
+.cnode.council:has(.cf-bar){height:94px}.cnode.council.cfg .cf-bar{margin-right:46px}.cnode.council>div{position:relative}.cf-bar{position:relative;height:14px;margin-top:3px;background:#0006;border-radius:7px;overflow:hidden;min-width:0}.cf-bar u{position:absolute;left:0;top:0;bottom:0;text-decoration:none;opacity:.75}.cf-bar em{position:relative;font-style:normal;font-size:10px;font-weight:700;color:#fff;padding-left:6px;line-height:14px;text-shadow:0 1px 2px #000}.cf-gift{position:absolute;right:0;bottom:0;font-size:10px;padding:0 5px;height:16px;border-radius:5px;border:1px solid #8a7a4a;background:#2a2416;color:#f0dca0;cursor:pointer;white-space:nowrap}.cf-gift:disabled{opacity:.55;cursor:default}
 </style>
 </head>
 <body>
@@ -632,6 +658,9 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
         <div class="photobox"><img id="leaderImg" alt=""><span id="leaderPh">ФОТО ЛИДЕРА</span></div>
         <div style="display:flex;gap:6px"><button id="btnLeaderPhoto" type="button" style="flex:1">Загрузить фото…</button><button id="btnLeaderGen" type="button" title="Нарисовать случайный портрет в духе XIX века">🎲 Портрет</button></div>
         <input id="cLeader" maxlength="28" placeholder="Имя лидера">
+        <div class="spbox"><label>💍 Супруг(а) правителя</label>
+          <div class="sprow"><div class="photobox spph"><img id="spImg" alt=""><span id="spPh">ФОТО</span></div>
+          <div class="spcol"><select id="cSpF"><option value="1">Жена</option><option value="0">Муж</option></select><input id="cSpName" maxlength="28" placeholder="Имя (пусто — случайное)"><div style="display:flex;gap:6px"><button id="btnSpPhoto" type="button" style="flex:1">Фото…</button><button id="btnSpGen" type="button" title="Случайный портрет">🎲</button></div></div></div></div>
       </div>
       <div class="edright">
         <div><label>Название страны</label><input id="cName" maxlength="28" placeholder="Например: Новая Эрландия"></div>
@@ -684,7 +713,7 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
 <div id="game">
   <div id="topLeft" class="ui">
     <div id="myFlagBox"><canvas id="myFlag" width="300" height="200"></canvas></div>
-    <div id="myLeaderBox" title="Правитель — ЛКМ: панель страны"><img id="myLeaderImg" alt=""></div>
+    <div id="myLeaderBox" title="Правитель — ЛКМ: панель страны, ПКМ: династия (жена, дети, развод)"><img id="myLeaderImg" alt=""></div>
     <div class="res"><small>Золото</small><b id="resGold">—</b><small class="sub" id="resGoldSub"></small></div>
     <div class="res"><small>Снабжение</small><b id="resSupply">—</b><small class="sub" id="resSupplySub"></small></div>
     <div class="res"><small>Войска</small><b id="resTroops">0</b><small class="sub" id="resTroopsSub"></small></div>
@@ -704,6 +733,7 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
     <button type="button" class="lb" id="btnDec" title="Решения"><i></i><span>Решения</span></button>
     <button type="button" class="lb" id="btnState" title="Государство и национальные фокусы"><i></i><span>Государство</span></button>
     <button type="button" class="lb" id="btnAlly" title="Союзы и коалиции"><i></i><span>Союзы</span></button>
+    <button type="button" class="lb" id="btnFam" title="Династия: семья правителя, наследники, браки"><i></i><span>Династия</span></button>
   </div>
   <div id="lossPanel" class="ui">
     <h4>ПОТЕРИ</h4>
@@ -816,6 +846,22 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
     <h3>⚜️ ИДЕОЛОГИЯ И ВЕРА</h3>
     <div id="dReform" style="display:flex;flex-direction:column;gap:6px"></div>
   </div>
+  <div id="bdPanel"><div class="bd"><h3 id="bdTitle">👶</h3><small id="bdSub"></small><img id="bdImg" alt=""><input id="bdName" maxlength="24" placeholder="Имя">
+    <div class="bdb"><button type="button" id="bdRe">🎲 Другой портрет</button><button type="button" id="bdUp">📁 Своё фото</button></div>
+    <div class="bdb"><button type="button" id="bdOk" class="go">✔ Готово</button></div></div></div>
+  <div id="fmPanel"><div class="fm-head"><span id="fmTitle">ДИНАСТИЯ</span><button type="button" id="fmZOut" title="Отдалить">−</button><span id="fmZoom" class="fm-z">100%</span><button type="button" id="fmZIn" title="Приблизить">+</button><select id="fmWho" title="Династия другой страны или все сразу"></select><button type="button" id="fmClose" title="Закрыть">✕</button></div>
+    <div class="fm-body"><div id="fmTree"></div><div id="fmSide"></div></div>
+    <div class="fm-foot">Кликните по человеку — подробности справа. Сплошная линия — брак, пунктир — развод. Дети до 10 лет ничего не могут; с 10 лет их можно назначить на должность, с 16 — женить. Кровь ребёнка — поровну от отца и матери (полоска под портретом). «🌐 Все страны» — все династии сразу: красные дуги — браки между дворами. Колесо мыши — масштаб, перетаскивание — сдвиг.</div></div>
+  <div id="pcPanel"><button type="button" class="pclose" id="pcClose" title="Закрыть">✕</button><h2>МИРНЫЙ ДОГОВОР</h2><div class="pc-who" id="pcWho"></div>
+    <div class="pc-sc"><span>Перевес в войне</span><b id="pcScore">0</b></div><div class="pc-bar"><i id="pcBar"></i></div><div class="pc-det" id="pcDet"></div>
+    <h3>ВАШИ ТРЕБОВАНИЯ</h3>
+    <div class="pc-hint">🗺 Кликайте по провинциям врага на карте — они отойдут вам (жёлтые). Столицу забрать нельзя — для этого есть марионетка.</div>
+    <div class="pc-row"><span id="pcSel">Выбрано провинций: 0</span><button type="button" id="pcBorder">+ Пограничные</button><button type="button" id="pcClear">Очистить</button></div>
+    <div class="pc-row"><button type="button" id="pcPup" class="pc-pup">👑 Сделать марионеткой (+50)</button></div>
+    <div class="pc-row"><span>Контрибуция:</span><select id="pcGold"><option value="0">нет</option><option value="250">250 золота (+5)</option><option value="500">500 золота (+10)</option><option value="1000">1000 золота (+20)</option><option value="2000">2000 золота (+40)</option></select></div>
+    <div class="pc-cost" id="pcCost"></div><div class="pc-note" id="pcNote"></div>
+    <div class="pc-btns"><button type="button" id="pcSend" class="go">📜 Предложить мир на этих условиях</button><button type="button" id="pcWhite">🕊 Белый мир</button></div>
+    <div class="pc-note">Марионетка платит вам 30% дохода, воюет на вашей стороне и не может сама объявлять войны и вступать в союзы. После мира — перемирие на год.</div></div>
   <div id="alPanel"><button type="button" class="pclose" id="alClose" title="Закрыть">✕</button><h2>СОЮЗЫ</h2>
     <button type="button" class="al-map" id="alMapChk">🗺 Блоки на карте: выкл</button>
     <div id="alBody"></div></div>
@@ -891,6 +937,8 @@ body.tacOn #warVig,body.tacOn #warVigTxt{display:none!important}
         <div class="cp-row"><small>Вера</small><span id="cpFaith"></span></div>
         <div class="cp-acts">
           <button type="button" class="cp-act" id="cpWar">Объявить войну</button>
+          <button type="button" class="cp-act" id="cpPeace" style="display:none">🕊 Мирный договор</button>
+          <button type="button" class="cp-act" id="cpFam">👪 Династия</button>
           <button type="button" class="cp-act" id="cpJust">Оправдать цели войны</button>
           <button type="button" class="cp-act" id="cpTrade">Торговый договор</button>
           <button type="button" class="cp-act" id="cpInsult">Оскорбить · 200 золота</button>
@@ -1025,7 +1073,9 @@ function idB(p) {
   if (D) for (const d of IDECS) if (idecFits(d, pl.ideo, pl.rel | 0) && (d.once ? D['o_' + d.id] : G.gt < (D['x_' + d.id] || 0))) add(d.b || {});
   if (D && G.gt < (D.mourn || 0)) add({ loy: -10, risk: 10 });
   const Cc = G.court && G.court[p];
-  { const Hh = G.players[p] ? hierOf(p) : null; if (Hh && Hh.council) add(Hh.council.b); if (Hh && Hh.heir && Cc && Cc.heir) add({ loy: 3 }); }   // совет и наследник
+  { const Hh = G.players[p] ? hierOf(p) : null; if (Hh && Hh.council) add(Hh.council.b); if (Hh && Hh.heir && Cc && Cc.heir) add({ loy: 3 });
+    if (G.inhT && G.inhT[p] && G.inhT[p].length) add({ loy: Math.min(3, G.inhT[p].length) * 4 });   // чужие титулы правителя
+    if (Hh && Hh.council && G.cf && G.cf[p] != null && CF_ON(p)) { const v = G.cf[p]; if (v >= 75) add(Hh.council.b); else if (v < 30) { for (const k in Hh.council.b) o[k] -= Hh.council.b[k]; add({ loy: -5, risk: 5 }); } } }   // совет и наследник
   if (G.vacL && G.vacL[p]) add(Cc && Cc.second ? { loy: -7, risk: 7 } : { loy: -15, risk: 15 });   // второе лицо держит страну, пока престол пуст
   if (Cc) {   // пустые посты вредят
     if (!Cc.second) add({ tax: -0.1 });
@@ -1143,7 +1193,7 @@ window.addEventListener('resize', resizeView);
 const SAVE_KEY = 'empire_save_v1';
 function defaultCountry() {
   return {
-    name: '', title: '', leader: '', capital: '', ideo: 3, rel: 0, iv: 2, color: COLORS[0], photo: null, thumb: null,
+    name: '', title: '', leader: '', capital: '', ideo: 3, rel: 0, iv: 2, color: COLORS[0], photo: null, thumb: null, spName: '', spF: 1, spPhoto: null, spThumb: null,
     generals: [
       { role: 'Адмирал флота', cls: null, name: '', photo: null },
       { role: 'Сухопутный генерал', cls: 0, name: '', photo: null },
@@ -1201,17 +1251,73 @@ $('screenEditor').addEventListener('change', persistSoon);
 // ===== портреты в духе фотографий XIX века: для ботов и для тех, кто не загрузил своё фото =====
 const hashStr = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
 const shadeC = (c, k) => { const n = parseInt(c.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(k < 0 ? v * (1 + k) : v + (255 - v) * k))); return 'rgb(' + f(n >> 16) + ',' + f(n >> 8 & 255) + ',' + f(n & 255) + ')'; };
-function drawPortrait(x, seed, kind) {   // kind: 0 — правитель, 1 — генерал, 2 — адмирал; холст 180×225
+function drawPortraitF(x, seed, girl) {   // женский портрет (дама или девочка)
+  const r = mulberry(seed), R = (a, b) => a + r() * (b - a), pick = a => a[Math.floor(r() * a.length)];
+  const bg = x.createRadialGradient(90, 85, 15, 90, 110, 165);
+  bg.addColorStop(0, pick(['#cbb894', '#bfae8e', '#c9b9a0', '#b9a78a', '#a9a39a'])); bg.addColorStop(1, '#3e3428');
+  x.fillStyle = bg; x.fillRect(0, 0, 180, 225);
+  const skin = pick(['#f0d2b4', '#e8c4a0', '#f3d9c2', '#deb48e', '#d6a87f', '#c99a72', '#b88760', '#8d5e3c']);
+  const hairC = pick(['#2a1d14', '#3b2a1c', '#5a3b22', '#7a5a3a', '#9a6a3a', '#c9a050', '#1b1612', '#8a4a2a']);
+  const fx = 90, fy = girl ? R(104, 110) : R(95, 100), rx = girl ? R(25, 28) : R(28, 31), ry = girl ? R(30, 33) : R(37, 40), gold = '#c9a24a';
+  x.fillStyle = hairC; x.beginPath(); x.ellipse(fx, fy + (girl ? 14 : 18), rx + 15, ry + (girl ? 22 : 30), 0, 0, 6.3); x.fill();   // длинные волосы сзади
+  const dress = pick(['#6a1e2e', '#1f3a5a', '#2a4a2e', '#4a2a5a', '#d9cfc0', '#7a5a2a', '#2a2a3a', '#8a3a4a']);
+  x.fillStyle = dress; x.beginPath(); x.moveTo(-5, 226); x.bezierCurveTo(5, 182, 35, 168, 60, 166); x.lineTo(120, 166); x.bezierCurveTo(145, 168, 175, 182, 185, 226); x.closePath(); x.fill();
+  const ny = fy + ry;
+  x.fillStyle = skin; x.beginPath(); x.moveTo(fx - 12, ny - 16); x.lineTo(fx + 12, ny - 16); x.lineTo(fx + 44, ny + 24); x.quadraticCurveTo(fx, ny + (girl ? 40 : 52), fx - 44, ny + 24); x.closePath(); x.fill();   // шея и плечи
+  x.strokeStyle = '#efe8da'; x.lineWidth = 3.5; x.beginPath(); x.moveTo(fx - 46, ny + 23); x.quadraticCurveTo(fx, ny + (girl ? 42 : 54), fx + 46, ny + 23); x.stroke();   // кружево
+  if (!girl) { x.fillStyle = pick(['#f4f0e6', '#e0c060', '#f4f0e6']); for (let t = -1; t <= 1.001; t += 0.1) { x.beginPath(); x.arc(fx + t * 19, ny + 4 + (1 - t * t) * 9, 2.2, 0, 6.3); x.fill(); } }   // жемчуг
+  else { x.fillStyle = pick(['#c94a5a', '#4a7ac9', '#f0f0f0']); x.beginPath(); x.ellipse(fx, ny + 30, 9, 4, 0, 0, 6.3); x.fill(); }   // бант
+  x.fillStyle = shadeC(skin, -0.08); for (const sx of [-1, 1]) { x.beginPath(); x.ellipse(fx + sx * rx, fy + 4, 5, 9, 0, 0, 6.3); x.fill(); }
+  if (!girl && r() < 0.7) { x.fillStyle = pick(['#e0c060', '#f4f0e6', '#c94a5a']); for (const sx of [-1, 1]) { x.beginPath(); x.arc(fx + sx * rx, fy + 15, 2.6, 0, 6.3); x.fill(); } }   // серьги
+  const fg = x.createRadialGradient(fx - 9, fy - 12, 4, fx, fy, ry + 10); fg.addColorStop(0, skin); fg.addColorStop(1, shadeC(skin, -0.22));
+  x.fillStyle = fg; x.beginPath(); x.ellipse(fx, fy, rx, ry, 0, 0, 6.3); x.fill();
+  // причёска
+  const st = Math.floor(r() * 3); x.fillStyle = hairC;
+  x.beginPath(); x.ellipse(fx, fy - ry * 0.5, rx + 4, ry * 0.62, 0, Math.PI, 0); x.fill();
+  x.beginPath(); x.moveTo(fx - rx - 4, fy - ry * 0.5); x.quadraticCurveTo(fx - rx * 0.4, fy - ry * 0.25, fx - 2, fy - ry * 0.75); x.quadraticCurveTo(fx + rx * 0.4, fy - ry * 0.25, fx + rx + 4, fy - ry * 0.5); x.lineTo(fx + rx + 4, fy - ry * 0.6); x.lineTo(fx - rx - 4, fy - ry * 0.6); x.fill();   // пробор
+  if (st === 0 && !girl) { x.beginPath(); x.arc(fx, fy - ry - 8, 14, 0, 6.3); x.fill(); }   // высокий пучок
+  else if (st === 1 || girl) { for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { x.beginPath(); x.arc(fx + sx * (rx + 5), fy - 4 + k * 11, 6.5, 0, 6.3); x.fill(); } }   // локоны
+  else { for (const sx of [-1, 1]) { x.beginPath(); x.ellipse(fx + sx * (rx + 3), fy - 8, 9, 13, 0, 0, 6.3); x.fill(); } }   // пышные бока
+  if (girl) { x.fillStyle = pick(['#c94a5a', '#4a7ac9', '#f0f0f0', '#e0c060']); for (const sx of [-1, 1]) { x.beginPath(); x.moveTo(fx + sx * 6, fy - ry - 2); x.lineTo(fx + sx * 22, fy - ry - 12); x.lineTo(fx + sx * 22, fy - ry + 8); x.closePath(); x.fill(); } }   // лента
+  // лицо
+  const ey = fy - 5, ex = rx * 0.42, eye = pick(['#2a2420', '#3a5a7a', '#4a3a2a', '#5a6a5a']);
+  x.lineCap = 'round'; x.strokeStyle = shadeC(hairC, -0.1); x.lineWidth = 1.8;
+  for (const sx of [-1, 1]) { x.beginPath(); x.moveTo(fx + sx * (ex - 8), ey - 9); x.quadraticCurveTo(fx + sx * ex, ey - 13, fx + sx * (ex + 8), ey - 8); x.stroke(); }
+  for (const sx of [-1, 1]) {
+    x.fillStyle = '#f2eee6'; x.beginPath(); x.ellipse(fx + sx * ex, ey, 6, 3.4, 0, 0, 6.3); x.fill();
+    x.fillStyle = eye; x.beginPath(); x.arc(fx + sx * ex, ey + 0.3, 2.7, 0, 6.3); x.fill();
+    x.strokeStyle = '#2a1a14'; x.lineWidth = 1.8; x.beginPath(); x.ellipse(fx + sx * ex, ey - 0.4, 6.8, 3.8, 0, Math.PI * 1.05, Math.PI * 1.95); x.stroke();   // ресницы
+  }
+  x.fillStyle = 'rgba(210,90,90,.18)'; for (const sx of [-1, 1]) { x.beginPath(); x.ellipse(fx + sx * (ex + 4), ey + 14, 7, 4.5, 0, 0, 6.3); x.fill(); }   // румянец
+  x.strokeStyle = shadeC(skin, -0.32); x.lineWidth = 1.6; x.beginPath(); x.moveTo(fx - 1, ey + 4); x.quadraticCurveTo(fx - 3, ey + 14, fx - 4, ey + 17); x.quadraticCurveTo(fx, ey + 20, fx + 4, ey + 17); x.stroke();
+  const my = fy + ry * 0.48; x.fillStyle = pick(['#a83a3a', '#b84a4a', '#9a3a40']); x.beginPath(); x.moveTo(fx - 9, my); x.quadraticCurveTo(fx, my - 4, fx + 9, my); x.quadraticCurveTo(fx, my + 5, fx - 9, my); x.fill();
+  if (!girl && r() < 0.45) {   // диадема
+    const cy = fy - ry * 0.82; x.fillStyle = gold; x.beginPath(); x.moveTo(fx - 24, cy + 6);
+    for (let k = 0; k <= 4; k++) { x.lineTo(fx - 24 + k * 12, cy - (k === 2 ? 14 : 8)); if (k < 4) x.lineTo(fx - 18 + k * 12, cy + 1); }
+    x.lineTo(fx + 24, cy + 6); x.closePath(); x.fill(); x.fillStyle = pick(['#3a6ac9', '#a3222a', '#2f7a4a']); x.beginPath(); x.arc(fx, cy - 3, 2.6, 0, 6.3); x.fill();
+  }
+  const img = x.getImageData(0, 0, 180, 225), d = img.data, g = mulberry(seed ^ 0x9e3779b9);
+  for (let i = 0; i < d.length; i += 4) {
+    const l = 0.3 * d[i] + 0.59 * d[i + 1] + 0.11 * d[i + 2], n = (g() - 0.5) * 16;
+    d[i] = d[i] * 0.3 + Math.min(255, l * 1.07 + 18 + n) * 0.7; d[i + 1] = d[i + 1] * 0.3 + Math.min(255, l * 0.95 + 8 + n) * 0.7; d[i + 2] = d[i + 2] * 0.3 + Math.max(0, Math.min(255, l * 0.78 + n)) * 0.7;
+  }
+  x.putImageData(img, 0, 0);
+  const v = x.createRadialGradient(90, 100, 55, 90, 112, 150); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(25,15,5,.6)');
+  x.fillStyle = v; x.fillRect(0, 0, 180, 225);
+}
+function drawPortrait(x, seed, kind) {   // kind: 0 — правитель, 1 — генерал, 2 — адмирал, 3 — дама, 4 — мальчик, 5 — девочка; холст 180×225
+  if (kind === 3 || kind === 5) return drawPortraitF(x, seed, kind === 5);
+  const kid = kind === 4;
   const r = mulberry(seed), R = (a, b) => a + r() * (b - a), pick = a => a[Math.floor(r() * a.length)];
   const bg = x.createRadialGradient(90, 85, 15, 90, 110, 165);
   bg.addColorStop(0, pick(['#cbb894', '#bfae8e', '#c9b9a0', '#b9a78a', '#a9a39a'])); bg.addColorStop(1, '#3e3428');
   x.fillStyle = bg; x.fillRect(0, 0, 180, 225);
   const skin = pick(['#e8c4a0', '#deb48e', '#d6a87f', '#f0d2b4', '#c99a72', '#e2bc98', '#b88760', '#a8764e', '#8d5e3c', '#f3d9c2', '#d9b38c', '#c48d63']);
-  const gray = r() < (kind ? 0.4 : 0.3);
+  const gray = r() < (kind ? 0.4 : 0.3) && !kid;
   const hairC = gray ? pick(['#8d8d88', '#bdbdb5', '#d8d6cf']) : pick(['#2a1d14', '#3b2a1c', '#1b1612', '#5a3b22', '#7a5a3a', '#6b4a2c', '#9a6a3a']);
-  const fx = 90, fy = R(94, 102), rx = R(30, 36), ry = R(39, 45), gold = '#c9a24a';
+  const fx = 90, fy = kid ? R(104, 110) : R(94, 102), rx = kid ? R(25, 28) : R(30, 36), ry = kid ? R(30, 34) : R(39, 45), gold = '#c9a24a';
   // мундир / сюртук
-  const mil = kind > 0 || r() < 0.55;
+  const mil = (kind === 1 || kind === 2) || (!kid && r() < 0.55);
   const coat = kind === 2 ? pick(['#1b2440', '#141c33', '#202a48']) : mil ? pick(['#1f2a44', '#23362a', '#2a2a2e', '#4a2420', '#2d3a52', '#d9d4c6']) : pick(['#1a1a1c', '#24221f', '#2e2a26']);
   x.fillStyle = coat; x.beginPath(); x.moveTo(-5, 226); x.bezierCurveTo(0, 176, 30, 160, 62, 153); x.lineTo(118, 153); x.bezierCurveTo(150, 160, 180, 176, 185, 226); x.closePath(); x.fill();
   x.fillStyle = skin; x.fillRect(fx - 14, fy + ry - 16, 28, 34);   // шея
@@ -1267,7 +1373,7 @@ function drawPortrait(x, seed, kind) {   // kind: 0 — правитель, 1 �
   x.strokeStyle = '#7a4a3a'; x.lineWidth = 2; x.beginPath(); x.moveTo(fx - 10, my); x.quadraticCurveTo(fx, my + R(-1, 2.5), fx + 10, my); x.stroke();
   if (gray) { x.strokeStyle = shadeC(skin, -0.3); x.lineWidth = 1; for (const sx of [-1, 1]) { x.beginPath(); x.moveTo(fx + sx * 8, ey + 20); x.quadraticCurveTo(fx + sx * 14, my - 2, fx + sx * 13, my + 6); x.stroke(); } }
   // усы, бакенбарды, бороды
-  const fh = Math.floor(r() * 7); x.fillStyle = hairC;
+  const fh = kid ? 0 : Math.floor(r() * 7); x.fillStyle = hairC;
   const must = c => { x.beginPath(); x.moveTo(fx, my - 7); x.quadraticCurveTo(fx - 12, my - 10, fx - 20 - c, my - 2 - c); x.quadraticCurveTo(fx - 12, my - 2, fx, my - 3); x.quadraticCurveTo(fx + 12, my - 2, fx + 20 + c, my - 2 - c); x.quadraticCurveTo(fx + 12, my - 10, fx, my - 7); x.fill(); };
   const side = sx => { x.beginPath(); x.moveTo(fx + sx * (rx - 1), fy - 8); x.quadraticCurveTo(fx + sx * (rx + 2), fy + ry * 0.75, fx + sx * rx * 0.45, fy + ry * 0.8); x.lineTo(fx + sx * rx * 0.55, fy + ry * 0.35); x.quadraticCurveTo(fx + sx * rx * 0.8, fy + 4, fx + sx * (rx - 7), fy - 8); x.fill(); };
   if (fh === 1) must(0);
@@ -1282,7 +1388,7 @@ function drawPortrait(x, seed, kind) {   // kind: 0 — правитель, 1 �
   const acc = r();
   if (acc < 0.16) { x.strokeStyle = pick(['#2a2a2a', '#b8923a', '#6a6a6a']); x.lineWidth = 1.6; for (const sx of [-1, 1]) { x.beginPath(); x.arc(fx + sx * ex, ey, 7.5, 0, 6.3); x.stroke(); } x.beginPath(); x.moveTo(fx - ex + 7.5, ey); x.quadraticCurveTo(fx, ey - 4, fx + ex - 7.5, ey); x.stroke(); }
   else if (acc < 0.23) { x.strokeStyle = '#c9a24a'; x.lineWidth = 1.6; x.beginPath(); x.arc(fx + ex, ey, 8, 0, 6.3); x.stroke(); x.lineWidth = 0.8; x.beginPath(); x.moveTo(fx + ex + 5, ey + 6); x.quadraticCurveTo(fx + ex + 14, ey + 40, fx + ex + 6, ey + 70); x.stroke(); }
-  if (kind && r() < 0.14) { x.strokeStyle = shadeC(skin, -0.45); x.lineWidth = 1.6; x.beginPath(); x.moveTo(fx - ex - 10, ey - 14); x.lineTo(fx - ex + 4, ey + 16); x.stroke(); }
+  if ((kind === 1 || kind === 2) && r() < 0.14) { x.strokeStyle = shadeC(skin, -0.45); x.lineWidth = 1.6; x.beginPath(); x.moveTo(fx - ex - 10, ey - 14); x.lineTo(fx - ex + 4, ey + 16); x.stroke(); }
   // головной убор
   if (kind === 2 && r() < 0.6) {   // адмиральская двууголка
     x.fillStyle = '#111'; x.beginPath(); x.moveTo(fx - rx - 24, fy - ry * 0.5); x.quadraticCurveTo(fx, fy - ry - 44, fx + rx + 24, fy - ry * 0.5); x.quadraticCurveTo(fx, fy - ry * 0.78, fx - rx - 24, fy - ry * 0.5); x.fill();
@@ -1316,6 +1422,11 @@ function drawPortrait(x, seed, kind) {   // kind: 0 — правитель, 1 �
 }
 const _portr = new Map();
 function portraitURL(key, kind) {
+  if (typeof key === 'string' && key.startsWith('F|') && G && G.fam) {   // член династии: портрет по полу и возрасту
+    const h = famP(+key.slice(2));
+    if (h) { if (G.famPh && G.famPh[h.id]) return G.famPh[h.id]; if (h.pk && h.pk !== key) return portraitURL(h.pk, kindOf(h)); kind = kindOf(h); const ck = key + '#' + kind + '#' + (h.ps | 0); if (_portr.has(ck)) return _portr.get(ck); let url = null; try { const c = document.createElement('canvas'); c.width = 180; c.height = 225; drawPortrait(c.getContext('2d'), (hashStr(key) ^ (h.ps | 0)) >>> 0, kind); url = c.toDataURL('image/jpeg', 0.82); } catch (e) { url = null; } _portr.set(ck, url); return url; }
+  }
+  if (typeof key === 'string' && key.startsWith('SPH|') && G) { const p = +key.slice(4); if (p === myP() && gameState.country.spPhoto) return gameState.country.spPhoto; if (G.players[p] && G.players[p].spPhoto) return G.players[p].spPhoto; }
   if (typeof key === 'string' && key.startsWith('CU|') && G) { const a = key.split('|'), p = +a[1], h = hierC(p), pl = G.players[p]; let ph = null;
     if (a[2] === 'g') { const k = +a[3]; if (p === myP() && gameState.country.generals[k] && gameState.country.generals[k].thumb) ph = gameState.country.generals[k].thumb; else if (pl && pl.genPhotos) ph = pl.genPhotos[k]; if (!ph && pl) { key = 'G|' + (pl.baseName || pl.name) + '|' + k + '|' + ((pl.genNames && pl.genNames[k]) || ''); kind = k ? 1 : 2; } }
     else if (h) ph = a[2] === 'c' ? h.court[a[3]] && h.court[a[3]].ph : a[2] === 'o' ? h.cols[+a[3]] && h.cols[+a[3]][+a[4]] && h.cols[+a[3]][+a[4]].ph : null;
@@ -1383,6 +1494,10 @@ function showPhoto(im, ph, d) {
   else { im.style.display = 'none'; ph.style.display = ''; }
 }
 $('btnLeaderPhoto').onclick = () => pickImage((d, th) => { CO().photo = d; CO().thumb = th; showPhoto($('leaderImg'), $('leaderPh'), d); }, 240, 300);
+$('btnSpPhoto').onclick = () => pickImage((d, th) => { CO().spPhoto = d; CO().spThumb = th; showPhoto($('spImg'), $('spPh'), d); }, 240, 300);
+$('btnSpGen').onclick = () => { const f = $('cSpF').value === '0' ? 0 : 3, d = portraitURL('RS' + Math.random(), f); if (!d) return; CO().spPhoto = d; showPhoto($('spImg'), $('spPh'), d); makeThumb(d, th => { CO().spThumb = th; persistSoon(); }); };
+$('cSpName').oninput = () => { CO().spName = $('cSpName').value; persistSoon(); };
+$('cSpF').onchange = () => { CO().spF = +$('cSpF').value; persistSoon(); };
 $('btnLeaderGen').onclick = () => { const d = portraitURL('R' + Math.random(), 0); if (!d) return; CO().photo = d; showPhoto($('leaderImg'), $('leaderPh'), d); makeThumb(d, th => { CO().thumb = th; persistSoon(); }); };
 // 4 командующих: адмирал флота и три сухопутных генерала (пока никак не влияют на игру)
 const CMD_CLASSES = ['Пехотный', 'Артиллерийский', 'Кавалерийский'];
@@ -1417,6 +1532,7 @@ function fillUI(c) {
   $('cIdeo').value = c.ideo; $('religionSelect').value = c.rel; updIdeoDesc(); $('countryColorPicker').value = c.color;
   $('fPat').value = c.flag.pat; $('fEm').value = c.flag.em; $('fC1').value = c.flag.c1; $('fC2').value = c.flag.c2; $('fC3').value = c.flag.c3;
   showPhoto($('leaderImg'), $('leaderPh'), c.photo);
+  try { $('cSpName').value = c.spName || ''; $('cSpF').value = c.spF === 0 ? '0' : '1'; showPhoto($('spImg'), $('spPh'), c.spPhoto); } catch (e) {}
   c.generals.forEach((g, i) => {
     cmdUI[i].nm.value = g.name; if (cmdUI[i].sel) cmdUI[i].sel.value = g.cls | 0;
     showPhoto(cmdUI[i].im, cmdUI[i].ph, g.photo);
@@ -1438,7 +1554,13 @@ $('fPat').value = 2; $('fEm').value = 1;
 function readFlag() {
   return { pat: +$('fPat').value, em: +$('fEm').value, c1: $('fC1').value, c2: $('fC2').value, c3: $('fC3').value };
 }
-function cleanFlag(f) {
+function cleanFlag(f) {   // флаг страны; у марионетки — с флагом хозяина в углу
+  const o = cleanFlag0(f);
+  try { if (typeof G !== 'undefined' && G && G.pup && G.players && f) { const p = G.players.findIndex(pl => pl && pl.flag === f); const q = p >= 0 ? G.pup[p] : -1; if (q >= 0 && G.players[q]) o.cant = cleanFlag0(G.players[q].flag); } } catch (e) {}
+  return o;
+}
+const flagTag = p => (typeof G !== 'undefined' && G && G.pup && G.pup[p] >= 0 ? 'u' + G.pup[p] : '');
+function cleanFlag0(f) {
   f = f || {};
   const hex = v => (typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v)) ? v : '#888888';
   const num = (v, max) => Math.max(0, Math.min(max, v | 0));
@@ -1460,6 +1582,11 @@ function drawFlag(c, f) {
     case 8: x.strokeStyle = f.c2; x.lineWidth = h * 0.22; x.beginPath(); x.moveTo(0, 0); x.lineTo(w, h); x.moveTo(w, 0); x.lineTo(0, h); x.stroke(); break;
   }
   if (f.em > 0) drawEmblem(x, f.pat === 7 ? w * 0.17 : f.pat === 4 ? w * 0.37 : w / 2, h / 2, f.pat === 7 ? h * 0.22 : h * 0.3, f.em, f.c3);
+  if (f.cant) {   // кантон: флаг хозяина в левой верхней четверти
+    const cw = Math.round(w / 2), ch = Math.round(h / 2), t = document.createElement('canvas'); t.width = cw; t.height = ch;
+    drawFlag(t, f.cant); x.drawImage(t, 0, 0);
+    x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = Math.max(1, h * 0.03); x.beginPath(); x.moveTo(cw, 0); x.lineTo(cw, ch); x.lineTo(0, ch); x.stroke();
+  }
 }
 function drawEmblem(x, cx, cy, r, id, col) {
   x.save(); x.translate(cx, cy); x.scale(r, r);
@@ -1556,13 +1683,14 @@ function readCountry() {
   const c = gameState.country;
   return {
     name: c.name.trim() || 'Безымянная страна', title: titleFor(c.ideo, relFix(c.ideo, c.rel)), leader: IDEO[c.ideo].noRuler ? '' : c.leader.trim() || 'Неизвестный',
-    ideo: c.ideo, rel: relFix(c.ideo, c.rel), color: c.color, capital: c.capital.trim() || 'Столица', photo: c.photo, thumb: c.thumb,
+    ideo: c.ideo, rel: relFix(c.ideo, c.rel), color: c.color, capital: c.capital.trim() || 'Столица', photo: c.photo, thumb: c.thumb, spName: (c.spName || '').trim(), spF: c.spF === 0 ? 0 : 1, spPhoto: c.spPhoto || null, spThumb: c.spThumb || null,
     generals: c.generals.map(g => Object.assign({}, g)), genNames: c.generals.map(g => g.name || ''), flag: Object.assign({}, c.flag), hier: cleanHier(c.hier)
   };
 }
 // сопернику отправляем всё, кроме командующих (они пока не участвуют в игре)
 function pubCountry(c) {   // соперникам — миниатюры фото правителя и командующих, имена командующих
   const o = Object.assign({}, c);
+  o.spPhoto = c.spThumb || c.spPhoto || null; delete o.spThumb;
   if (c.generals) { o.photo = c.thumb || null; o.genNames = c.generals.map(g => g.name || ''); o.genPhotos = c.generals.map(g => g.thumb || null); }
   else { o.photo = c.photo || null; o.genNames = c.genNames || []; o.genPhotos = c.genPhotos || []; }
   delete o.thumb; delete o.generals; delete o.template; return o;
@@ -1580,7 +1708,8 @@ function cleanCountry0(c) {
     photo: (typeof ph === 'string' && ph.length < 40000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(ph)) ? ph : null,
     genNames: [0, 1, 2, 3].map(k => c && Array.isArray(c.genNames) ? s(c.genNames[k], '') : ''),
     genPhotos: [0, 1, 2, 3].map(k => { const v = c && Array.isArray(c.genPhotos) ? c.genPhotos[k] : null; return (typeof v === 'string' && v.length < 40000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(v)) ? v : null; }),
-    flag: cleanFlag(c && c.flag), hier: c && c.hier ? cleanHier(c.hier) : null
+    flag: cleanFlag(c && c.flag), hier: c && c.hier ? cleanHier(c.hier) : null,
+    spName: c && typeof c.spName === 'string' ? c.spName.trim().slice(0, 28) : '', spF: c && c.spF === 0 ? 0 : 1, spPhoto: c && typeof c.spPhoto === 'string' && c.spPhoto.length < 40000 && /^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(c.spPhoto) ? c.spPhoto : null
   };
 }
 function lockMenu() {
@@ -1820,9 +1949,9 @@ function snapshot() {
     fl: G.fleets.map(f => [f.id, f.p, f.prov, f.ships.map(x => x.c + ':' + Math.round(x.hp)).join(','), f.mv ? [f.mv.path, f.mv.s, Math.round(f.mv.t0 * 1000) / 1000, Math.round(f.mv.dur * 1000) / 1000] : 0, f.adm ? 1 : 0, f.retreat ? 1 : 0, f.noRuns ? 1 : 0]),
     sq: G.shipQ.map(e => [e.id, e.p, e.i, e.c, Math.round(e.left * 10) / 10, e.total]), bk: G.blk,
     bat: Object.keys(G.bat).map(k => [+k, Math.round(G.bat[k] * 10) / 10]), hq: G.hq, ww: G.ww.map(v => Math.round(v * 10) / 10), ki: G.kia.map(Math.round),
-    tr: G.tr, ay: G.ally, of: G.offers.map(o => [o.id, o.k, o.a, o.b, Math.round(o.t), o.g || 0, o.n || 0, o.price || 0]),
+    tr: G.tr, ay: G.ally, of: G.offers.map(o => [o.id, o.k, o.a, o.b, Math.round(o.t), o.g || 0, o.n || 0, o.price || 0, o.pv || 0]),
     cv: G.convoys.map(c => [c.id, c.a, c.b, c.g, c.amt, c.path, c.s, Math.round(c.t0 * 1000) / 1000, Math.round(c.dur * 1000) / 1000, c.k === 'run' ? 1 : 0, c.leg || 0]),
-    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], fa: G.fac || null, wc: G.wc || {}, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
+    gf: G.gf, fc: G.foc || [], ct: G.court || [], cl: G.col || [], go: G.genOv || [], pa: G.parl || [], ro: G.role || [], gv: G.gov || [], mp: G.myParty || [], plr: G.pleader || [], pf: G.pfund || [], cf: G.cf || [], ih: G.inh || [], iT: G.inhT || [], iC: G.inhC || {}, fx: G.fac || null, fm: famSnap(), wt: G.wt || {}, pu: G.pup || null, trc: G.truce || {}, wc: G.wc || {}, tf: G.tacF || {}, to: G.tacO || {}, qo: G.qo || {}, ex: G.exiles || [], cpt: G.capt || [], cd: G.cdead || [], ld: G.ldead || [], cp: G.camp || [], lo: G.leaderOv || [], vl: G.vacL || [], gu: G.genUp || [], ir: G.players.map(x => [x.ideo, x.rel, x.title, x.name, x.color, x.baseName || '', x.leader]), war: G.war, rl: G.rel, js: G.just, al: G.alive, pc: G.peace, lw: G.laws, dc: G.dec, gl: G.genLoy, nw: G.news.slice(-40).map(x => [x.n, x.d, x.c, x.h, x.t, x.pop, x.e, x.pic || 0]), ls: G.losses, gd: G.genDead, pt: G.popTot.map(Math.round), pg: G.popGrow.map(v => Math.round(v)),
     pb: (() => { const b = new Array(NP()).fill(0); for (let i = 0; i < G.tiles.length; i++) { const o = G.tiles[i].o; if (o >= 0) b[o] += PROV.pop[i]; } return b.map(Math.round); })(),
     rt: ecoRatesAll().map(r => [Math.round(r.gold * 10) / 10, Math.round(r.supply), Math.round(r.recruits)]) };
 }
@@ -1848,7 +1977,11 @@ function applyState(m) {
   if (Array.isArray(m.cpt)) G.capt = m.cpt.filter(c => c && typeof c === 'object' && Array.isArray(c.ppl)).slice(0, 30).map(c => ({ id: c.id | 0, by: c.by | 0, from: c.from | 0, t: +c.t || 0, ppl: c.ppl.slice(0, 20).map(x => ({ pid: clip(x.pid, 12), nm: clip(x.nm, 30), key: clip(x.key, 60), kind: x.kind | 0, was: clip(x.was, 50), h: Number.isInteger(x.h) ? x.h : -1, id: x.id | 0 })) }));
   if (m.tf && typeof m.tf === 'object') { G.tacF = {}; for (const k in m.tf) if (Number.isFinite(+m.tf[k])) G.tacF[k] = +m.tf[k]; }
   if (m.wc && typeof m.wc === 'object') { G.wc = {}; for (const k in m.wc) if (Number.isFinite(+m.wc[k])) G.wc[k] = +m.wc[k]; }
-  if (Array.isArray(m.fa)) G.fac = m.fa.filter(f => f && Array.isArray(f.m)).map(f => ({ id: f.id | 0, name: clip(f.name, 40) || 'Союз', lead: f.lead | 0, m: f.m.filter(Number.isInteger), t: Number.isInteger(f.t) ? f.t : -1, since: +f.since || 0 }));
+  if (m.wt && typeof m.wt === 'object') G.wt = m.wt;
+  if (Array.isArray(m.pu)) G.pup = m.pu.map(v => Number.isInteger(v) ? v : -1); else if (m.pu === null) G.pup = null;
+  if (m.trc && typeof m.trc === 'object') G.truce = m.trc;
+  if (m.fm && typeof m.fm === 'object') { const fm = famUnsnap(m.fm); if (fm) { G.fam = fm; if (FM.open) updFam(); } }
+  if (Array.isArray(m.fx)) G.fac = m.fx.filter(f => f && Array.isArray(f.m)).map(f => ({ id: f.id | 0, name: clip(f.name, 40) || 'Союз', lead: f.lead | 0, m: f.m.filter(Number.isInteger), t: Number.isInteger(f.t) ? f.t : -1, since: +f.since || 0 }));
   if (m.qo && typeof m.qo === 'object') { G.qo = {}; for (const k in m.qo) if (Array.isArray(m.qo[k]) && m.qo[k].length === 4) G.qo[k] = m.qo[k].map(v => v | 0); }
   if (m.to && typeof m.to === 'object') { G.tacO = {}; for (const k in m.to) if (Number.isFinite(+m.to[k])) G.tacO[k] = +m.to[k]; }
   if (Array.isArray(m.ex)) G.exiles = m.ex.filter(e => e && typeof e === 'object').slice(0, 20).map(e => ({ id: e.id | 0, nm: clip(e.nm, 30), key: clip(e.key, 60), kind: e.kind | 0, from: e.from | 0, t: +e.t || 0, was: clip(e.was, 50) }));
@@ -1856,6 +1989,10 @@ function applyState(m) {
   if (Array.isArray(m.ld)) G.ldead = m.ld.map(v => v && typeof v === 'object' ? { nm: clip(v.nm, 40), key: clip(v.key, 60), kind: v.kind | 0, t: clip(v.t, 40) } : null);
   if (Array.isArray(m.plr)) G.pleader = m.plr.map(P => P && typeof P === 'object' ? Object.fromEntries(Object.entries(P).filter(([k, v]) => PARTIES[k] && v && typeof v === 'object').map(([k, v]) => [k, { nm: clip(v.nm, 30), id: v.id | 0, pk: typeof v.pk === 'string' && v.pk.startsWith('CU|') ? clip(v.pk, 40) : undefined }])) : null);
   if (Array.isArray(m.pf)) G.pfund = m.pf.map(v => +v || 0);
+  if (Array.isArray(m.ih)) G.inh = m.ih.slice(0, 200).filter(c => c && typeof c === 'object').map(c => ({ id: c.id | 0, p: c.p | 0, q: c.q | 0, x: c.x | 0, w: c.w === 'death' ? 'death' : 'wed', t: +c.t || 0, u: c.u & 15 }));
+  if (Array.isArray(m.iT)) G.inhT = m.iT.slice(0, 64).map(L => Array.isArray(L) ? L.slice(0, 20).filter(t => t && typeof t === 'object').map(t => ({ q: t.q | 0, nm: clip(t.nm, 60) })) : null);
+  if (m.iC && typeof m.iC === 'object' && !Array.isArray(m.iC)) { G.inhC = {}; for (const k in m.iC) if (/^\d+:\d+$/.test(k)) G.inhC[k] = 1; }
+  if (Array.isArray(m.cf)) G.cf = m.cf.slice(0, 64).map(v => v == null ? null : Math.max(0, Math.min(100, +v || 0)));
   if (Array.isArray(m.vl)) G.vacL = m.vl.map(v => v ? 1 : 0);
   if (Array.isArray(m.gu)) G.genUp = m.gu.map(P => Array.isArray(P) ? P.map(v => v === 2 ? 2 : v ? 1 : 0) : null);
   if (Array.isArray(m.war)) G.war = m.war;
@@ -1863,7 +2000,7 @@ function applyState(m) {
   if (Array.isArray(m.js)) G.just = m.js;
   if (Array.isArray(m.tr)) G.tr = m.tr;
   if (Array.isArray(m.ay)) G.ally = m.ay;
-  if (Array.isArray(m.of)) G.offers = m.of.map(r => ({ id: r[0], k: r[1], a: r[2], b: r[3], t: r[4], g: r[5], n: r[6], price: r[7] }));
+  if (Array.isArray(m.of)) G.offers = m.of.map(r => ({ id: r[0], k: r[1], a: r[2], b: r[3], t: r[4], g: r[5], n: r[6], price: r[7], pv: Array.isArray(r[8]) ? r[8].filter(Number.isInteger) : null }));
   if (Array.isArray(m.cv)) G.convoys = m.cv.map(r => ({ id: r[0], a: r[1], b: r[2], g: r[3], amt: r[4], path: r[5], s: r[6], t0: r[7], dur: r[8], k: r[9] ? 'run' : 'buy', leg: r[10] | 0 }));
   if (Array.isArray(m.al)) G.alive = m.al;
   if (Number.isFinite(m.pc)) G.peace = m.pc;
@@ -1996,10 +2133,18 @@ function onData(m, from) {
     if (Number.isInteger(m.k) && Number.isInteger(m.i) && promoteCol(from, m.k, m.i)) pushSnap();
   } else if (m.t === 'opp') {
     if (doOpp(from, m.a)) pushSnap();
+  } else if (m.t === 'fam') {
+    if (famCmd(from, String(m.a || ''), m.id | 0, m.x)) pushSnap();
+  } else if (m.t === 'peace') {
+    if (Number.isInteger(m.to) && proposePeace(from, m.to, { pv: Array.isArray(m.pv) ? m.pv.slice(0, 400) : [], pup: m.pup ? 1 : 0, gold: Math.max(0, Math.min(100000, m.gold | 0)) })) pushSnap();
   } else if (m.t === 'emig') {
     if (emigrate(from, m.q | 0, m.kind, m.k | 0, m.sl)) pushSnap();
   } else if (m.t === 'capt') {
     if (captAct(from, m.id | 0, String(m.pid || ''), m.act, Number.isInteger(m.n) ? m.n : -1)) pushSnap();
+  } else if (m.t === 'inh') {
+    if (inhAct(from, m.id | 0, String(m.a || ''))) pushSnap();
+  } else if (m.t === 'cf') {
+    if (cfGift(from)) pushSnap();
   } else if (m.t === 'parl') {
     if ((m.a === 'camp' || m.a === 'early') && doParl(from, m.a)) pushSnap();
   } else if (m.t === 'tacOpen') {
@@ -3033,12 +3178,62 @@ function emigOffers(pi) {
     for (let k = 1; k < 4; k++) if (G.genDead[q][k] && !humanArmy(q, k) && !colOf(q)[k].some(c => c && !c.v)) out.push({ q, kind: 'gen', k, txt: 'Генерал армии №' + k + ' страны ' + pname(q) });
     for (const sl of COURT_SLOTS) if (!courtOf(q)[sl]) out.push({ q, kind: 'min', sl, txt: courtTitle(q, sl) + ' в стране ' + pname(q) });
   }
+  // страны живых игроков: просьба уходит правителю, он сам выбирает пост
+  for (let q = 0; q < NP(); q++) {
+    if (q === me.c || q === pi || !G.alive[q] || bots[q]) continue;
+    const ru = G.role ? G.role.findIndex((R, i) => R && R.c === q && R.kind === 'ruler') : -1; if (ru < 0) continue;
+    if (!hemigPosts(q).length) continue;
+    out.unshift({ q, kind: 'ask', txt: '🙏 В правительство страны ' + pname(q) + ' (игрок ' + (G.players[ru].humanName || pname(ru)) + ' выберет пост)' });
+  }
   return out;
+}
+// посты, которые правитель-игрок может отдать другому игроку: любой министр (кроме постов игроков), генералы армий №1–3 (кроме армий игроков)
+function hemigPosts(q) {
+  const out = [], C = courtOf(q);
+  COURT_SLOTS.forEach((sl, i) => { if (!(C[sl] && Number.isInteger(C[sl].human))) out.push(i); });
+  for (let k = 1; k < 4; k++) if (!humanArmy(q, k)) out.push(10 + k);
+  return out;
+}
+function hemigTxt(q, n) {
+  if (n >= 10) { const k = n - 10, nm = (G.players[q].genNames && G.players[q].genNames[k]) || ''; return 'Генерал армии №' + k + (G.genDead[q][k] ? ' — пост пуст' : nm ? ' — вместо ' + stripRank(nm) : ''); }
+  const sl = COURT_SLOTS[n], c = courtOf(q)[sl]; return courtTitle(q, sl) + (c ? ' — вместо ' + stripRank(c.nm) : ' — пост пуст');
+}
+function hemigAccept(q, o, n) {   // правитель q принимает игрока o.a на пост n
+  const pi = o.a, R = roleOf(pi);
+  if (!R || !(R.kind === 'opp' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
+  if (!hemigPosts(q).includes(n)) return false;
+  const wasKind = R.kind, from = R.c, pl = G.players[pi], nm = (pl.humanName || pl.leader || 'Эмигрант').slice(0, 24), key = 'EMI|' + pi;
+  let txt;
+  if (n >= 10) {
+    const k = n - 10; txt = 'генерал армии №' + k;
+    G.genDead[q][k] = 0; if (G.genUp && G.genUp[q]) G.genUp[q][k] = 0; if (G.genLoy) G.genLoy[q][k] = 100;
+    if (!G.genOv) G.genOv = []; if (!G.genOv[q]) G.genOv[q] = [null, null, null, null]; G.genOv[q][k] = { nm: 'Ген. ' + nm, key };
+    G.players[q].genNames = G.players[q].genNames || ['', '', '', '']; G.players[q].genNames[k] = 'Ген. ' + nm; genOvVer++;
+    setRole(pi, { c: q, kind: 'gen', k });
+    if (!G.units.some(u => u.p === q && u.g === k)) { const all = G.units.filter(u => u.p === q && !u.g); all.slice(0, Math.max(1, Math.ceil(G.units.filter(u => u.p === q).length * 0.2))).forEach(u => { u.g = k; }); }
+    ensureHQ(q, k);
+  } else {
+    const sl = COURT_SLOTS[n]; txt = courtTitle(q, sl).toLowerCase();
+    courtOf(q)[sl] = { nm, tr: Math.floor(Math.random() * 3), t: G.gt, id: 1 + Math.floor(Math.random() * 1e9), pk: key, pkind: 0, human: pi };
+    if (G.cdead && G.cdead[q]) delete G.cdead[q][sl];
+    setRole(pi, { c: q, kind: 'min', sl });
+  }
+  if (!bots[pi] && G.alive[pi]) bots[pi] = { level: 1, next: G.gt + 1, nextDip: 0, target: -1, oppOf: 1 };   // покинутую страну ведёт ИИ
+  if (wasKind === 'ruler' && G.alive[from]) { if (!G.vacL) G.vacL = []; G.vacL[from] = 1; leaderVer++; }
+  G.rate = null;
+  addNews('dip', 'Изгнанник в правительстве!', nm + ' из павшей страны ' + pname(from) + ' вошёл в правительство страны ' + pname(q) + ': ' + txt + '.', true, '', { k: 'person', p: q, key, kind: 0, ps: [q, from] });
+  return true;
 }
 function emigrate(pi, q, kind, k, sl) {
   const R = roleOf(pi); if (!R || !(R.kind === 'opp' || R.kind === 'exile' || (R.kind === 'ruler' && capFallen(R.c)))) return false;
   const wasKind = R.kind;
-  const o = emigOffers(pi).find(x => x.q === q && x.kind === kind && (kind === 'gen' ? x.k === k : x.sl === sl)); if (!o) return false;
+  const o = emigOffers(pi).find(x => x.q === q && x.kind === kind && (kind === 'gen' ? x.k === k : kind === 'ask' ? true : x.sl === sl)); if (!o) return false;
+  if (kind === 'ask') {
+    if (G.offers.some(x => x.k === 'hemig' && x.a === pi && x.b === q)) return false;
+    G.offers.push({ id: G.nextOff++, k: 'hemig', a: pi, b: q, t: G.gt, g: 0, n: 0 });
+    addLog('🙏 ' + (G.players[pi].humanName || pname(pi)) + ' просится в правительство страны ' + pname(q));
+    return true;
+  }
   const rel = G.alive[R.c] ? G.rel[q][R.c] : 0; if (rel < -20 || (G.alive[R.c] && atWar(q, R.c))) { addNews('dip', 'Прошение отклонено', 'Страна ' + pname(q) + ' отказала эмигранту из страны ' + pname(R.c) + '.', true); return false; }
   const pl = G.players[pi], nm = (pl.humanName || pl.leader || 'Эмигрант').slice(0, 24), key = 'EMI|' + pi;
   if (kind === 'gen') {
@@ -3218,6 +3413,8 @@ function defectDay(p) {
     addExile(p, c.nm, key, kind, 'бывший ' + ttl.toLowerCase(), 1);
     addNews('crisis', 'Министр бежал за границу!', ttl + ' страны ' + nmC + ' ' + c.nm + ' бежал за границу, ' + defectWhy(p) + '. Пост пустует — повысьте кого-нибудь из подчинённых.', p === myP(), 'Бонус должности пропал', { k: 'person', p, key, kind, ps: [p] });
   }
+  // адмирал — тоже может сбежать, если страна в смуте
+  if (!G.genDead[p][0] && Math.random() < base / 1200) admLeave(p, '', 1);
   // генералы
   for (let k = 1; k < 4; k++) {
     if (G.genDead[p][k] || humanArmy(p, k)) continue;
@@ -3334,6 +3531,7 @@ const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 
 const DEATH_HOW = ['скончался от лихорадки', 'умер от старости', 'погиб на дуэли', 'скончался от холеры', 'убит заговорщиками', 'погиб при крушении кареты', 'умер от удара'];
 function courtDies(p, sl, how) {
   const C = courtOf(p), old = C[sl]; if (!old) return;
+  if (old.pk && /^F\|\d+$/.test(old.pk) && G.fam) { const h = famP(+old.pk.slice(2)); if (h && !h.d) { h.post = ''; famKill(h, clip(String(how || 'погиб на службе').replace(/^(погиб|скончался|умер)\s*/, ''), 50) || 'на службе'); } }
   if (!G.cdead) G.cdead = []; if (!G.cdead[p]) G.cdead[p] = {}; G.cdead[p][sl] = { nm: old.nm, key: old.pk || ('C|' + (G.players[p].baseName || G.players[p].name) + '|' + sl + '|' + old.id), kind: old.pk ? old.pkind | 0 : (sl === 'war' ? 1 : 0) };
   C[sl] = null;   // место пустует, пока кого-нибудь не повысят
   const pl = G.players[p], ttl = courtTitle(p, sl);
@@ -3377,10 +3575,12 @@ const leaderKey = p => { const pl = G.players[p], ov = G.leaderOv && G.leaderOv[
 function mortalDay(p) {
   const war = inWar(p), k = (war ? 2.5 : 1) * (courtOf(p).int ? 0.7 : 1.6);   // министр внутренних дел раскрывает заговоры
   if (!courtOf(p).int && Math.random() < 1 / (365 * 6)) { const sl = COURT_SLOTS.filter(x => courtOf(p)[x]); if (Math.random() < 0.4) leaderDies(p, 'убит заговорщиками'); else if (sl.length) courtDies(p, sl[Math.floor(Math.random() * sl.length)], 'убит заговорщиками'); return; }
-  if (courtOf(p).heir && Math.random() < k / (365 * 25)) { const h = courtOf(p).heir; courtOf(p).heir = null; addNews('crisis', 'Наследник скончался!', 'Наследник престола страны ' + pname(p) + ' ' + h.nm + ' ' + DEATH_HOW[Math.floor(Math.random() * DEATH_HOW.length)] + '. Двор в трауре.', p === myP(), 'Нужно назначить нового наследника', { k: 'person', p, key: h.pk || 'H|' + h.id, kind: 0, dead: 1, ps: [p] }); }
+  if (courtOf(p).heir && !(courtOf(p).heir.pk && /^F\|/.test(courtOf(p).heir.pk)) && Math.random() < k / (365 * 25)) { const h = courtOf(p).heir; courtOf(p).heir = null; addNews('crisis', 'Наследник скончался!', 'Наследник престола страны ' + pname(p) + ' ' + h.nm + ' ' + DEATH_HOW[Math.floor(Math.random() * DEATH_HOW.length)] + '. Двор в трауре.', p === myP(), 'Нужно назначить нового наследника', { k: 'person', p, key: h.pk || 'H|' + h.id, kind: 0, dead: 1, ps: [p] }); }
   for (const sl of COURT_SLOTS) if (courtOf(p)[sl] && Math.random() < k / (365 * 14)) courtDies(p, sl, DEATH_HOW[Math.floor(Math.random() * DEATH_HOW.length)]);
   if (Math.random() < k / (365 * 18)) leaderDies(p, DEATH_HOW[Math.floor(Math.random() * DEATH_HOW.length)]);
+  if (!G.genDead[p][0] && Math.random() < (war ? 1.5 : 1) / (365 * 16)) admLeave(p, ADM_HOW[Math.floor(Math.random() * ADM_HOW.length)], 0);   // адмирал тоже смертен
 }
+const ADM_HOW = ['скончался от лихорадки', 'умер от цинги в дальнем походе', 'скончался от холеры', 'умер от старых ран', 'утонул, упав за борт в шторм', 'скончался от сердечного приступа', 'умер от тифа'];
 // ===== ПОРУЧЕНИЯ ЧИНОВНИКАМ =====
 const OFF_ACT = {
   holy: { sl: 'faith', gold: 300, cd: 365, name: 'Священная война', txt: 'Глава веры объявляет иноверцев врагами: цели войны против страны другой веры оправданы сразу, отношения падают до −70' },
@@ -3566,6 +3766,7 @@ function focusDay() {
     try { defectDay(p); } catch (e) { console.error(e); }   // недовольные бегут за границу
     try { assemblyDay(p); } catch (e) { console.error(e); }   // анархизм: собрание
     parlDay(p);
+    try { cfDay(p); } catch (e) { console.error(e); }   // мнение совета
     if (p === 0) { roleDay(); exileDay(); captDay(); }
     if (bots[p] && hasParl(p) && parlOf(p) && G.parl[p].next - G.gt < 200 && parlStatus(p) !== 'maj' && !parlWhy(p, 'camp') && G.res[p].gold > 700) doParl(p, 'camp');
     if (bots[p]) botFillPosts(p);
@@ -3617,7 +3818,7 @@ function doReform(p, kind, v) {
   const pl = G.players[p];
   G.res[p].gold -= REFORM[kind]; G.dec[p][kind] = G.gt + REFORM.CD;
   if (kind === 'ideo') {
-    const old = IDEO[pl.ideo].name; pl.ideo = v;
+    const old = IDEO[pl.ideo].name; pl.ideo = v; if (G.cf) G.cf[p] = null;   // новый строй — новый совет
     if (pl.baseName) { pl.name = pl.baseName; nameVer++; }   // прежние провозглашения теряют силу
     restoreColor(pl);
     for (const d of IDECS) { delete G.dec[p]['o_' + d.id]; delete G.dec[p]['x_' + d.id]; }
@@ -3675,7 +3876,7 @@ function grimDay(q) {
 }
 // раз в день: восстания и лояльность генералов
 function lawDay() {
-  if (G.offers) G.offers = G.offers.filter(o => !(o.k === 'call' && (atWar(o.b, o.g) || !atWar(o.a, o.g) || !allied(o.a, o.b))) && G.gt - o.t < 30 && (G.alive[o.a] || o.k === 'emig') && G.alive[o.b]);   // предложения ждут ответа 30 дней
+  if (G.offers) G.offers = G.offers.filter(o => !(o.k === 'call' && (atWar(o.b, o.g) || !atWar(o.a, o.g) || !allied(o.a, o.b))) && !(o.k === 'peace' && !atWar(o.a, o.b)) && G.gt - o.t < 30 && (G.alive[o.a] || o.k === 'emig' || o.k === 'hemig') && G.alive[o.b]);   // предложения ждут ответа 30 дней
   if (G.tr && Math.floor(G.gt) % 10 === 0) {   // раз в 10 дней: торговые партнёры и страны с общим врагом сближаются (+1)
     const N = NP();
     for (let a = 0; a < N; a++) for (let b = a + 1; b < N; b++) {
@@ -3755,10 +3956,60 @@ const offerPending = (a, b, k) => G.offers.some(o => o.k === k && ((o.a === a &&
 const tradeDeal = b => Math.min(20, 3 + 0.04 * (G.popTot ? G.popTot[b] : 0) / 1000);
 const justDone = (p, q) => !!(G.just[p][q] && G.gt - G.just[p][q] >= DIP.JUSTIFY);
 // почему страна p не может сейчас сделать действие против q (null — можно)
+// ===================== МНЕНИЕ СОВЕТА =====================
+// у советов без парламента (Совнарком, Политбюро, советы монархий, Партия, Совет старейшин) есть своё мнение о правителе 0–100
+const CF_ON = p => { const pl = G.players[p]; if (!pl || noRuler(p)) return false; const H = hierOf(p); return !!(H.council && !hasParl(p)); };
+const CF_WAR = [30, 30, 0, 30, 0, 0, 55, 0, 0];   // ниже этого мнения совет запрещает объявлять войну
+const CF_GIFT = 200, CF_GIFT_CD = 60;
+function cfOf(p) { if (!G.cf) G.cf = []; if (G.cf[p] == null) G.cf[p] = 60; return G.cf[p]; }
+const cfLvl = v => v >= 75 ? 'доволен' : v >= 30 ? 'спокоен' : v >= 12 ? 'недоволен' : 'зреет заговор';
+const cfCol = v => v >= 75 ? '#7fd07f' : v >= 30 ? '#d8c27a' : v >= 12 ? '#e0904a' : '#e05050';
+function cfLikes(p) {
+  const i = G.players[p].ideo;
+  if (i === 6) return 'Любит мир: пока нет войны — мнение растёт, война его роняет. Объявление войны −15, мир +8, потеря провинции −2. Ниже 55 — запрещает объявлять войны.';
+  if (i === 5) return 'Любит войну: на войне мнение растёт, в мирное время падает. Захват провинции +1, потеря −2, проигранный мир −8. Войну не запрещает никогда.';
+  if (i === 3) return 'Любит порядок престолонаследия: есть наследник — мнение растёт, нет — падает. Победный мир +4, проигранный −6, потеря провинции −2. Ниже 30 — запрещает войны.';
+  return 'Любит победы и полную казну: захват провинции +1, потеря −2, долги в казне роняют мнение. Победный мир +4, проигранный −6. Ниже 30 — запрещает войны.';
+}
+const CF_EFF = 'Выше 75 — бафф совета удвоен. Ниже 30 — бафф пропадает, −5% лояльности, +5% риск восстаний. Ниже 12 — совет может устроить переворот и сместить правителя.';
+function cfAdd(p, d, why) {
+  if (!d || !G.alive[p] || !CF_ON(p)) return; const o = cfOf(p); G.cf[p] = Math.max(0, Math.min(100, o + d));
+  if (p === G.me && why && Math.abs(d) >= 3) addLog((d > 0 ? '🙂 ' : '😠 ') + hierOf(p).council.nm + ': ' + why + ' (' + (d > 0 ? '+' : '') + Math.round(d) + ', мнение ' + Math.round(G.cf[p]) + ')');
+}
+function cfDay(p) {
+  if (!G.alive[p] || !CF_ON(p)) return;
+  const i = G.players[p].ideo, w = inWar(p), o = cfOf(p); let d = (50 - o) * 0.0015;
+  if (i === 6) d += w ? -0.08 : 0.04;
+  else if (i === 5) d += w ? 0.06 : -0.03;
+  else if (i === 3) d += courtOf(p).heir ? 0.03 : -0.02;
+  else d += G.res[p].gold < 0 ? -0.1 : 0.01;
+  G.cf[p] = Math.max(0, Math.min(100, o + d));
+  if (o >= 30 && G.cf[p] < 30 && p === G.me) addLog('⚠ ' + hierOf(p).council.nm + ' недоволен правителем: бафф совета пропал. Задобрите совет или дайте ему то, что он любит.');
+  if (bots[p] && G.cf[p] < 40 && G.res[p].gold > CF_GIFT * 3) cfGift(p);
+  if (G.cf[p] < 12 && !(G.vacL && G.vacL[p]) && Math.random() < 1 / 90) {   // переворот
+    const nm = hierOf(p).council.nm; G.cf[p] = 55;
+    addNews('crisis', 'Переворот!', nm + ' страны ' + pname(p) + ' сместил правителя ' + G.players[p].leader + '.', p === myP(), 'Новый глава — по решению совета');
+    leaderDies(p, i === 3 ? 'убит заговорщиками-сановниками (' + nm + ')' : 'погиб при перевороте: так решил «' + nm + '»');
+  }
+}
+function cfWhy(p) {
+  if (!CF_ON(p)) return 'В стране нет такого совета';
+  if (G.res[p].gold < CF_GIFT) return 'Нужно ' + CF_GIFT + ' золота';
+  const D = G.dec[p] || {}; if (G.gt < (D.cfT || 0)) return 'Совет недавно задобрен: ещё ' + Math.ceil(D.cfT - G.gt) + ' дн.';
+  if (cfOf(p) >= 95) return 'Совет и так доволен';
+  return null;
+}
+function cfGift(p) {
+  if (cfWhy(p)) return false; G.res[p].gold -= CF_GIFT; if (!G.dec[p]) G.dec[p] = {}; G.dec[p].cfT = G.gt + CF_GIFT_CD;
+  cfAdd(p, 12, 'подарки, ордена и почести членам совета'); return true;
+}
+function cfGiftUI() { if (isHost) { if (cfGift(G.me)) pushSnap(); else flash(cfWhy(G.me) || ''); } else send({ t: 'cf' }); ctKey = ''; }
+
 function dipWhy(p, act, q) {
   if (G.winner !== -1) return 'Игра окончена';
   if (!(q >= 0 && q < NP()) || q === p) return 'Выберите другую страну';
   if (!G.alive[q]) return 'Этой страны больше нет';
+  if ((act === 'ally' || act === 'unally') && G.pup && G.pup[p] >= 0) return 'Марионетка не распоряжается союзами';
   { const fw = facWhy(p, act, q); if (fw) return fw; if (act === 'ally' && facOf(q) && !facOf(p)) q = facOf(q).lead; if (q === p) return 'Вы уже в этом союзе'; }
   const gold = G.res[p].gold, r = G.rel[p][q], w = atWar(p, q);
   if (act === 'insult') { if (w) return 'Уже война'; if (gold < DIP.INSULT) return 'Нужно ' + DIP.INSULT + ' золота'; if (r <= -100) return 'Хуже уже некуда'; }
@@ -3766,10 +4017,13 @@ function dipWhy(p, act, q) {
   if (act === 'justify') { if (w) return 'Уже война'; if (G.just[p][q]) return justDone(p, q) ? 'Цели войны оправданы' : 'Оправдание уже идёт'; if (r > DIP.WAR_REL) return 'Нужны отношения ' + DIP.WAR_REL + ' или хуже'; }
   if (act === 'war') {
     if (w) return 'Война уже идёт';
+    if (CF_ON(p) && !(G.pup && G.pup[p] === q) && cfOf(p) < CF_WAR[G.players[p].ideo]) return hierOf(p).council.nm + ' против войны: мнение ' + Math.round(cfOf(p)) + ', нужно ' + CF_WAR[G.players[p].ideo];
+    if (G.truce && G.truce[pk2(p, q)] > G.gt) return 'Перемирие: ещё ' + Math.ceil(G.truce[pk2(p, q)] - G.gt) + ' дн.';
+    if (G.pup && G.pup[p] >= 0) { if (G.pup[p] !== q) return 'Марионетка не объявляет войн сама'; const pw = powers(); return pw[p] >= pw[q] * 0.5 ? null : 'Для войны за независимость нужно хотя бы 50% силы сюзерена'; }
     if (allied(p, q)) return 'Это ваш союзник — сначала разорвите союз';
     if (G.gt < G.peace) return 'Мирный период: ещё ' + Math.ceil(G.peace - G.gt) + ' дн.';
     if (allyAtWarWith(p, q)) return null;   // помощь союзнику: без оправдания и без вражды
-    if (r > DIP.WAR_REL) return 'Нужны отношения ' + DIP.WAR_REL + ' или хуже';
+    if (r > DIP.WAR_REL && !(G.inhC && G.inhC[p + ':' + q])) return 'Нужны отношения ' + DIP.WAR_REL + ' или хуже';
     if (!justDone(p, q)) return G.just[p][q] ? 'Цели войны ещё оправдываются' : 'Сначала оправдайте цели войны';
   }
   if (act === 'trade') { if (w) return 'Идёт война'; if (trading(p, q)) return 'Договор уже действует'; if (r < DIP.TRADE_REL) return 'Нужны отношения ' + DIP.TRADE_REL + ' или лучше'; if (offerPending(p, q, 'trade')) return 'Предложение уже отправлено'; }
@@ -3922,6 +4176,7 @@ function facDay() {
 // команды игрока: выйти, исключить, переименовать
 function facCmdDo(p, a, q, n) {
   const f = facOf(p); if (!f) return false;
+  if (a === 'leave' && G.pup && G.pup[p] >= 0) return false;
   if (a === 'leave') { facLeave(p, -1); recount(); return true; }
   if (a === 'kick' && f.lead === p && q !== p && f.m.includes(q)) { facLeave(q, p); recount(); return true; }
   if (a === 'rename' && f.lead === p) { const nm = clip(n, 40); if (nm.length >= 2 && !G.fac.some(x => x !== f && x.name === nm)) { addLog('✏ Союз «' + f.name + '» теперь называется «' + nm + '»'); f.name = nm; return true; } }
@@ -3935,6 +4190,765 @@ function facCmd(a, q) {
   if (a === 'rename') { n = prompt('Новое название союза:', f.name) || ''; if (clip(n, 40).length < 2) return; }
   if (isHost) { facCmdDo(G.me, a, q, n); pushSnap(); refresh(); } else send({ t: 'fac', a, q, n });
   alKey = ''; setTimeout(updAllyPanel, 80);
+}
+
+// ===================== ДИНАСТИИ: супруги, дети, возраст, наследники, браки между дворами, кровь =====================
+const FEM_FN = ['Мария', 'Елизавета', 'Анна', 'Екатерина', 'Александра', 'Виктория', 'Луиза', 'Шарлотта', 'Амалия', 'Софья', 'Изабелла', 'Тереза', 'Каролина', 'Ольга', 'Хелена', 'Матильда', 'Фатима', 'Айше', 'Мэй', 'Лин', 'Беатриса', 'Евгения', 'Аделаида', 'Вильгельмина', 'Жозефина', 'Агата', 'Клотильда', 'Маргарита', 'Диана', 'Леонора'];
+const MAL_FN = ['Карл', 'Фридрих', 'Александр', 'Луи', 'Генрих', 'Отто', 'Пётр', 'Фердинанд', 'Николай', 'Вильгельм', 'Франц', 'Максимилиан', 'Рудольф', 'Эрнст', 'Константин', 'Леопольд', 'Густав', 'Альберт', 'Иоганн', 'Мехмед', 'Ибрагим', 'Ли', 'Педро', 'Филипп', 'Людвиг', 'Эдуард', 'Георг', 'Михаил', 'Виктор', 'Оскар'];
+const FEM_TITLE = { 'Король': 'Королева', 'Царь': 'Царица', 'Император': 'Императрица', 'Султан': 'Султанша', 'Эмир': 'Эмира', 'Хранитель': 'Хранительница', 'Князь': 'Княгиня', 'Великий князь': 'Великая княгиня', 'Герцог': 'Герцогиня', 'Великий герцог': 'Великая герцогиня', 'Кайзер': 'Кайзерина', 'Шах': 'Шахиня', 'Хан': 'Ханша' };
+const FEMV = new Set(Object.values(FEM_TITLE));
+const famP = id => (G && G.fam && G.fam.P[id]) || null;
+const famAge = h => Math.max(0, Math.floor((G.gt - h.b) / 365));
+const famKey = h => h.pk || 'F|' + h.id;
+const rndName = f => { const L = f ? FEM_FN : MAL_FN; return L[Math.floor(Math.random() * L.length)]; };
+function blMix(a, b) { const o = {}; for (const k in a) o[k] = (o[k] || 0) + a[k] / 2; for (const k in b) o[k] = (o[k] || 0) + b[k] / 2; return o; }
+function blTxt(bl) { return Object.entries(bl || {}).sort((x, y) => y[1] - x[1]).map(([k, v]) => Math.round(v * 100) + '% ' + (G.players[k] ? pname(+k) : '?')).join(', '); }
+const famRK = p => (G.vacL && G.vacL[p] ? 'V' : '') + (noRuler(p) ? 'N' : '') + leaderKey(p) + '|' + G.players[p].leader;
+const famRuler = p => { const h = G.fam && G.fam.r[p] && G.alive[p] ? famP(G.fam.r[p]) : null; return h && !h.d ? h : null; };
+const famIsRuler = h => { if (!G.fam || !h || h.d) return false; const p = G.fam.r.indexOf(h.id); return p >= 0 && !!G.alive[p]; };
+function famNew(o) {
+  const id = ++G.fam.n;
+  const h = Object.assign({ id, nm: '', f: 0, b: G.gt, c: -1, p: -1, bl: {}, pa: [], sp: 0, ex: [], k: [], d: 0, dt: 0, post: '' }, o);
+  G.fam.P[id] = h; G.fam.v++; return h;
+}
+function famWedRaw(a, b) { a.sp = b.id; b.sp = a.id; G.fam.v++; }
+function famNewRuler(p, start) {
+  G.fam.rk[p] = famRK(p);
+  if (!G.alive[p] || noRuler(p) || (G.vacL && G.vacL[p])) { G.fam.r[p] = 0; return; }
+  const pl = G.players[p];
+  let f = 0;
+  if (start && bots[p] && Math.random() < 0.25) {   // у ботов иногда правит женщина
+    f = 1; const nm = rndName(1); pl.leader = nm;
+    const h0 = famNew({ nm, f: 1, b: G.gt - (20 + Math.random() * 10) * 365, c: p, p, bl: { [p]: 1 } });
+    if (!G.leaderOv) G.leaderOv = []; G.leaderOv[p] = { key: 'F|' + h0.id, nm, kind: 3 }; leaderVer++;
+    G.fam.r[p] = h0.id; G.fam.rk[p] = famRK(p);
+    const s = famNew({ nm: rndName(0), f: 0, b: G.gt - (20 + Math.random() * 10) * 365, c: p, p, bl: { [p]: 1 } }); famWedRaw(h0, s);
+    return;
+  }
+  const age = start ? 20 + Math.random() * 10 : 30 + Math.random() * 20;
+  const h = famNew({ nm: pl.leader || 'Правитель', f, b: G.gt - age * 365, c: p, p, bl: { [p]: 1 }, pk: leaderKey(p) });
+  G.fam.r[p] = h.id;
+  if (start && pl.spName !== undefined && !bots[p]) {   // супруг(а) игрока — из редактора страны
+    const sf = pl.spF === 0 ? 0 : 1, s = famNew({ nm: pl.spName || rndName(sf), f: sf, b: h.b + (Math.random() * 6 - 2) * 365, c: p, p, bl: { [p]: 1 }, pk: pl.spPhoto ? 'SPH|' + p : undefined }); famWedRaw(h, s);
+  } else if (start || Math.random() < 0.7) { const s = famNew({ nm: rndName(1 - f), f: 1 - f, b: h.b + (Math.random() * 8 - 3) * 365, c: p, p, bl: { [p]: 1 } }); famWedRaw(h, s); }
+}
+function famInit() {
+  if (G.fam) return;
+  G.fam = { P: {}, r: [], rk: [], tb: [], n: 0, v: 1 };
+  for (let p = 0; p < NP(); p++) famNewRuler(p, true);
+}
+// предыстория: у правителей есть родители, братья и сёстры; часть из них уже замужем/женаты при соседних дворах — паутина с первого дня
+function famAncestry() {
+  const sib = [], N = NP();
+  for (let p = 0; p < N; p++) {
+    const r = famRuler(p); if (!r) continue;
+    const fa = famNew({ nm: rndName(0), f: 0, b: r.b - (24 + Math.random() * 10) * 365, c: p, p, bl: { [p]: 1 } });
+    const mo = famNew({ nm: rndName(1), f: 1, b: fa.b + (2 + Math.random() * 6) * 365, c: p, p, bl: { [p]: 1 } });
+    famWedRaw(fa, mo); fa.d = 1; fa.dt = -Math.floor(Math.random() * 3 * 365) - 30;   // прежний правитель — покойный отец
+    if (Math.random() < 0.4) { mo.d = 1; mo.dt = -Math.floor(Math.random() * 8 * 365) - 30; }
+    r.pa = [fa.id, mo.id]; fa.k.push(r.id); mo.k.push(r.id);
+    const n = 1 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < n; i++) {
+      const f = Math.random() < 0.5 ? 1 : 0, b = Math.min(G.gt - 3 * 365, r.b + (Math.random() * 16 - 8) * 365);
+      const s0 = famNew({ nm: rndName(f), f, b, c: p, p, bl: { [p]: 1 }, pa: [fa.id, mo.id] }); fa.k.push(s0.id); mo.k.push(s0.id);
+      if (famAge(s0) >= 18) sib.push(s0);
+    }
+  }
+  for (let i = sib.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [sib[i], sib[j]] = [sib[j], sib[i]]; }
+  for (const a of sib) {
+    if (a.sp || Math.random() > 0.8) continue;
+    const t = sib.find(b => !b.sp && b !== a && b.c !== a.c && b.f !== a.f); if (!t) continue;
+    const hu = a.f ? t : a, wi = a.f ? a : t; famWedRaw(hu, wi); wi.p = hu.p;
+    if (G.alive[hu.c] && G.alive[wi.c]) setRel(hu.c, wi.c, G.rel[hu.c][wi.c] + 10);
+    const yrs = Math.max(0, Math.min(famAge(wi) - 18, 12)), nk = Math.floor(Math.random() * Math.min(4, yrs / 2 + 1));
+    for (let k = 0; k < nk; k++) { const f = Math.random() < 0.5 ? 1 : 0; const c = famNew({ nm: rndName(f), f, b: G.gt - Math.random() * yrs * 365, c: hu.p, p: hu.p, bl: blMix(hu.bl, wi.bl), pa: [hu.id, wi.id] }); hu.k.push(c.id); wi.k.push(c.id); }
+  }
+}
+function famKill(h, how) {
+  if (!h || h.d) return;
+  // кем был человек в момент смерти и от чего умер — для пометки в древе
+  const rp = G.fam.r.indexOf(h.id), sp = G.fam.r.findIndex(id => id && famP(id) && famP(id).sp === h.id);
+  h.dr = rp >= 0 ? 'r' + rp : sp >= 0 ? 's' + sp : (h.p >= 0 && famHeirOf(h.p, h)) ? 'h' + h.p : '';
+  h.dc = clip(how || (famAge(h) < 5 ? 'в младенчестве' : famAge(h) >= 60 ? 'от старости' : 'от болезни'), 60);
+  h.d = 1; h.dt = G.gt; G.fam.v++;
+  if (h.dr && h.dr[0] === 'r') try { inhScan(+h.dr.slice(1), h); } catch (e) { console.error(e); }
+  if (h.post) famUnassign(h.p, h, true);
+}
+const kindOf = h => h.f ? (famAge(h) < 14 ? 5 : 3) : (famAge(h) < 14 ? 4 : 0);
+// наследник: старший потомок правителя при дворе (в абсолютной монархии сыновья вперёд)
+function famHeir(p) {
+  const r = famRuler(p); if (!r) return null;
+  const salic = G.players[p].ideo === 3;
+  const order = h => h.k.map(famP).filter(Boolean).sort((a, b) => salic && a.f !== b.f ? a.f - b.f : a.b - b.b);
+  const dfs = h => { for (const c of order(h)) { if (!c.d && c.p === p && !famIsRuler(c)) return c; const g = dfs(c); if (g) return g; } return null; };
+  const d0 = dfs(r); if (d0) return d0;
+  for (const pid of r.pa) { const par = famP(pid); if (par) { const g = dfs(par); if (g) return g; } }   // нет детей — братья, сёстры и их потомки
+  return null;
+}
+function famSync(p) {
+  const rk = famRK(p);
+  if (rk !== G.fam.rk[p]) {   // правитель сменился (смерть, выборы, переворот, бегство)
+    const old = famRuler(p);
+    if (old && !old.d && G.ldead && G.ldead[p] && G.ldead[p].nm === old.nm) famKill(old, 'скончался');
+    const ov = G.leaderOv && G.leaderOv[p];
+    const hid = ov && /^F\|\d+$/.test(ov.key) ? +ov.key.slice(2) : 0, h = hid ? famP(hid) : null;
+    if (h && !(G.vacL && G.vacL[p]) && !noRuler(p)) { G.fam.r[p] = h.id; h.nm = G.players[p].leader || h.nm; h.p = p; if (h.post) famUnassign(p, h, true); G.fam.rk[p] = rk; G.fam.v++; }
+    else famNewRuler(p, false);
+  }
+  const r = famRuler(p), pl = G.players[p];
+  // титул правительницы
+  if (r && r.f && !FEMV.has(pl.title)) { G.fam.tb[p] = pl.title; pl.title = FEM_TITLE[pl.title] || pl.title; }
+  else if (r && !r.f && FEMV.has(pl.title)) pl.title = G.fam.tb[p] || titleOf(p);
+  // наследник престола — из династии
+  if (r && hierOf(p).heir) {
+    const hh = famHeir(p), C = courtOf(p);
+    if (hh && !(C.heir && C.heir.pk === 'F|' + hh.id)) { C.heir = { nm: (hh.f ? 'Принцесса ' : 'Принц ') + hh.nm, tr: 0, t: G.gt, id: hh.id, pk: 'F|' + hh.id, pkind: hh.f ? 3 : 0 }; leaderVer++; }
+    else if (!hh && C.heir) { C.heir = null; leaderVer++; }   // наследник только из семьи правителя: нет детей — нет наследника
+  }
+  // должности детей: если пост занял кто-то другой — должность снята
+  for (const id in G.fam.P) {
+    const h = G.fam.P[id]; if (!h.post || h.p !== p) continue;
+    if (h.post[0] === 'g') { const k = +h.post[1], ov = G.genOv && G.genOv[p] && G.genOv[p][k]; if (!ov || ov.key !== 'F|' + h.id) { if (G.genDead[p][k] && ov && ov.key === 'F|' + h.id) famKill(h, 'погиб на войне'); h.post = ''; G.fam.v++; } }
+    else { const c = courtOf(p)[h.post]; if (!c || c.pk !== 'F|' + h.id) { h.post = ''; G.fam.v++; } }
+  }
+}
+function famAssign(p, h, post) {
+  if (!h || h.d || h.free || h.p !== p || famAge(h) < 10 || famIsRuler(h)) return false;
+  if (h.post) famUnassign(p, h, false);
+  if (!post) return true;
+  if (/^g[123]$/.test(post)) {
+    const k = +post[1]; if (humanArmy(p, k)) return false;
+    G.genDead[p][k] = 0; if (G.genUp && G.genUp[p]) G.genUp[p][k] = 0; if (G.genLoy) G.genLoy[p][k] = 100;
+    if (!G.genOv) G.genOv = []; if (!G.genOv[p]) G.genOv[p] = [null, null, null, null];
+    const t = (h.f ? 'Принцесса ' : 'Принц ') + h.nm; G.genOv[p][k] = { nm: t, key: 'F|' + h.id };
+    G.players[p].genNames = G.players[p].genNames || ['', '', '', '']; G.players[p].genNames[k] = t; genOvVer++;
+  } else if (COURT_SLOTS.includes(post)) {
+    const c = courtOf(p)[post]; if (c && Number.isInteger(c.human)) return false;
+    courtOf(p)[post] = { nm: (h.f ? 'Принцесса ' : 'Принц ') + h.nm, tr: Math.floor(Math.random() * 3), t: G.gt, id: 1 + Math.floor(Math.random() * 1e9), pk: 'F|' + h.id, pkind: kindOf(h) };
+    if (G.cdead && G.cdead[p]) delete G.cdead[p][post];
+  } else return false;
+  h.post = post; G.fam.v++; G.rate = null; leaderVer++;
+  return true;
+}
+function famUnassign(p, h, dead) {
+  const post = h.post; h.post = ''; G.fam.v++; if (!post || p < 0) return;
+  if (post[0] === 'g') {
+    const k = +post[1], ov = G.genOv && G.genOv[p] && G.genOv[p][k];
+    if (ov && ov.key === 'F|' + h.id) { G.genOv[p][k] = null; if (dead) G.genDead[p][k] = 1; else { G.players[p].genNames[k] = 'Ген. ' + BOT_GEN[Math.floor(Math.random() * BOT_GEN.length)]; } genOvVer++; }
+  } else { const c = courtOf(p)[post]; if (c && c.pk === 'F|' + h.id) { if (dead) courtDies(p, post, 'скончался'); else courtOf(p)[post] = courtPerson(p, post, -1); } }
+  G.rate = null; leaderVer++;
+}
+// кандидаты в супруги для h из страны p: свободные взрослые из чужих династий (не правители), не враги
+function famCands(p, h) {
+  const out = [];   // свободные взрослые других стран: принцы и принцессы, разведённые, вдовы
+  for (const id in G.fam.P) {
+    const t = G.fam.P[id]; if (t.nob || t.d || t.sp || t.p < 0 || t.p === p || !G.alive[t.p] || famAge(t) < 16 || famAge(t) > 55 || famIsRuler(t)) continue;
+    if (atWar(p, t.p) || G.rel[p][t.p] < -20) continue;
+    out.push(t);
+  }
+  return out.sort((a, b) => (a.nob ? 1 : 0) - (b.nob ? 1 : 0) || G.rel[p][b.p] - G.rel[p][a.p]).slice(0, 18);
+}
+function famWed(a, b, court, quiet) {   // b переезжает ко двору court
+  const from = b.p; a.free = 0; b.free = 0;
+  if (b.post && from >= 0) famUnassign(from, b, false);
+  famWedRaw(a, b); b.p = court;
+  try { inhWed(a, b, court); } catch (e) { console.error(e); }
+  if (from >= 0 && from !== court && G.alive[from]) setRel(court, from, G.rel[court][from] + 20);
+  if (!quiet) {
+    const ra = famRuler(court);
+    addNews('dip', 'Королевская свадьба!', (a.f ? 'Принцесса ' : '') + a.nm + ' (' + pname(court) + ') сочетался браком с ' + b.nm + (from >= 0 && from !== court ? ' из страны ' + pname(from) : '') + '.' + (a.f === b.f ? ' Брак однополый — наследников у этой пары не будет.' : '') + (from >= 0 && from !== court ? ' Дворы двух стран породнились: отношения +20.' : ''), court === myP() || from === myP(), '', { k: 'person', p: court, key: famKey(ra && ra.id === a.id ? ra : a), kind: kindOf(a), ps: [court].concat(from >= 0 && from !== court ? [from] : []) });
+  }
+  return true;
+}
+// член правящего дома страны q (потомок правителя или его супруг) — тогда решает правитель
+function famInHouse(q, t) { const r = famRuler(q); if (!r) return false; if (r.sp === t.id) return true; const up = h => { for (const pid of h.pa) { if (pid === r.id) return true; const pp = famP(pid); if (pp && up(pp)) return true; } return false; }; return up(t); }
+// знать: в каждой стране есть свободные графы и графини — женихи и невесты для других дворов
+function famNobles() {
+  for (let q = 0; q < NP(); q++) {
+    if (!G.alive[q]) continue;
+    for (const f of [0, 1]) {
+      let n = 0; for (const id in G.fam.P) { const h = G.fam.P[id]; if (h.nob && !h.d && !h.sp && h.p === q && h.f === f && famAge(h) < 45) n++; }
+      for (; n < 2; n++) famNew({ nm: (f ? 'графиня ' : 'граф ') + rndName(f), f, b: G.gt - (18 + Math.random() * 14) * 365, c: q, p: q, bl: { [q]: 1 }, nob: 1 });
+    }
+  }
+}
+function famRoot(h) { let k = 0; while (h.pa.length && famP(h.pa[0]) && k++ < 60) h = famP(h.pa[0]); return h; }
+function famClan(h) {   // все потомки корня рода и их супруги
+  const S = new Set(), st = [famRoot(h)];
+  while (st.length && S.size < 4000) { const x = st.pop(); if (!x || S.has(x.id)) continue; S.add(x.id); if (x.sp) S.add(x.sp); for (const e of x.ex) S.add(e); for (const k of x.k) st.push(famP(k)); }
+  return S;
+}
+function famTrack(p) {   // помним последнего правителя рода и прежние династии страны — древо не пропадает
+  const F = G.fam; if (!F.lr) F.lr = []; if (!F.old) F.old = [];
+  const id = F.r[p]; if (!id || F.lr[p] === id) return;
+  const o = famP(F.lr[p]), n = famP(id);
+  if (o && n && hierOf(p).heir && !famClan(o).has(n.id)) { /* только в монархиях смена рода — смена династии; президенты и премьеры — не династии */ const L = F.old[p] || (F.old[p] = []); if (!L.includes(o.id)) L.push(o.id); if (L.length > 8) L.shift(); }
+  F.lr[p] = id; F.v++;
+}
+const famLast = p => G.fam && G.fam.lr ? famP(G.fam.lr[p]) : null;
+// ---------- права по браку: муж королевы-вдовы или принцессы может просить титул, наследство, удел, права на престол ----------
+const INH = { title: { n: '👑 Титул', b: 1 }, gold: { n: '💰 Наследство', b: 2 }, land: { n: '🏰 Удел', b: 4 }, throne: { n: '⚔ Права на престол', b: 8 } };
+const inhOf = id => (G.inh || []).find(c => c.id === id) || null;
+const inhGold = c => Math.max(200, Math.min(2000, Math.round(G.res[c.q].gold * 0.15 / 50) * 50));
+function inhLand(c) { let best = -1, bp = 1e18; for (let i = 0; i < PROV.n; i++) if (G.tiles[i].o === c.q && i !== PROV.cap[c.q] && PROV.adj[i].some(j => G.tiles[j].o === c.p)) { const v = PROV.pop ? PROV.pop[i] || 0 : 0; if (v < bp) { bp = v; best = i; } } return best; }
+function inhMake(p, q, x, why) {
+  if (p === q || p < 0 || q < 0 || !G.alive[p] || !G.alive[q] || noRuler(p)) return;
+  if (!G.inh) G.inh = [];
+  let c = G.inh.find(c0 => c0.p === p && c0.q === q);
+  if (c) { c.t = G.gt + 180; c.x = x.id; c.w = why; G.fam.v++; }
+  else { c = { id: (G.inhN = (G.inhN || 0) + 1), p, q, x: x.id, w: why, t: G.gt + 180, u: 0 }; G.inh.push(c); G.fam.v++; }
+  addNews('dip', 'Права по браку', (why === 'death' ? 'Умер правитель страны ' + pname(q) + '. ' : '') + x.nm + ' — из правящего рода страны ' + pname(q) + ', и теперь ' + pname(p) + ' может просить у неё титул, наследство, удел или заявить права на престол (180 дней). Откройте 👪 Династию и кликните по правителю.', p === myP(), 'Права по браку на 180 дней');
+  if (bots[p]) { inhAct(p, c.id, 'title'); inhAct(p, c.id, 'gold'); }
+}
+function inhScan(q, dead) {   // умер правитель q: его родня, вышедшая замуж за чужих правителей, получает права
+  const clan = famClan(dead);
+  for (let p = 0; p < NP(); p++) { if (p === q) continue; const r = famRuler(p); if (!r) continue; const sp = r.sp ? famP(r.sp) : null; const x = sp && !sp.d && clan.has(sp.id) ? sp : clan.has(r.id) ? r : null; if (x) inhMake(p, q, x, 'death'); }
+}
+function inhWed(a, b, court) {   // свадьба правителя с роднёй или вдовой правителя другой страны
+  const r = famRuler(court); if (!r || (r !== a && r !== b)) return; const x = r === a ? b : a;
+  for (let q = 0; q < NP(); q++) { if (q === court || !G.alive[q]) continue; const L = famRuler(q) || famLast(q); if (L && L.id !== x.id && famClan(L).has(x.id)) inhMake(court, q, x, 'wed'); }
+}
+function inhWhy(p, id, a) {
+  const c = inhOf(id), A = INH[a]; if (!c || !A || c.p !== p) return 'Нет таких прав';
+  if (G.gt >= c.t) return 'Срок прав истёк';
+  if (!G.alive[c.q]) return 'Этой страны больше нет';
+  if (c.u & A.b) return 'Уже использовано';
+  if (G.offers.some(o => o.k === 'inh' && o.g === c.id && o.n === A.b)) return 'Ждём ответа';
+  if (a !== 'throne' && atWar(p, c.q)) return 'Идёт война';
+  if (a === 'gold' && G.res[c.q].gold < 200) return 'Казна страны ' + pname(c.q) + ' пуста';
+  if (a === 'land' && inhLand(c) < 0) return 'Нет общей границы';
+  if (a === 'throne') { const x = famP(c.x), rq = famRuler(c.q); if (x && rq && famClan(x).has(rq.id)) return 'На троне родня ' + x.nm + ' — престол занят по праву'; }
+  return null;
+}
+const inhTitle = (p, q) => { const r = famRuler(p); return (r && r.f ? 'Герцогиня' : 'Герцог') + ' · ' + pname(q); };
+function inhGive(c, b) {
+  const p = c.p, q = c.q; c.u |= b; G.fam.v++;
+  if (b === 2) { const g = Math.min(inhGold(c), Math.max(0, G.res[q].gold)); G.res[q].gold -= g; G.res[p].gold += g; addLog('💰 ' + pname(q) + ' выплачивает ' + pname(p) + ' наследство: ' + g + ' золота'); if (p === G.me) flash('💰 Наследство получено: +' + g); }
+  if (b === 4) { const i = inhLand(c); if (i < 0) return false; captureProv(i, p); addNews('dip', 'Удел по праву брака', pname(q) + ' передаёт стране ' + pname(p) + ' пограничную провинцию — удел по праву брака.', p === myP() || q === myP(), 'Провинция перешла'); }
+  G.rate = null; return true;
+}
+function inhAct(p, id, a) {
+  if (inhWhy(p, id, a)) return false;
+  const c = inhOf(id), q = c.q, A = INH[a];
+  if (a === 'title') {
+    c.u |= 1; if (!G.inhT) G.inhT = []; if (!G.inhT[p]) G.inhT[p] = []; if (!G.inhT[p].some(t => t.q === q)) G.inhT[p].push({ q, nm: inhTitle(p, q) });
+    setRel(p, q, G.rel[p][q] + 10); G.fam.v++; G.rate = null;
+    addLog('👑 Правитель страны ' + pname(p) + ' получил титул «' + inhTitle(p, q) + '»'); if (p === G.me) flash('👑 Титул «' + inhTitle(p, q) + '»: +4% лояльности');
+    return true;
+  }
+  if (a === 'throne') {
+    c.u |= 8; if (!G.inhC) G.inhC = {}; G.inhC[p + ':' + q] = 1; G.just[p][q] = G.gt - DIP.JUSTIFY - 1; setRel(p, q, G.rel[p][q] - 20); G.fam.v++;
+    addNews('war', 'Претензия на престол!', 'Правитель страны ' + pname(p) + ' заявил права на престол страны ' + pname(q) + ' по праву брака. Повод для войны есть сразу, а в мирном договоре марионетка обойдётся дешевле.', p === myP() || q === myP(), 'Повод для войны · марионетка −25 к цене мира');
+    return true;
+  }
+  // наследство и удел — с согласия страны
+  if (bots[q]) {
+    const ok = a === 'gold' ? G.rel[q][p] >= -20 : G.rel[q][p] >= 40;
+    if (ok) return inhGive(c, A.b);
+    c.u |= A.b; setRel(p, q, G.rel[p][q] - (a === 'gold' ? 10 : 15)); G.fam.v++;
+    if (p === G.me) flash('❌ ' + pname(q) + ' отказывает: ' + (a === 'gold' ? 'нужны отношения −20 или лучше' : 'удел отдают только при отношениях +40'));
+    return true;
+  }
+  G.offers.push({ id: G.nextOff++, k: 'inh', a: p, b: q, t: G.gt, g: c.id, n: A.b });
+  addLog('👑 ' + pname(p) + ' просит у страны ' + pname(q) + ' ' + (a === 'gold' ? 'наследство' : 'удел') + ' по праву брака');
+  return true;
+}
+function inhAnswer(o, yes) {
+  const c = inhOf(o.g); if (!c) return;
+  if (yes) { if (!inhGive(c, o.n)) addLog('Удел передать нельзя'); }
+  else { c.u |= o.n; setRel(o.a, o.b, G.rel[o.a][o.b] - 10); G.fam.v++; if (o.a === G.me) flash('❌ ' + pname(o.b) + ' отказал в вашей просьбе'); }
+}
+function inhDay() { if (G.inh) G.inh = G.inh.filter(c => G.gt < c.t && G.alive[c.p] && G.alive[c.q] && (c.u & 15) !== 15); }
+function inhUIAct(id, a) { if (isHost) { if (inhAct(G.me, id, a)) pushSnap(); else flash(inhWhy(G.me, id, a) || ''); } else send({ t: 'inh', id, a }); FM.key = ''; setTimeout(() => updFam(true), 150); }
+function inhUI(note, btn) {
+  const T = G.inhT && G.inhT[G.me]; if (T && T.length) note('👑 Ваши титулы: ' + T.map(t => t.nm).join(', ') + ' (+' + Math.min(3, T.length) * 4 + '% лояльности)');
+  for (const c of (G.inh || []).filter(c0 => c0.p === G.me && G.gt < c0.t)) {
+    const x = famP(c.x);
+    note('⚜ Права по браку — ' + pname(c.q) + (x ? ' (через ' + x.nm + ')' : '') + ', ещё ' + Math.ceil(c.t - G.gt) + ' дн.:');
+    for (const a in INH) {
+      const why = inhWhy(G.me, c.id, a), used = c.u & INH[a].b;
+      const ex = a === 'title' ? ' «' + inhTitle(G.me, c.q) + '» · +4% лояльности' : a === 'gold' ? ' · ' + inhGold(c) + ' 💰' : a === 'land' ? ' · пограничная провинция' : ' · повод для войны';
+      const b = btn((used ? '✔ ' : '') + INH[a].n + ex, () => inhUIAct(c.id, a), why); if (why) b.title = why;
+    }
+  }
+}
+function famHeirOf(q, t) { const h = famHeir(q); return !!(h && h.id === t.id); }
+function famPropose(p, ourId, theirId) {
+  const h = famP(ourId), t = famP(theirId);
+  if (!h || !t || h.d || t.d || h.free || h.p !== p || h.sp || t.sp || famAge(h) < 16 || famAge(t) < 16 || famIsRuler(t)) return false;
+  const q = t.p; if (q < 0 || q === p || !G.alive[q] || atWar(p, q)) return false;
+  if (t.nob || !famInHouse(q, t)) {   // знатные люди и разведённые решают сами
+    if (G.rel[q][p] >= 0) return famWed(h, t, p);
+    if (p === G.me) flash('💍 ' + t.nm + ' отказывает: с её страной плохие отношения'); return true;
+  }
+  if (bots[q]) {
+    if (G.rel[q][p] >= 10 && !famHeirOf(q, t)) return famWed(h, t, p);
+    if (p === G.me) flash('💍 ' + pname(q) + ' отказывает: ' + (famHeirOf(q, t) ? 'наследника престола не отдают' : 'нужны отношения +10 или лучше'));
+    return true;
+  }
+  if (G.offers.some(o => o.k === 'marry' && o.a === p && o.g === t.id)) return false;
+  G.offers.push({ id: G.nextOff++, k: 'marry', a: p, b: q, t: G.gt, g: t.id, n: h.id });
+  addLog('💍 ' + pname(p) + ' сватается к ' + t.nm + ' (' + pname(q) + ')');
+  return true;
+}
+function famLocal(p, h, same) {   // брак с местной знатью
+  if (!h || h.d || h.free || h.p !== p || h.sp || famAge(h) < 16) return false;
+  const f = same ? h.f : 1 - h.f;
+  const s = famNew({ nm: rndName(f), f, b: h.b + (Math.random() * 8 - 4) * 365, c: p, p, bl: { [p]: 1 } });
+  return famWed(h, s, p);
+}
+function famDivorce(p, h) {
+  if (!h || h.d || h.p !== p || !h.sp) return false;
+  const s = famP(h.sp); h.sp = 0; if (!s) return true;
+  s.sp = 0; h.ex.push(s.id); s.ex.push(h.id); if (s.post) famUnassign(p, s, false);
+  const home = s.c >= 0 && s.c !== p && G.alive[s.c] ? s.c : -1;
+  s.p = home >= 0 ? home : p; s.nob = 0; s.free = 1;   // бывший супруг — сам по себе: свободен, может выйти замуж/жениться в другой стране
+  if (home >= 0) setRel(p, home, G.rel[p][home] - 25);
+  addNews('crisis', 'Скандальный развод!', h.nm + ' (' + pname(p) + ') развёлся с ' + (s.f ? 'супругой ' : 'супругом ') + s.nm + '.' + (home >= 0 ? ' ' + (s.f ? 'Она возвращается' : 'Он возвращается') + ' в страну ' + pname(home) + ' — отношения −25.' : '') + ' Оба свободны и могут вступить в новый брак — хоть с иностранцем.', p === myP() || home === myP());
+  G.fam.v++; return true;
+}
+function famCmd(p, a, id, x) {
+  if (!G.fam) return false;
+  const h = famP(id | 0);
+  if (a === 'post') return famAssign(p, h, typeof x === 'string' ? x : '');
+  if (a === 'divorce') return famDivorce(p, h);
+  if (a === 'propose') return famPropose(p, id | 0, x | 0);
+  if (a === 'local') return famLocal(p, h, !!x);
+  const own = h && !h.d && h.p === p && !famIsRuler(h) && famInHouse(p, h);   // свои дети и внуки
+  if (a === 'name' && own) { const nm = clip(x, 24); if (nm.length < 2) return false; h.nm = nm; G.fam.v++; const C = courtOf(p); if (C.heir && C.heir.pk === 'F|' + h.id) C.heir.nm = (h.f ? 'Принцесса ' : 'Принц ') + nm; leaderVer++; return true; }
+  if (a === 'seed' && own) { h.ps = (x | 0) & 0xffffff; if (G.famPh) delete G.famPh[h.id]; G.fam.v++; leaderVer++; return true; }
+  if (a === 'photo' && own) { if (typeof x !== 'string' || x.length > 40000 || !/^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(x)) return false; if (!G.famPh) G.famPh = {}; G.famPh[h.id] = x; G.fam.v++; leaderVer++; return true; }
+  return false;
+}
+function famDay() {
+  famInit();
+  for (let p = 0; p < NP(); p++) { famSync(p); famTrack(p); }
+  inhDay();
+  for (const id in G.fam.P) {
+    const h = G.fam.P[id]; if (h.d) continue;
+    const a = famAge(h);
+    // смерть: детская смертность и старость
+    const risk = (a < 5 ? 0.012 : a < 50 ? 0.002 : 0.002 + ((a - 50) / 25) ** 2 * 0.25) / 365;
+    if (Math.random() < risk) {
+      const rp = G.fam.r.indexOf(h.id);
+      if (rp >= 0 && G.alive[rp]) { const how = a >= 60 ? 'от старости' : 'от болезни'; famKill(h, how); leaderDies(rp, 'скончался ' + how + (a >= 60 ? ' в ' + a + ' лет' : '')); continue; }
+      const hp = h.p >= 0 ? h.p : -1, isHeir = hp >= 0 && famHeirOf(hp, h), isSp = hp >= 0 && famRuler(hp) && famRuler(hp).sp === h.id;
+      famKill(h);
+      if (hp >= 0 && (isHeir || isSp)) addNews('crisis', isHeir ? 'Наследник скончался!' : 'Траур при дворе', (isHeir ? 'Наследник престола ' : 'Супруг(а) правителя ') + h.nm + ' (' + pname(hp) + ') скончался в ' + a + ' ' + (a % 10 === 1 && a !== 11 ? 'год' : 'лет') + '.', hp === myP(), '', { k: 'person', p: hp, key: famKey(h), kind: kindOf(h), dead: 1, ps: [hp] });
+      continue;
+    }
+    // рождение детей: женщина 17–42 лет в браке с мужчиной, оба при одном дворе
+    if (h.f && h.sp && a >= 17 && a <= 42 && h.p >= 0 && G.alive[h.p] && h.k.length < 7 && Math.random() < 0.45 / 365) {
+      const m = famP(h.sp); if (!m || m.d || m.f || m.p !== h.p) continue;
+      const cf = Math.random() < 0.5 ? 1 : 0; let nm = rndName(cf); for (let t = 0; t < 4 && h.k.some(k => famP(k) && famP(k).nm === nm && !famP(k).d); t++) nm = rndName(cf);
+      const c = famNew({ nm, f: cf, b: G.gt, c: h.p, p: h.p, bl: blMix(m.bl, h.bl), pa: [m.id, h.id] });
+      h.k.push(c.id); m.k.push(c.id);
+      const r = famRuler(h.p);
+      if (r && (r.id === h.id || r.id === m.id)) addNews('dip', cf ? 'Родилась дочь!' : 'Родился сын!', 'В семье правителя страны ' + pname(h.p) + ' родил' + (cf ? 'ась дочь' : 'ся сын') + ' — ' + nm + '. Кровь: ' + blTxt(c.bl) + '.', h.p === myP(), '', { k: 'person', p: h.p, key: famKey(c), kind: kindOf(c), ps: [h.p] });
+    }
+  }
+  // боты женятся и выдают детей замуж
+  for (let p = 0; p < NP(); p++) {
+    if (!bots[p] || !G.alive[p]) continue;
+    for (const id in G.fam.P) {
+      const h = G.fam.P[id]; if (h.d || h.sp || h.p !== p || h.nob || !(famIsRuler(h) || famInHouse(p, h)) || famAge(h) < 17 || Math.random() > (famIsRuler(h) ? 1 / 90 : 1 / 400)) continue;
+      const c = famCands(p, h).filter(t => t.f !== h.f && (t.nob || !famInHouse(t.p, t) ? G.rel[t.p][p] >= 0 : bots[t.p] ? G.rel[t.p][p] >= 10 && !famHeirOf(t.p, t) : false));
+      if (c.length) famWed(h, c[Math.floor(Math.random() * Math.min(4, c.length))], p);
+    }
+  }
+  for (let p = 0; p < NP(); p++) { const r = famRuler(p); if (!bots[p] || !r || !r.sp) continue; const sp = famP(r.sp); if (sp && !sp.d && !r.k.some(k => famP(k) && famP(k).pa.includes(sp.id)) && famAge(sp.f ? sp : r) > 40 && Math.random() < 1 / 400) famDivorce(p, r); }
+  // родная кровь сближает дворы
+  for (let p = 0; p < NP(); p++) { const r = famRuler(p); if (!r || r.d) continue; for (const k in r.bl) { const q = +k; if (q !== p && G.alive[q] && !atWar(p, q) && r.bl[k] >= 0.25 && G.rel[p][q] < 30 && Math.random() < r.bl[k] * 0.15) setRel(p, q, G.rel[p][q] + 1); } }
+}
+let _famSentV = -1, _famSentN = 0;
+let _famSentT = 0;
+function famSnap() {
+  if (!G.fam) return undefined; _famSentN++;
+  const now = performance.now();
+  if ((G.fam.v === _famSentV || now - _famSentT < 3000) && _famSentN % 40) return undefined;
+  _famSentV = G.fam.v; _famSentT = now;
+  const A = []; for (const id in G.fam.P) { const h = G.fam.P[id]; A.push([h.id, h.nm, h.f, Math.round(h.b), h.c, h.p, h.bl, h.pa, h.sp, h.ex, h.k, h.d, Math.round(h.dt), h.post, h.pk || 0, h.ps | 0, h.free ? 1 : 0, h.dr || '', h.dc || '']); }
+  return { A, r: G.fam.r, lr: G.fam.lr || [], old: G.fam.old || [], v: G.fam.v, ph: G.famPh || {} };
+}
+function famUnsnap(m) {
+  if (!m || !Array.isArray(m.A)) return null; const P = {};
+  for (const a of m.A) { if (!Array.isArray(a)) continue; const id = a[0] | 0; P[id] = { id, nm: clip(a[1], 40), f: a[2] ? 1 : 0, b: +a[3] || 0, c: a[4] | 0, p: a[5] | 0, bl: a[6] && typeof a[6] === 'object' ? a[6] : {}, pa: Array.isArray(a[7]) ? a[7] : [], sp: a[8] | 0, ex: Array.isArray(a[9]) ? a[9] : [], k: Array.isArray(a[10]) ? a[10] : [], d: a[11] ? 1 : 0, dt: +a[12] || 0, post: typeof a[13] === 'string' ? a[13] : '', pk: typeof a[14] === 'string' ? a[14] : undefined, ps: a[15] | 0, free: a[16] ? 1 : 0, dr: typeof a[17] === 'string' ? a[17].slice(0, 6) : '', dc: typeof a[18] === 'string' ? clip(a[18], 60) : '' }; }
+  if (m.ph && typeof m.ph === 'object') { G.famPh = {}; for (const k in m.ph) if (typeof m.ph[k] === 'string' && m.ph[k].length < 40000 && m.ph[k].startsWith('data:image/jpeg')) G.famPh[k] = m.ph[k]; }
+  const ia = a => Array.isArray(a) ? a.slice(0, 64).map(x => x | 0) : [];
+  return { P, r: Array.isArray(m.r) ? m.r : [], lr: ia(m.lr), old: Array.isArray(m.old) ? m.old.slice(0, 64).map(ia) : [], rk: [], tb: [], n: 0, v: m.v | 0 };
+}
+
+// ---------- окно «Династия» ----------
+const FM = { open: false, q: -1, sel: 0, key: '' };
+function openFam(q) { if (!G) return; FM.open = true; FM.q = q; FM.sel = 0; FM.key = ''; $('fmPanel').style.display = 'flex'; updFam(true); }
+function closeFam() { FM.open = false; $('fmPanel').style.display = 'none'; }
+function famPhoto(h) { const p = h.p >= 0 ? h.p : h.c; if (p >= 0 && famRuler(p) === h && G.alive[p]) return leaderPhoto(p); return portraitURL(famKey(h), kindOf(h)); }
+function famCmdUI(a, id, x) {
+  if (isHost) { famCmd(G.me, a, id, x); pushSnap(); } else send({ t: 'fam', a, id, x });
+  FM.key = ''; setTimeout(() => updFam(true), 120);
+}
+function updFam(force) {
+  if (!FM.open || !G) return;
+  if (!G.fam) { setTxt($('fmTitle'), 'ДИНАСТИЯ'); $('fmTree').innerHTML = '<div class="fm-empty">Летопись династий начнётся с первого дня игры.</div>'; return; }
+  const q = FM.q, ALL = q < 0, key = G.fam.v + ':' + q + ':' + FM.sel + ':' + Math.floor(G.gt / 30);
+  if (!force && key === FM.key) return; FM.key = key;
+  setTxt($('fmTitle'), ALL ? '🌐 ВСЕ ДИНАСТИИ — паутина браков' : '👪 ДИНАСТИЯ · ' + pname(q));
+  const sel = $('fmWho'); if (sel.dataset.n !== String(NP())) { sel.innerHTML = ''; sel.add(new Option('🌐 Все страны — паутина династий', -1)); for (let p = 0; p < NP(); p++) sel.add(new Option(pname(p) + (p === G.me ? ' (вы)' : ''), p)); sel.dataset.n = String(NP()); }
+  sel.value = q;
+  const tree = $('fmTree'), sl0 = tree.scrollLeft, st0 = tree.scrollTop, sameV = FM.lastQ === q; FM.lastQ = q; tree.innerHTML = '';
+  const r = ALL ? (famRuler(G.me) || famRuler(G.fam.r.findIndex(x => x))) : (famRuler(q) || famLast(q));
+  if (!ALL && r && !famRuler(q)) { const e = document.createElement('div'); e.className = 'fm-ended'; e.textContent = (!G.alive[q] ? '✝ Государство пало' : noRuler(q) ? '✝ Анархия — престол упразднён' : G.vacL && G.vacL[q] ? '✝ Престол пуст' : '✝ Престол перешёл к чужому роду') + ' · династия прервана' + (r.d ? ' (последний правитель ' + r.nm + ' ✝ ' + Math.floor(1850 + r.dt / 365) + ')' : ' (последний правитель — ' + r.nm + ')'); tree.appendChild(e); }
+  if (!ALL && !r) { const e = document.createElement('div'); e.className = 'fm-empty'; e.textContent = noRuler(q) ? 'Анархия: правителя нет — нет ни супруги, ни наследников.' : !G.alive[q] ? 'Страна пала. Династия прервана.' : 'Престол пуст — династии нет, пока кто-нибудь не взойдёт на трон.'; tree.appendChild(e); famSide(null); return; }
+  // ---- раскладка ----
+  const W = 150, H = 200, pos = new Map(), clu = new Map(), labels = [];
+  let C = -1;   // страна текущего «куста» (в режиме «все» — дети, уехавшие к супругу, рисуются у супруга)
+  const out = h => ALL && !h.d && h.p >= 0 && h.p !== C && h.sp;
+  const kidsOf = h => h.k.map(famP).filter(c => c && !out(c));
+  const wid = h => { const own = h.sp && famP(h.sp) && !pos.has(h.sp) ? 2 : 1; return Math.max(own, kidsOf(h).reduce((s2, c) => s2 + wid(c), 0)); };
+  const place = (h, x0, y, ci) => {   // x0 — левая граница поддерева (в ячейках)
+    const w = wid(h), sp = h.sp ? famP(h.sp) : null, cx = x0 + w / 2;
+    if (sp && !pos.has(sp.id)) { pos.set(h.id, [cx - 1, y]); pos.set(sp.id, [cx, y]); clu.set(sp.id, ci); } else pos.set(h.id, [cx - 0.5, y]);
+    clu.set(h.id, ci);
+    let x = x0; for (const c of kidsOf(h)) { if (pos.has(c.id)) continue; const wc = wid(c); place(c, x, y + 1, ci); x += wc; }
+  };
+  const rootOf = rr => { let root = rr, up = 0; while (up < 2 && root.pa.length && famP(root.pa[0]) && !(ALL && famP(root.pa[0]).p !== rr.p && famP(root.pa[0]).p >= 0)) { root = famP(root.pa[0]); up++; } return [root, up]; };
+  const busy = (x, y) => { for (const [px, py] of pos.values()) if (py === y && Math.abs(px - x) < 0.98) return true; return false; };
+  const free = (x, y, dir) => { let k = 0; while (busy(x, y) && k < 40) { x += dir * 0.5; k++; } return x; };
+  let tw = 6;
+  if (!ALL) {
+    C = q; const [root, up] = rootOf(r);
+    const extra = (r.sp && famP(r.sp) && famP(r.sp).pa.length && up === 0) ? 1 : 0;   // родители супруга над ним
+    tw = Math.max(wid(root), 6); place(root, 0, extra, 0);
+    r.ex.map(famP).filter(Boolean).forEach(e => { if (!pos.has(e.id)) { const [x, y] = pos.get(r.id); pos.set(e.id, [free(x - 1.1, y, -1), y]); } });
+    const sp = r.sp ? famP(r.sp) : null;
+    if (sp && pos.has(sp.id)) { const [sx, sy] = pos.get(sp.id); if (sy > 0) { const pp = sp.pa.map(famP).filter(x => x && !pos.has(x.id)); if (pp.length) {
+      let x0 = sx - (pp.length - 1) / 2;
+      if (pp.some((_, i) => busy(x0 + i, sy - 1))) { let mx = -1e9; for (const [px, py] of pos.values()) if (py === sy - 1) mx = Math.max(mx, px); x0 = mx + 1.3; }
+      pp.forEach((x, i) => pos.set(x.id, [x0 + i, sy - 1])); } } }
+    // прежние династии этой страны — ниже, отдельными кустами
+    for (const oid of ((G.fam.old || [])[q] || []).slice().reverse()) {
+      const o = famP(oid); if (!o || pos.has(o.id)) continue;
+      let my = 0; for (const [, y] of pos.values()) my = Math.max(my, y);
+      const [ro] = rootOf(o); if (pos.has(ro.id)) continue;
+      const before = new Set(pos.keys()), cy = my + 1.45; place(ro, 0, 0, 0);
+      for (const id of pos.keys()) if (!before.has(id)) { const [x, y] = pos.get(id); pos.set(id, [x, y + cy]); }
+      tw = Math.max(tw, wid(ro));
+      labels.push([0, cy, -3, '🏛 Прежняя династия · ' + o.nm + (o.d ? ' ✝ ' + Math.floor(1850 + o.dt / 365) : ''), q]);
+    }
+  } else {   // все династии: у каждой страны свой «куст» (её правящий дом), родственные кусты рядом, браки между ними — дугами
+    const CL = [];
+    for (let p = 0; p < NP(); p++) {
+     const L0 = [famRuler(p) || famLast(p)].concat(((G.fam.old || [])[p] || []).map(famP));
+     for (let li = 0; li < L0.length; li++) {
+      const rr = L0[li]; if (!rr) continue;
+      C = p; const [root] = rootOf(rr); if (pos.has(root.id)) continue;
+      const before = new Set(pos.keys()); place(root, 0, 0, p);
+      for (const e of rr.ex.map(famP)) if (e && !pos.has(e.id) && (e.p === p || e.p < 0)) { let mx = 0; for (const id of pos.keys()) if (!before.has(id) && pos.get(id)[1] === pos.get(rr.id)[1]) mx = Math.max(mx, pos.get(id)[0] + 1); pos.set(e.id, [mx, pos.get(rr.id)[1]]); clu.set(e.id, p); }
+      const ids = [...pos.keys()].filter(id => !before.has(id)); let w = 0, hh = 0; for (const id of ids) { const [x, y] = pos.get(id); w = Math.max(w, x + 1); hh = Math.max(hh, y + 1); }
+      const tag = li ? ' · прежняя династия ' + rr.nm : !G.alive[p] ? ' · ✝ пала' : !famRuler(p) ? ' · ✝ род прервался' : '';
+      CL.push({ p: li ? p + 1000 * li : p, pp: p, tag, ids, w, h: hh, nb: new Map() });
+      CL[CL.length - 1].lw = (pname(p).length + tag.length + 12) * 9 / W;
+      if (li) for (const id of ids) clu.set(id, p + 1000 * li);
+     }
+    }
+    const byP = new Map(CL.map(c => [c.p, c]));
+    for (const [id] of pos) { const h = famP(id); if (!h) continue; for (const pid of h.pa.concat(h.ex)) if (clu.has(pid) && clu.get(pid) !== clu.get(id)) { const A = byP.get(clu.get(pid)), B = byP.get(clu.get(id)); if (A && B) { A.nb.set(B.p, (A.nb.get(B.p) || 0) + 1); B.nb.set(A.p, (B.nb.get(A.p) || 0) + 1); } } }
+    // порядок: от самого «породнённого» дома обходом по родству — родня оказывается рядом
+    const order = [], seenC = new Set();
+    for (const c0 of CL.slice().sort((x, y) => y.nb.size - x.nb.size || y.ids.length - x.ids.length)) {
+      if (seenC.has(c0.p)) continue; const q2 = [c0]; seenC.add(c0.p);
+      while (q2.length) { const c = q2.shift(); order.push(c); for (const [np] of [...c.nb].sort((x, y) => y[1] - x[1])) if (!seenC.has(np)) { seenC.add(np); q2.push(byP.get(np)); } }
+    }
+    const area = order.reduce((s2, c) => s2 + (c.w + 0.7) * (c.h + 0.6), 0);
+    const asp = Math.max(0.8, ((tree.clientWidth || 1400) / W) / Math.max(1, (tree.clientHeight || 700) / H));
+    const MAXW = Math.max(Math.max(...order.map(c => c.w)), Math.sqrt(area * asp) * 1.05);
+    let cx = 0, cy = 0.45, rowH = 0;
+    for (const c of order) {
+      c.w = Math.max(c.w, c.lw + (c.nb.size ? 0.6 : 0));
+      if (cx > 0 && cx + c.w > MAXW) { cx = 0; cy += rowH + 0.6; rowH = 0; }
+      for (const id of c.ids) { const [x, y] = pos.get(id); pos.set(id, [x + cx, y + cy]); }
+      labels.push([cx, cy, -3, '🏰 ' + pname(c.pp) + c.tag + (c.nb.size ? ' · родня: ' + c.nb.size : ''), c.pp]);
+      cx += c.w + 0.7; rowH = Math.max(rowH, c.h); tw = Math.max(tw, cx);
+    }
+  }
+  let minX = 0, maxX = tw, maxY = 0; for (const [x, y] of pos.values()) { minX = Math.min(minX, x); maxX = Math.max(maxX, x + 1); maxY = Math.max(maxY, y); }
+  const ox = -minX * W + 20, oy = 20, Wt = (maxX - minX) * W + 40, Ht = (maxY + 1) * H + 30;
+  const box = document.createElement('div'); box.className = 'fm-box'; box.style.width = Wt + 'px'; box.style.height = Ht + 'px';
+  const sizer = document.createElement('div'); sizer.className = 'fm-sizer'; sizer.appendChild(box); tree.appendChild(sizer);
+  if (!sameV || FM.z == null) FM.z = ALL ? Math.max(0.12, Math.min(1, (tree.clientWidth - 10) / Wt, (tree.clientHeight - 10) / Ht)) : 1;
+  FM.Wt = Wt; FM.Ht = Ht; famZoomApply();
+  if (sameV) { tree.scrollLeft = sl0; tree.scrollTop = st0; }
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('width', Wt); svg.setAttribute('height', Ht); svg.classList.add('fm-svg'); box.appendChild(svg);
+  for (const [x, y, p, txt, pc] of labels) { const l = document.createElement('div'); l.className = 'fm-lab' + (p === -2 ? ' gen' : p === -3 ? '' : p < 0 ? ' sec' : ''); l.style.left = (ox + x * W) + 'px'; l.style.top = (oy + y * H - (p === -2 ? 0 : p === -3 ? 52 : p < 0 ? 40 : 62)) + 'px'; if (p === -3) { l.textContent = txt; if (G.players[pc]) l.style.borderColor = G.players[pc].color; l.onclick = () => { FM.q = pc; FM.sel = 0; FM.key = ''; updFam(true); }; box.appendChild(l); continue; } if (p < 0) { l.textContent = txt; box.appendChild(l); continue; } l.style.borderColor = G.players[p].color; l.textContent = '🏰 ' + pname(p) + ' · ' + G.players[p].title; l.onclick = () => { FM.q = p; FM.sel = 0; FM.key = ''; updFam(true); }; box.appendChild(l); }
+  const cxy = id => { const [x, y] = pos.get(id); return [ox + x * W + 65, oy + y * H + 75]; };
+  const colOf = h => (h && G.players[h.c] ? G.players[h.c].color : '#1a1a1a');
+  const line = (pts, dash, col) => { const pl0 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline'); if (col) pl0.style.stroke = col; pl0.setAttribute('points', pts.map(p0 => p0.join(',')).join(' ')); pl0.setAttribute('vector-effect', 'non-scaling-stroke'); if (dash) pl0.setAttribute('stroke-dasharray', '6 5'); svg.appendChild(pl0); };
+  const arc = (a, b, dash, col) => { const pth = document.createElementNS('http://www.w3.org/2000/svg', 'path'); if (col) pth.style.stroke = col; const dy = Math.max(60, Math.abs(b[1] - a[1]) * 0.5); pth.setAttribute('d', 'M' + a[0] + ',' + a[1] + ' C' + a[0] + ',' + (a[1] + dy) + ' ' + b[0] + ',' + (b[1] - dy) + ' ' + b[0] + ',' + b[1]); pth.classList.add('x'); pth.setAttribute('vector-effect', 'non-scaling-stroke'); if (dash) pth.setAttribute('stroke-dasharray', '8 6'); svg.appendChild(pth); };
+  const seen = new Set();
+  for (const [id] of pos) {
+    const h = famP(id); if (!h) continue;
+    if (h.sp && pos.has(h.sp) && !seen.has(h.sp)) { const a = cxy(h.id), b = cxy(h.sp), hu = h.f ? famP(h.sp) : h; line([[Math.min(a[0], b[0]) + 65, a[1]], [Math.max(a[0], b[0]) - 65, b[1]]], false, colOf(h.f ? famP(h.sp) : h)); }
+    for (const e of h.ex) if (pos.has(e) && !seen.has(e)) { const a = cxy(h.id), b = cxy(e); if (clu.get(e) !== undefined && clu.get(e) !== clu.get(h.id)) arc([a[0], a[1] + 75], [b[0], b[1] - 75], true); else line([[Math.min(a[0], b[0]) + 65, a[1]], [Math.max(a[0], b[0]) - 65, b[1]]], true); }
+    seen.add(id);
+    const pa = h.pa.filter(x => pos.has(x));
+    if (pa.length) {
+      const pts = pa.map(cxy), mx = pa.length === 2 ? (pts[0][0] + pts[1][0]) / 2 : pts[0][0], my = pts[0][1], [hx, hy] = cxy(h.id);
+      const pc = colOf(famP(pa[0]));
+      if (ALL && clu.get(pa[0]) !== clu.get(h.id)) arc([mx, my + 75], [hx, hy - 75], false, pc);   // ребёнок ушёл в другой дом — дуга
+      else { const inlaw = !ALL && r.sp === h.id, midY = hy - 75 - (inlaw ? 9 : 22); line([[mx, my], [mx, midY], [hx, midY], [hx, hy - 75]], false, pc); }
+    }
+  }
+  for (const [id] of pos) {
+    const h = famP(id); if (!h) continue; const [x, y] = pos.get(id), hq = ALL ? (clu.has(id) ? clu.get(id) % 1000 : h.p) : q;
+    const c = document.createElement('div'); c.className = 'fm-card' + (h.d ? ' dead' : '') + (FM.sel === h.id ? ' sel' : '') + (h.p !== hq && !h.d && !h.sp ? ' away' : '');
+    c.style.left = (ox + x * W) + 'px'; c.style.top = (oy + y * H) + 'px'; c.style.borderColor = h.d || h.p < 0 ? '#9a9a9a' : colOf(h);
+    const im = document.createElement('img'); im.src = famPhoto(h) || ''; c.appendChild(im);
+    const n = document.createElement('b'); n.textContent = (famIsRuler(h) ? '👑 ' : '') + h.nm; c.appendChild(n);
+    if (h.d) {   // траурная лента и кем был
+      const rb = document.createElement('div'); rb.className = 'fm-rib'; rb.textContent = '✝'; c.appendChild(rb);
+      const role = h.dr ? (h.dr[0] === 'r' ? (h.f ? 'правительница' : 'правитель') : h.dr[0] === 's' ? (h.f ? 'супруга правителя' : 'супруг правительницы') : 'наследник') : '';
+      const dd = document.createElement('em'); dd.textContent = (h.f ? 'УМЕРЛА ' : 'УМЕР ') + Math.floor(1850 + h.dt / 365) + (role ? ' · ' + role : ''); c.appendChild(dd);
+    }
+    const a = document.createElement('span'); a.textContent = (h.f ? '♀ ' : '♂ ') + (h.d ? Math.floor((h.dt - h.b) / 365) + ' л.' + (h.dc ? ', ' + h.dc : '') : famAge(h) + ' ' + (famAge(h) % 10 === 1 && famAge(h) % 100 !== 11 ? 'год' : famAge(h) % 10 >= 2 && famAge(h) % 10 <= 4 && (famAge(h) % 100 < 10 || famAge(h) % 100 >= 20) ? 'года' : 'лет')); c.appendChild(a);
+    const tg = []; if (!h.d && hq >= 0 && famHeirOf(hq, h) && hierOf(hq).heir) tg.push('⭐ наследник'); if (h.post) tg.push('🎖 ' + famPostTxt(h.p, h.post)); if (!h.d && h.c >= 0 && h.c !== h.p && h.p >= 0) tg.push('из ' + pname(h.c)); if (!h.d && h.p >= 0 && h.p !== hq) tg.push('↗ ' + pname(h.p)); if (!h.d && h.p < 0) tg.push('изгнан(а)');
+    if (tg.length) { const t2 = document.createElement('i'); t2.textContent = tg.join(' · '); c.appendChild(t2); }
+    const bar = document.createElement('div'); bar.className = 'fm-bl'; for (const [k, v] of Object.entries(h.bl || {})) { const s2 = document.createElement('u'); s2.style.width = (v * 100) + '%'; s2.style.background = G.players[k] ? G.players[k].color : '#888'; s2.title = Math.round(v * 100) + '% ' + (G.players[k] ? pname(+k) : ''); bar.appendChild(s2); } c.appendChild(bar);
+    c.onclick = () => { FM.sel = h.id; FM.key = ''; updFam(true); };
+    box.appendChild(c);
+  }
+  famSide(FM.sel ? famP(FM.sel) : r);
+}
+function famZoomApply() {
+  const box = document.querySelector('#fmTree .fm-box'), sz = document.querySelector('#fmTree .fm-sizer'); if (!box || !sz) return;
+  box.style.transform = 'scale(' + FM.z + ')'; box.style.setProperty('--lz', FM.z < 0.6 ? Math.min(6, 0.6 / FM.z) : 1); sz.style.width = FM.Wt * FM.z + 'px'; sz.style.height = FM.Ht * FM.z + 'px';
+  const zl = $('fmZoom'); if (zl) zl.textContent = Math.round(FM.z * 100) + '%';
+}
+function famZoom(k, cx, cy) {
+  const tree = $('fmTree'), z0 = FM.z || 1, z1 = Math.max(0.05, Math.min(1.6, z0 * k)); if (z1 === z0) return;
+  const r = tree.getBoundingClientRect(), mx = (cx == null ? r.width / 2 : cx - r.left), my = (cy == null ? r.height / 2 : cy - r.top);
+  const wx = (tree.scrollLeft + mx) / z0, wy = (tree.scrollTop + my) / z0;
+  FM.z = z1; famZoomApply(); tree.scrollLeft = wx * z1 - mx; tree.scrollTop = wy * z1 - my;
+}
+// диаграмма крови: кольцо по странам + подписи
+function famPie(bl) {
+  const wrap = document.createElement('div'); wrap.className = 'fm-pie';
+  const E = Object.entries(bl || {}).filter(e => e[1] > 0.001).sort((a, b) => b[1] - a[1]);
+  const NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 120 120'); svg.setAttribute('width', 120); svg.setAttribute('height', 120);
+  const R = 52, r0 = 30, cx = 60, cy = 60; let a0 = -Math.PI / 2;
+  const pt = (a, rr) => (cx + rr * Math.cos(a)).toFixed(2) + ',' + (cy + rr * Math.sin(a)).toFixed(2);
+  for (const [k, v] of E) {
+    const col = G.players[k] ? G.players[k].color : '#888', el = document.createElementNS(NS, v >= 0.999 ? 'circle' : 'path');
+    if (v >= 0.999) { el.setAttribute('cx', cx); el.setAttribute('cy', cy); el.setAttribute('r', (R + r0) / 2); el.setAttribute('fill', 'none'); el.setAttribute('stroke', col); el.setAttribute('stroke-width', R - r0); }
+    else { const a1 = a0 + v * Math.PI * 2, big = v > 0.5 ? 1 : 0; el.setAttribute('d', 'M' + pt(a0, R) + ' A' + R + ',' + R + ' 0 ' + big + ' 1 ' + pt(a1, R) + ' L' + pt(a1, r0) + ' A' + r0 + ',' + r0 + ' 0 ' + big + ' 0 ' + pt(a0, r0) + 'Z'); el.setAttribute('fill', col); el.setAttribute('stroke', '#1a1408'); el.setAttribute('stroke-width', '1.5'); a0 = a1; }
+    const t = document.createElementNS(NS, 'title'); t.textContent = Math.round(v * 100) + '% ' + (G.players[k] ? pname(+k) : '?'); el.appendChild(t); svg.appendChild(el);
+  }
+  const mid = document.createElementNS(NS, 'text'); mid.setAttribute('x', cx); mid.setAttribute('y', cy + 5); mid.setAttribute('text-anchor', 'middle'); mid.setAttribute('class', 'fm-pie-c'); mid.textContent = '🩸'; svg.appendChild(mid);
+  wrap.appendChild(svg);
+  const lg = document.createElement('div'); lg.className = 'fm-pie-l';
+  const hd = document.createElement('b'); hd.textContent = 'Кровь'; lg.appendChild(hd);
+  for (const [k, v] of E) { const row = document.createElement('div'); const sw = document.createElement('i'); sw.style.background = G.players[k] ? G.players[k].color : '#888'; const tx = document.createElement('span'); tx.textContent = (v * 100 % 1 ? (v * 100).toFixed(1) : Math.round(v * 100)) + '% ' + (G.players[k] ? pname(+k) : '?'); row.append(sw, tx); lg.appendChild(row); }
+  wrap.appendChild(lg);
+  return wrap;
+}
+function famPostTxt(p, post) { return post[0] === 'g' ? 'генерал армии №' + post[1] : courtTitle(p, post).toLowerCase(); }
+function famSide(h) {
+  const sd = $('fmSide'); sd.innerHTML = ''; if (!h) return;
+  const q = FM.q >= 0 ? FM.q : (h.p >= 0 ? h.p : h.c), me = G.me, mine = q === me && !spect && !(G.role && G.role[G.meOrig] && G.role[G.meOrig].kind !== 'ruler'), a = famAge(h);
+  const im = document.createElement('img'); im.src = famPhoto(h) || ''; if (h.d) im.style.filter = 'grayscale(1)'; sd.appendChild(im);
+  const t = document.createElement('h3'); t.textContent = (famIsRuler(h) ? G.players[q].title + ' ' : '') + h.nm; sd.appendChild(t);
+  const L = (k, v) => { const d = document.createElement('div'); d.className = 'fm-l'; const s1 = document.createElement('small'); s1.textContent = k; const s2 = document.createElement('span'); s2.textContent = v; d.append(s1, s2); sd.appendChild(d); };
+  if (h.d) { const dz = document.createElement('div'); dz.className = 'fm-dead'; dz.textContent = '✝ ' + (h.f ? 'Умерла ' : 'Умер ') + dayStr(h.dt) + ' в ' + Math.floor((h.dt - h.b) / 365) + ' л.' + (h.dc ? ' — ' + h.dc : '') + (h.dr ? (h.dr[0] === 'r' ? '. Был' + (h.f ? 'а правительницей' : ' правителем') : h.dr[0] === 's' ? '. ' + (h.f ? 'Супруга правителя' : 'Супруг правительницы') : '. Наследник престола') + ' страны ' + pname(+h.dr.slice(1)) : ''); sd.appendChild(dz); }
+  L('Пол', h.f ? 'женщина' : 'мужчина'); L(h.d ? 'Прожил(а)' : 'Возраст', h.d ? Math.floor((h.dt - h.b) / 365) + ' л. (' + Math.floor(1850 + h.b / 365) + '–' + Math.floor(1850 + h.dt / 365) + ')' : a + ' (род. ' + Math.floor(1850 + h.b / 365) + ')');
+  sd.appendChild(famPie(h.bl)); if (h.c >= 0) L('Родом из', pname(h.c));
+  const sp = h.sp ? famP(h.sp) : null; L('Супруг(а)', sp ? sp.nm + (sp.d ? ' ✝' : '') + (sp.f === h.f ? ' (однополый брак — без детей)' : '') : 'нет');
+  if (h.k.length) L('Дети', h.k.map(famP).filter(Boolean).map(c => c.nm + (c.d ? ' ✝' : ' (' + famAge(c) + ')')).join(', '));
+  if (h.post) L('Должность', famPostTxt(h.p, h.post));
+  if (h.d) return;
+  const act = document.createElement('div'); act.className = 'fm-act'; sd.appendChild(act);
+  const btn = (txt, fn, why) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = txt; if (why) { b.disabled = true; b.title = why; } else if (fn) b.onclick = fn; act.appendChild(b); return b; };
+  const note = s0 => { const d = document.createElement('div'); d.className = 'fm-note'; d.textContent = s0; act.appendChild(d); };
+  if (h.free) { note('🕊 Свободный человек: после развода живёт сам по себе — им никто не управляет. Его могут посватать правители других стран.'); }
+  else if (mine && h.p === me) {
+    if (famIsRuler(h) || (famRuler(me) && famRuler(me).sp === h.id)) inhUI(note, btn);
+    if (a < 10 && !famIsRuler(h)) note('👶 До 10 лет ребёнку нельзя поручить ничего.');
+    else if (!famIsRuler(h)) {
+      const s0 = document.createElement('select'); s0.add(new Option('Должность: нет', ''));
+      for (const sl of COURT_SLOTS) { const c = courtOf(me)[sl]; if (c && Number.isInteger(c.human)) continue; s0.add(new Option(courtTitle(me, sl) + (c && c.pk !== 'F|' + h.id ? ' (вместо ' + stripRank(c.nm) + ')' : ''), sl)); }
+      for (let k = 1; k < 4; k++) if (!humanArmy(me, k)) s0.add(new Option('Генерал армии №' + k, 'g' + k));
+      s0.value = h.post || ''; s0.onchange = () => famCmdUI('post', h.id, s0.value); act.appendChild(s0);
+    }
+    // развод — только у самого правителя и его кровных родственников, не у супруги; без всплывающих окон
+    const rr0 = famRuler(me), blood = famIsRuler(h) || (rr0 && rr0.sp !== h.id && famInHouse(me, h));
+    if (sp && !sp.d && blood) { const b = btn('💔 Развестись с ' + sp.nm, null); b.onclick = () => { if (b.dataset.ok) { famCmdUI('divorce', h.id); return; } b.dataset.ok = '1'; b.textContent = '💔 Точно развестись? Нажмите ещё раз' + (sp.c >= 0 && sp.c !== me ? ' (отношения с ' + pname(sp.c) + ' −25)' : ''); b.classList.add('warn'); }; }
+    if (!h.sp && a >= 16) {
+      note('💍 Найти пару:');
+      const cs = famCands(me, h);
+      if (!cs.length) note('Свободных женихов и невест в других странах пока нет: подождите, пока подрастут принцы и принцессы, или кто-нибудь разведётся либо овдовеет (нужны отношения не хуже −20 и мир).');
+      for (const c of cs) { const why = atWar(me, c.p) ? 'война' : null; const tag = c.nob ? '' : c.ex.length ? ' · разведён(а)' : famInHouse(c.p, c) ? ' · королевский дом' : ''; const b = btn((c.f ? '♀ ' : '♂ ') + c.nm + ', ' + famAge(c) + ' — ' + pname(c.p) + tag + ' (отн. ' + G.rel[me][c.p] + ')', () => famCmdUI('propose', h.id, c.id), why); b.title = 'Кровь: ' + blTxt(c.bl) + (c.f === h.f ? '\nОднополый брак — детей не будет' : ''); }
+    } else if (!h.sp && a < 16) note('💍 Жениться и выходить замуж можно с 16 лет.');
+  } else if (q !== me && !spect && h.p === q && !h.sp && a >= 16 && !famIsRuler(h)) {
+    const mineFree = Object.values(G.fam.P).filter(x => !x.d && !x.free && x.p === me && !x.sp && famAge(x) >= 16);
+    if (!mineFree.length) note('💍 У вас при дворе нет свободных женихов и невест (16+).');
+    else { note('💍 Посвататься к ' + h.nm + ' за:'); for (const x of mineFree) btn((famIsRuler(x) ? '👑 ' : '') + x.nm + ' (' + famAge(x) + ')' + (x.f === h.f ? ' · однополый' : ''), () => famCmdUI('propose', x.id, h.id), atWar(me, q) ? 'Идёт война' : null); }
+  }
+}
+
+// ---------- рождение ребёнка: выбрать имя и портрет ----------
+const BD = { seen: new Set(), init: false, id: 0 };
+function bdOpen(id, born) {
+  const h = famP(id); if (!h) return; BD.id = id;
+  setTxt($('bdTitle'), born ? (h.f ? '👶 Родилась дочь!' : '👶 Родился сын!') : '✏ ' + h.nm);
+  setTxt($('bdSub'), born ? 'Выберите имя и портрет ребёнка. Кровь: ' + blTxt(h.bl) : 'Имя и портрет члена семьи');
+  $('bdName').value = h.nm; $('bdImg').src = famPhoto(h) || '';
+  $('bdPanel').style.display = 'flex'; setTimeout(() => { try { $('bdName').focus(); $('bdName').select(); } catch (e) {} }, 50);
+}
+function bdClose(save) {
+  const h = famP(BD.id); $('bdPanel').style.display = 'none';
+  if (save && h) { const nm = clip($('bdName').value, 24); if (nm.length >= 2 && nm !== h.nm) { h.nm = nm; famCmdUI('name', h.id, nm); } }
+  BD.id = 0;
+}
+function bdReroll() { const h = famP(BD.id); if (!h) return; const sd = 1 + Math.floor(Math.random() * 0xfffff); h.ps = sd; if (G.famPh) delete G.famPh[h.id]; famCmdUI('seed', h.id, sd); $('bdImg').src = famPhoto(h) || ''; }
+function bdUpload() { const h = famP(BD.id); if (!h) return; pickImage(d => { const im = new Image(); im.onload = () => { const c = document.createElement('canvas'); c.width = 120; c.height = 150; c.getContext('2d').drawImage(im, 0, 0, 120, 150); const u = c.toDataURL('image/jpeg', 0.75); if (!G.famPh) G.famPh = {}; G.famPh[h.id] = u; famCmdUI('photo', h.id, u); $('bdImg').src = u; }; im.src = d; }, 240, 300); }
+setInterval(() => {   // новорождённые в семье игрока
+  if (!G || !G.fam || spect || BD.id || G.winner !== -1) return;
+  const r = famRuler(G.me); if (!r) return;
+  const kids = []; const walk = h => { for (const k of h.k) { const c = famP(k); if (c) { kids.push(c); walk(c); } } }; walk(r);
+  if (!BD.init) { BD.init = true; for (const c of kids) if (G.gt - c.b > 30) BD.seen.add(c.id); }
+  for (const c of kids) if (!BD.seen.has(c.id) && !c.d && c.p === G.me) { BD.seen.add(c.id); if (G.gt - c.b < 60) { bdOpen(c.id, true); break; } }
+}, 700);
+
+// ===================== МИРНЫЕ ДОГОВОРЫ =====================
+const TRUCE = 365;   // перемирие после мира, дней
+const pk2 = (a, b) => Math.min(a, b) + ',' + Math.max(a, b);
+const provCount = p => { let n = 0; for (const t of G.tiles) if (t.o === p) n++; return n; };
+function wtGet(a, b, make) {   // счёт войны между a и b
+  if (!G.wt) G.wt = {}; const k = pk2(a, b); let r = G.wt[k];
+  if (!r && make) { const lo = Math.min(a, b), hi = Math.max(a, b); r = G.wt[k] = { a: lo, b: hi, st: G.gt, n: [provCount(lo), provCount(hi)], t: [0, 0] }; }
+  return r || null;
+}
+function warScore(p, q) {   // перевес p над q: от −100 до +100
+  const r = wtGet(p, q); if (!r) return 0;
+  const ip = p === r.a ? 0 : 1, iq = 1 - ip;
+  let s = 100 * r.t[ip] / Math.max(4, r.n[iq]) - 100 * r.t[iq] / Math.max(4, r.n[ip]);
+  if (G.tiles[PROV.cap[q]].o === p) s += 25;
+  if (G.tiles[PROV.cap[p]].o === q) s -= 25;
+  const up = G.units.filter(u => u.p === p).length, uq = G.units.filter(u => u.p === q).length;
+  if (uq === 0 && up > 0) s += 20; else if (up === 0 && uq > 0) s -= 20;
+  return Math.round(Math.max(-100, Math.min(100, s)));
+}
+function peaceCost(a, b, T) {
+  const r = wtGet(a, b), base = Math.max(4, r ? r.n[b === r.a ? 0 : 1] : provCount(b));
+  return Math.round((T.pv ? T.pv.length : 0) * 100 / base + (T.pup ? (G.inhC && G.inhC[a + ':' + b] ? 25 : 50) : 0) + (T.gold || 0) / 50);
+}
+function peaceClean(a, b, T) {   // оставить только допустимые условия
+  const pv = [...new Set((T.pv || []).filter(i => Number.isInteger(i) && G.tiles[i] && G.tiles[i].o === b && G.tiles[i].t < 4 && i !== PROV.cap[b]))];
+  return { pv, pup: T.pup && !(G.pup && G.pup[b] >= 0) ? 1 : 0, gold: Math.max(0, Math.min(100000, Math.round(T.gold || 0))) };
+}
+function peaceTxt(T) {
+  const p = []; if (T.pv.length) p.push('отдать ' + T.pv.length + ' пров.'); if (T.pup) p.push('стать марионеткой'); if (T.gold) p.push('заплатить ' + T.gold + ' золота');
+  return p.length ? p.join(', ') : 'без условий (белый мир)';
+}
+function botAcceptsPeace(a, b, T) {   // бот b решает, принять ли мир от a
+  const cost = peaceCost(a, b, T), sA = warScore(a, b), r = wtGet(a, b), age = r ? G.gt - r.st : 0;
+  if (cost === 0) return warScore(b, a) <= 15 || age > 400;
+  return cost <= sA + 5;
+}
+function proposePeace(a, b, T0) {
+  if (!G.alive[a] || !G.alive[b] || !atWar(a, b)) return false;
+  const T = peaceClean(a, b, T0 || {});
+  if (G.offers.some(o => o.k === 'peace' && ((o.a === a && o.b === b) || (o.a === b && o.b === a)))) { if (a === G.me) flash('Предложение мира уже ждёт ответа'); return false; }
+  if (bots[b]) {
+    if (botAcceptsPeace(a, b, T)) return applyPeace(a, b, T);
+    if (a === G.me) flash('🕊 ' + pname(b) + ' отвергает мир: ' + (peaceCost(a, b, T) ? 'требования (' + peaceCost(a, b, T) + ') больше вашего перевеса (' + warScore(a, b) + ')' : 'они рассчитывают победить'));
+    addLog('🕊 ' + pname(b) + ' отвергает мир со страной ' + pname(a));
+    return true;
+  }
+  G.offers.push({ id: G.nextOff++, k: 'peace', a, b, t: G.gt, g: T.pup, n: T.gold, pv: T.pv });
+  addLog('🕊 ' + pname(a) + ' предлагает мир стране ' + pname(b) + ': ' + peaceTxt(T));
+  return true;
+}
+function setPuppet(b, a) {
+  if (!G.pup) G.pup = new Array(NP()).fill(-1);
+  facInit(); if (facOf(b)) facLeave(b, -1);
+  G.pup[b] = a;
+  const fa = facOf(a); if (fa) facAdd(fa, b); else facNew(a, b, -1);
+}
+function applyPeace(a, b, T0) {
+  if (!atWar(a, b)) return false;
+  const T = peaceClean(a, b, T0);
+  G.war[a][b] = G.war[b][a] = 0; G.rate = null;
+  if (!G.truce) G.truce = {}; G.truce[pk2(a, b)] = G.gt + TRUCE;
+  for (const [x, win] of [[a, 1], [b, 0]]) { const ii = G.players[x].ideo; cfAdd(x, ii === 6 ? 8 : win ? (ii === 5 ? 6 : 4) : (ii === 5 ? -8 : -6), ii === 6 ? 'мир радует старейшин' : win ? 'победный мир' : 'позорный мир'); }
+  for (const i of T.pv) captureProv(i, a);
+  if (T.gold) { const g = Math.min(T.gold, G.res[b].gold); G.res[b].gold -= g; G.res[a].gold += g; }
+  if (T.pup) setPuppet(b, a);
+  if (G.wt) delete G.wt[pk2(a, b)];
+  G.offers = G.offers.filter(o => !(o.k === 'peace' && ((o.a === a && o.b === b) || (o.a === b && o.b === a))));
+  for (const u of G.units) if ((u.p === a || u.p === b) && u.bt >= 0 && G.tiles[u.bt] && (G.tiles[u.bt].o === a || G.tiles[u.bt].o === b)) { u.bt = -1; }
+  const txt = peaceTxt(T);
+  addLog('🕊 Мир между ' + pname(a) + ' и ' + pname(b) + ': ' + txt);
+  addNews('war', T.pup ? 'Капитуляция! Новая марионетка' : 'Мир подписан!', 'Страны ' + pname(a) + ' и ' + pname(b) + ' подписали мирный договор. ' + (T.pv.length || T.pup || T.gold ? 'Условия победителя: страна ' + pname(b) + ' обязуется ' + txt + '.' : 'Белый мир — без победителей.') + ' Перемирие на год.', a === myP() || b === myP(), '', { k: 'war', ps: [a, b] });
+  return true;
+}
+function warDay() {   // ежедневно: учёт войн, марионетки, мирные предложения ботов
+  const N = NP();
+  if (!G.wt) G.wt = {};
+  for (const k in G.wt) { const r = G.wt[k]; if (!atWar(r.a, r.b)) delete G.wt[k]; }
+  for (let a = 0; a < N; a++) for (let b = a + 1; b < N; b++) if (atWar(a, b)) wtGet(a, b, true);
+  if (G.pup) for (let q = 0; q < N; q++) if (G.pup[q] >= 0 && (!G.alive[q] || !G.alive[G.pup[q]])) G.pup[q] = -1;
+  for (let p = 0; p < N; p++) {
+    if (!bots[p] || !G.alive[p]) continue;
+    for (let q = 0; q < N; q++) {
+      if (!atWar(p, q) || Math.random() > 1 / 20) continue;
+      const s = warScore(p, q), r = wtGet(p, q), age = r ? G.gt - r.st : 0;
+      if (s >= 25) {
+        let budget = s; const T = { pv: [], pup: 0, gold: 0 };
+        if (s >= 75 && powers()[q] < powers()[p] * 0.6 && !(G.pup && G.pup[q] >= 0) && Math.random() < 0.5) { T.pup = 1; budget -= 50; }
+        const base = Math.max(4, r ? r.n[q === r.a ? 0 : 1] : provCount(q)), per = 100 / base;
+        const cand = []; for (let i = 0; i < PROV.n; i++) if (G.tiles[i].o === q && i !== PROV.cap[q] && PROV.adj[i].some(j => G.tiles[j].o === p)) cand.push(i);
+        while (cand.length && budget >= per) { T.pv.push(cand.shift()); budget -= per; }
+        if (T.pv.length || T.pup) proposePeace(p, q, T);
+      } else if (s <= -35 || (age > 300 && Math.abs(s) < 15)) proposePeace(p, q, { pv: [], pup: 0, gold: 0 });
+    }
+  }
+}
+// ---- окно мирного договора ----
+const PC = { open: false, q: -1, sel: new Set(), pup: 0, gold: 0 };
+function openPeace(q) {
+  if (!G || !atWar(G.me, q)) return;
+  PC.open = true; PC.q = q; PC.sel = new Set(); PC.pup = 0; PC.gold = 0;
+  try { closeCountryPanel(); $('alPanel').style.display = 'none'; } catch (e) {}
+  $('pcPanel').style.display = 'flex'; updPeacePanel(); invalidate();
+}
+function closePeace() { PC.open = false; $('pcPanel').style.display = 'none'; invalidate(); }
+function updPeacePanel() {
+  if (!PC.open) return; const q = PC.q, me = G.me;
+  if (!G.alive[q] || !atWar(me, q)) { closePeace(); return; }
+  for (const i of [...PC.sel]) if (G.tiles[i].o !== q || i === PROV.cap[q]) PC.sel.delete(i);
+  const s = warScore(me, q), r = wtGet(me, q), T = { pv: [...PC.sel], pup: PC.pup, gold: PC.gold }, cost = peaceCost(me, q, T);
+  setTxt($('pcWho'), 'с ' + pname(q) + (r ? ' · война идёт ' + Math.floor(G.gt - r.st) + ' дн.' : ''));
+  setTxt($('pcScore'), (s > 0 ? '+' : '') + s); $('pcScore').style.color = s >= 25 ? '#6fe08a' : s <= -25 ? '#ff6a5a' : '#e0d080';
+  $('pcBar').style.width = (50 + s / 2) + '%';
+  if (r) { const ip = me === r.a ? 0 : 1; setTxt($('pcDet'), 'Вы захватили ' + r.t[ip] + ' пров., враг — ' + r.t[1 - ip] + '.' + (G.tiles[PROV.cap[q]].o === me ? ' Вражеская столица у вас (+25).' : '') + (G.tiles[PROV.cap[me]].o === q ? ' Ваша столица у врага (−25).' : '')); }
+  setTxt($('pcSel'), 'Выбрано провинций: ' + PC.sel.size);
+  const pb = $('pcPup'); pb.classList.toggle('on', !!PC.pup); pb.disabled = !!(G.pup && G.pup[q] >= 0); setTxt(pb, (PC.pup ? '✔ ' : '') + '👑 Сделать марионеткой (+50)');
+  $('pcGold').value = String(PC.gold);
+  setTxt($('pcCost'), 'Цена условий: ' + cost + ' · ваш перевес: ' + s);
+  $('pcCost').style.color = cost <= s + 5 ? '#6fe08a' : '#ff9a8a';
+  setTxt($('pcNote'), bots[q] ? (cost <= s + 5 ? 'ИИ согласится: цена не больше перевеса.' : 'ИИ откажется: цена больше перевеса. Воюйте дальше или уменьшите требования.') : 'Это живой игрок — он сам решит, принять или отказаться.');
+}
+function pcSend(white) {
+  const q = PC.q, T = white ? { pv: [], pup: 0, gold: 0 } : { pv: [...PC.sel], pup: PC.pup, gold: PC.gold };
+  if (isHost) { proposePeace(G.me, q, T); pushSnap(); } else { send({ t: 'peace', to: q, pv: T.pv, pup: T.pup, gold: T.gold }); flash('Предложение мира отправлено'); }
+  closePeace(); refresh();
+}
+function pcBorder() {   // все пограничные провинции врага, пока хватает перевеса
+  const q = PC.q, me = G.me, s = warScore(me, q);
+  for (let i = 0; i < PROV.n; i++) {
+    if (G.tiles[i].o !== q || i === PROV.cap[q] || PC.sel.has(i) || !PROV.adj[i].some(j => G.tiles[j].o === me)) continue;
+    PC.sel.add(i); if (peaceCost(me, q, { pv: [...PC.sel], pup: PC.pup, gold: PC.gold }) > s) { PC.sel.delete(i); break; }
+  }
+  updPeacePanel(); invalidate();
 }
 // ---- торговля и союзы ----
 function applyPact(k, a, b) {
@@ -3982,6 +4996,22 @@ function answerOffer(q, id, yes, n) {
     if (yes) { if (!exileAccept(q, o, n)) { G.offers.push(o); return false; } } else { if (!G.offCd) G.offCd = {}; G.offCd['ex:' + o.g + ':' + q] = G.gt + 120; addLog('❌ Вы отказали изгнаннику'); }
     return true;
   }
+  if (o.k === 'marry') {   // сватовство
+    if (yes) { const h = famP(o.n), t = famP(o.g); if (!h || !t || h.d || t.d || h.sp || t.sp || t.p !== q || h.p !== o.a) addLog('💍 Сватовство сорвалось'); else famWed(h, t, o.a); }
+    else { addLog('💍 ' + pname(q) + ' отказывает в сватовстве'); if (o.a === G.me) flash('💍 ' + pname(q) + ' отказал в сватовстве'); }
+    return true;
+  }
+  if (o.k === 'inh') { inhAnswer(o, yes); return true; }   // просьба по праву брака
+  if (o.k === 'peace') {   // мирный договор
+    if (yes) { if (!applyPeace(o.a, o.b, { pv: o.pv || [], pup: o.g, gold: o.n })) addLog('Война уже закончилась'); }
+    else { addLog('❌ ' + pname(q) + ' отвергает мир со страной ' + pname(o.a)); if (o.a === G.me) flash('🕊 ' + pname(q) + ' отверг ваши условия мира'); }
+    return true;
+  }
+  if (o.k === 'hemig') {   // игрок-изгнанник просится в правительство
+    if (yes) { if (!hemigAccept(q, o, n)) { G.offers.push(o); return false; } }
+    else addLog('❌ ' + pname(q) + ' отказывает изгнаннику ' + (G.players[o.a].humanName || pname(o.a)));
+    return true;
+  }
   if (o.k === 'call') {   // союзник зовёт на войну
     if (yes) { if (!joinWar(q, o.g, o.a)) addLog('Война уже закончилась'); }
     else { setRel(q, o.a, G.rel[q][o.a] - 20); addLog('🤚 ' + pname(q) + ' отказывается воевать на стороне ' + pname(o.a)); addNews('dip', 'Союзник промолчал', 'Страна ' + pname(q) + ' не откликнулась на призыв союзника ' + pname(o.a) + ' и не вступила в войну против ' + pname(o.g) + '.', q === myP() || o.a === myP()); }
@@ -4017,6 +5047,7 @@ function callArms(a, side, enemy, def, join) {
   if (a === side || a === enemy || !G.alive[a] || atWar(a, enemy)) return;
   if (!bots[a]) { if (!G.offers.some(o => o.k === 'call' && o.b === a && o.a === side && o.g === enemy)) { G.offers.push({ id: G.nextOff++, k: 'call', a: side, b: a, g: enemy, t: G.gt }); addLog('📯 ' + pname(side) + ' зовёт союзника ' + pname(a) + ' на войну против ' + pname(enemy)); } return; }
   const pw = powers(), rel = G.rel[a][side], hate = G.rel[a][enemy], inCoal = !!(facOf(a) && facOf(a).t === enemy);
+  if (G.pup && G.pup[a] === side) { join(a, enemy, side); return; }   // марионетка воюет за сюзерена
   let ch = (def ? 0.7 : 0.35) + rel / 250 - hate / 300 + (inCoal ? 0.35 : 0) + (bots[a].target === enemy ? 0.3 : 0);
   if (pw[a] + pw[side] < pw[enemy] * 0.6) ch -= 0.3;   // безнадёжно — страшно
   if (Math.random() < ch) join(a, enemy, side);
@@ -4033,8 +5064,10 @@ function joinWar(a, enemy, side) {   // вступить в войну по зо
 }
 function declareWar(p, q, reason) {
   if (dipWhy(p, 'war', q)) return false;
+  if (G.pup && G.pup[p] === q) { G.pup[p] = -1; facLeave(p, -1); addNews('war', 'Война за независимость!', 'Марионетка ' + pname(p) + ' восстала против сюзерена ' + pname(q) + ' и объявила войну за независимость!', p === myP() || q === myP(), '', { k: 'war', ps: [p, q] }); }
   const help = !G.just[p][q] && allyAtWarWith(p, q);
   G.war[p][q] = 1; G.war[q][p] = 1; G.just[p][q] = 0;
+  { const ii = G.players[p].ideo; cfAdd(p, ii === 6 ? -15 : ii === 5 ? 5 : 0, ii === 6 ? 'старейшины осуждают войну' : 'совет одобряет войну'); }
   G.tr[p][q] = G.tr[q][p] = 0; G.rate = null;   // война рвёт торговлю
   G.offers = G.offers.filter(o => !((o.a === p && o.b === q) || (o.a === q && o.b === p)));
   // союзники жертвы вступают в оборонительную войну; союзники-боты нападающего тоже (по зову союзника)
@@ -4273,6 +5306,7 @@ function ecoStep(dd) {
     if (!G.alive[q]) continue;
     const R = G.res[q], r = G.rate[q];
     R.gold = Math.max(0, R.gold + r.gold * dd);
+    if (G.pup && G.pup[q] >= 0 && r.gold > 0 && G.alive[G.pup[q]]) { const tr = Math.min(R.gold, r.gold * 0.3 * dd); R.gold -= tr; G.res[G.pup[q]].gold += tr; }   // дань сюзерену: 30% дохода
     R.supply = Math.max(0, Math.min(r.supCap || 1e9, R.supply + r.supply * dd));   // склады не бездонны
     R.recruits = Math.min(R.recruits + r.recruits * dd, Math.max(5000, r.recruits * 30));
     if (R.gold <= 0 && r.gold < 0) {
@@ -4306,7 +5340,7 @@ function ecoStep(dd) {
   }
   shipStep(dd);
   G.cutAcc += dd;
-  while (G.cutAcc >= 1) { G.cutAcc -= 1; updateCut(); supDay(); recount(); popDay(); lawDay(); frontsDay(); updBlockade(); tradeRunsDay(); fixStray(); focusDay(); colDay();
+  while (G.cutAcc >= 1) { G.cutAcc -= 1; updateCut(); supDay(); try { warDay(); } catch (e) { console.error(e); } try { famDay(); } catch (e) { console.error(e); } recount(); popDay(); lawDay(); frontsDay(); updBlockade(); tradeRunsDay(); fixStray(); focusDay(); colDay();
     if (G.admT) for (let q = 0; q < NP(); q++) if (G.genDead[q][0] && G.admT[q] && G.gt >= G.admT[q] && flagFleet(q)) { G.genDead[q][0] = 0; G.admT[q] = 0; const A = newAdmiral(q); addNews('war', 'Новый адмирал!', 'На флагман страны ' + pname(q) + ' прибыл новый адмирал — ' + A.nm + ' — и поднял свой вымпел.', q === myP(), '', { k: 'person', p: q, key: A.key, kind: 2, ps: [q] }); } }
 }
 // раз в день: естественный прирост населения и уход призывников в армию
@@ -4515,6 +5549,7 @@ function captureProv(i, p) {
   if (G.qo && G.qo[i]) { delete G.qo[i]; G.qv = (G.qv || 0) + 1; }
   const t = G.tiles[i], prev = t.o;
   t.o = p; t.a = 0;
+  if (prev >= 0 && prev !== p && G.cf) { cfAdd(prev, -2); const ii = G.players[p].ideo; if (ii !== 6 && ii !== 3) cfAdd(p, 1); }
   if (G.eth && prev < 0 && G.eth[i] < 0) { G.eth[i] = p; G.ethV++; }
   if (G.faith && prev < 0 && G.faith[i] < 0) { G.faith[i] = G.players[p].rel | 0; G.ethV++; }   // язычники ничьей земли принимают веру завоевателя   // ничья земля: жители становятся твоим народом; захваченные у врага остаются своим народом
   if (G.since) G.since[i] = Math.max(1e-6, G.gt);   // провинция начинает осваиваться
@@ -4528,6 +5563,7 @@ function captureProv(i, p) {
   }
   if (G.cutDays) G.cutDays[i] = 0;
   if (prev >= 0) { if (!G.wc) G.wc = {}; G.wc[i] = G.gt; } else if (G.wc) delete G.wc[i];
+  if (prev >= 0 && atWar(p, prev)) { const r = wtGet(p, prev, true); r.t[p === r.a ? 0 : 1]++; }
   supTouch(i, p);
   G.rate = null;
 }
@@ -4795,6 +5831,21 @@ const hasFlag = f => !!f && f.ships.some(x => x.c === 4);
 const admOn = f => hasFlag(f) && !G.genDead[f.p][0];   // флагман с живым адмиралом даёт бонусы
 const flagFleet = p => G.fleets.find(f => f.p === p && hasFlag(f));
 const flagQueued = p => G.shipQ.some(e => e.p === p && e.c === 4);
+function admLeave(p, how, fled) {   // адмирал умер от болезни (fled=0) или бежал за границу (fled=1)
+  if (G.genDead[p][0] || humanArmy(p, 0)) return false;
+  const pl = G.players[p], ov = G.genOv && G.genOv[p] && G.genOv[p][0], nm0 = (pl.genNames && pl.genNames[0]) || (ov && ov.nm) || 'Адмирал', nm = stripRank(nm0).replace(/^Адм\. /, ''), key = ov ? ov.key : 'CU|' + p + '|g|0';
+  if (!fled && G.fam && /^F\|\d+$/.test(key)) { const h = famP(+key.slice(2)); if (h && !h.d) { h.post = ''; famKill(h, how.replace(/^(скончался|умер)\s*/, '')); } }
+  G.genDead[p][0] = 1; if (!G.genUp) G.genUp = []; if (!G.genUp[p]) G.genUp[p] = [0, 0, 0, 0]; G.genUp[p][0] = fled ? 2 : 0;
+  if (!G.admT) G.admT = []; G.admT[p] = G.gt + 60;   // через 60 дней на флагман назначат нового
+  if (fled) {
+    addExile(p, nm, key, 1, 'бывший адмирал флота страны ' + pname(p), 1);
+    addNews('crisis', 'Адмирал бежал!', 'Адмирал ' + nm + ' (' + pname(p) + ') оставил флот и бежал за границу, ' + defectWhy(p) + '. Флот без адмирала: бонусы флагмана пропали. Через 60 дней назначат нового — или повысьте капитана.', p === myP(), 'Бонусы флагмана пропали');
+  } else {
+    addNews('crisis', 'Адмирал скончался!', 'Адмирал ' + nm + ' (' + pname(p) + ') ' + how + '. Флот в трауре и без командующего. Через 60 дней назначат нового — или повысьте капитана.', p === myP(), 'Бонусы флагмана пропали');
+    if (p === G.me) sndPlay('funeral');
+  }
+  genOvVer++; G.rate = null; return true;
+}
 function admiralDies(p, where, onDeck) {
   if (G.genDead[p][0]) return;
   G.genDead[p][0] = 1;
@@ -5717,6 +6768,7 @@ const ICONS = {
 (function placeIcons() {
   const lb = document.querySelectorAll('#leftBtns .lb i');
   ['build', 'army', 'fleet', 'dec', 'state'].forEach((k, n) => { if (lb[n]) lb[n].innerHTML = ICONS[k]; });
+  if (lb[6]) lb[6].innerHTML = SVG_I('<circle cx="8" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M3 20c0-4 2-6 5-6s5 2 5 6M11 20c0-4 2-6 5-6s5 2 5 6"/>');
   if (lb[5]) lb[5].innerHTML = SVG_I('<path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>');
   ['resGold', 'resSupply', 'resTroops', 'resRecruits', 'resPop', 'resHappy'].forEach((id, n) => {
     const el = $(id), sm = el && el.parentNode && el.parentNode.querySelector ? el.parentNode.querySelector('small') : null; if (!sm || !sm.insertBefore) return;
@@ -6546,6 +7598,11 @@ function handleClick(p, shift, touch) {
   for (const [fx, fy, fid, fp] of FLEETICONS) if (fp === G.me && !spect && Math.hypot(fx * cam.z + cam.x - p.x, fy * cam.z + cam.y - p.y) < 22) { selectFleet(fid); return; }   // клик по своему флоту
   if (selFleet) { selFleet = 0; fpKey = ''; }   // клик по значку боя — окно сражения
   const i = hitTest(p.x, p.y); if (i < 0) return;
+  if (PC.open && G.tiles[i].o === PC.q) {   // мирный договор: выбор провинций врага
+    if (i === PROV.cap[PC.q]) { flash('Столицу забрать нельзя — сделайте страну марионеткой'); return; }
+    if (PC.sel.has(i)) PC.sel.delete(i); else PC.sel.add(i);
+    updPeacePanel(); return;
+  }
   if (placing()) {   // режим стройки: клик по провинции строит выбранное здание
     const why = placeWhy(i);
     if (why) flash(why); else issueBuild(i, buildMode);
@@ -6892,13 +7949,13 @@ const SPR = 3, sprCache = new Map();
 // ===== значок дивизий (как в Hearts of Iron): плашка с флагом страны, знаком рода войск и числом дивизий =====
 const _flagSm = new Map();
 function flagSmall(p) {
-  const pl = G.players[p], key = p + '|' + pl.name;
+  const pl = G.players[p], key = p + '|' + pl.name + flagTag(p);
   let c = _flagSm.get(key);
   if (!c) { c = document.createElement('canvas'); c.width = 48; c.height = 32; drawFlag(c, cleanFlag(pl.flag)); _flagSm.set(key, c); }
   return c;
 }
 function tokenSprite(n, p, type, rel) {   // rel: 0 — свои, 1 — враг (война), 2 — прочие
-  const col = G.players[p].color, key = p + '|' + col + '|' + type + '|' + n + '|' + rel;
+  const col = G.players[p].color, key = p + '|' + col + '|' + type + '|' + n + '|' + rel + flagTag(p);
   let c = sprCache.get(key);
   if (c) return c;
   if (sprCache.size > 600) sprCache.clear();
@@ -7004,6 +8061,10 @@ function draw() {
     }
     if (G.qo) for (const key in G.qo) { const i = +key; if (inView(i)) paintQuarters(ctx, i, true); }
   }
+  // мирный договор: выбранные провинции (жёлтые) и требования к нам (красные)
+  { const hl = (set, col) => { if (!set || !set.length) return; ctx.globalAlpha = 0.55; ctx.fillStyle = col; for (const i of set) { if (!inView(i)) continue; polyPath(ctx, PROV.poly[i], 0, 0, 1); ctx.fill(); } ctx.globalAlpha = 1; ctx.strokeStyle = col; ctx.lineWidth = Math.max(1, 2 / z); for (const i of set) { if (!inView(i)) continue; polyPath(ctx, PROV.poly[i], 0, 0, 1); ctx.stroke(); } };
+    if (PC.open) hl([...PC.sel], '#ffd040');
+    for (const o of G.offers) if (o.k === 'peace' && o.b === G.me && o.pv) hl(o.pv, '#ff3a2a'); }
   // режим «блоки»: страна закрашена цветом своего блока (лидера), вне блоков — серым
   if (BLOCV) {
     const bc = new Map(); for (const b of blocs()) for (const p of b.m) bc.set(p, G.players[b.lead].color);
@@ -7317,6 +8378,7 @@ function initHud() {
   const lp = leaderPhoto(G.me), li = $('myLeaderImg'); if (lp) { li.src = lp; li.style.display = 'block'; } else li.style.display = 'none';
   li.title = me.title + ' ' + me.leader;
   $('myLeaderBox').onclick = () => openCountryPanel(G.me);
+  $('myLeaderBox').oncontextmenu = e => { e.preventDefault(); openFam(G.me); };
   fillCmds($('cmdBar'), cmdGens(G.me), true, G.me);
   const tag = document.createElement('div'); tag.id = 'admTag'; tag.textContent = '◄ адмирал'; $('cmdBar').appendChild(tag);
   if (isHost) popRecalc();
@@ -7509,7 +8571,7 @@ function openCountryPanel(p) {
   sndPlay('paper');
   const pl = G.players[p], own = p === G.me && !spect, gc = gameState.country;
   drawFlag($('cpFlag'), cleanFlag(pl.flag));
-  $('cpName').textContent = pl.name + (own ? ' (вы)' : '');
+  $('cpName').textContent = pl.name + (own ? ' (вы)' : '') + (G.pup && G.pup[p] >= 0 ? ' · марионетка ' + pname(G.pup[p]) : '');
   $('cpIdeo').textContent = IDEO[pl.ideo].name;
   $('cpCapital').textContent = pl.capital || '—';
   $('cpPop').textContent = G.popTot[p] ? popFmt(G.popTot[p]) + ' (' + (G.popGrow[p] >= 0 ? '+' : '') + Math.round(G.popGrow[p]) + ' в день)' : '—';
@@ -7886,7 +8948,7 @@ function drawHierView() {
 function drawCourt(vp) {
   const view = vp != null, p = view ? vp : G.me, pl = G.players[p], C = courtOf(p), box = $(view ? 'hmCourt' : 'sCourt'), svg = $(view ? 'hmLines' : 'sCLines');
   const key = pl.ideo + ':' + pl.rel + ':' + pl.title + ':' + pl.leader + ':' + (G.vacL && G.vacL[p] ? 'V' : '') + ':' + (C.heir ? C.heir.id : '-') + ':' + COURT_SLOTS.map(sl => C[sl] ? C[sl].id + '.' + C[sl].tr : '_').join(',') + ':' + ctPop + ':' + Math.floor(G.res[p].gold / 150) + ':' + (G.genDead[p] || []).join('') + ':' + JSON.stringify(colOf(p)) + ':' + genOvVer;
-  const key2 = key + ':' + JSON.stringify((G.cdead && G.cdead[p]) || 0) + JSON.stringify((G.ldead && G.ldead[p]) || 0) + ':' + JSON.stringify(colOf(p)) + ':' + genOvVer;
+  const key2 = key + ':' + (G.cf && G.cf[p] != null ? Math.round(G.cf[p]) : '-') + ':' + (G.dec[p] && G.gt < (G.dec[p].cfT || 0) ? 1 : 0) + ':' + JSON.stringify((G.cdead && G.cdead[p]) || 0) + JSON.stringify((G.ldead && G.ldead[p]) || 0) + ':' + JSON.stringify(colOf(p)) + ':' + genOvVer;
   if (view ? key2 === hmKey : key2 === ctKey) return; if (view) hmKey = key2; else ctKey = key2;
   box.innerHTML = '';
   const W = 830, pos = { head: [W / 2 - 105, 8], second: [W / 2 - 290, 112], faith: [W / 2 + 115, 112], war: [8, 228], fin: [214, 228], dip: [420, 228], int: [626, 228] };
@@ -7908,12 +8970,20 @@ function drawCourt(vp) {
   if (H.heir) {   // наследник престола — слева от правителя
     const hx = pos.head[0] - 250, h = C.heir;
     const hn = h ? node(hx, pos.head[1] + 4, '', portraitURL(h.pk || 'H|' + h.id, h.pkind | 0), '👑 Наследник престола', h.nm, 'взойдёт на трон сам · +3% лояльности') : node(hx, pos.head[1] + 4, '', '', '👑 Наследник престола', 'Наследника нет', 'Нажмите: назначить из сановников');
-    if (!h) promoUI(hn, 'heir'); else hn.title = 'Если правитель умрёт, наследник сам взойдёт на трон';
+    if (!h && G.fam && famRuler(p)) { hn.classList.add('vacant'); hn.title = 'Наследник — только ребёнок или внук правителя. Детей пока нет.'; const it = hn.querySelector('i'); if (it) it.textContent = 'ждём рождения ребёнка (👪 Династия)'; } else if (!h) promoUI(hn, 'heir'); else hn.title = 'Если правитель умрёт, наследник сам взойдёт на трон';
     lines += '<path d="M' + (hx + 196) + ' ' + (pos.head[1] + 40) + ' L' + pos.head[0] + ' ' + (pos.head[1] + 40) + '" stroke="#b8923a" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>';
   }
   if (H.council) {   // коллегиальный орган — справа
     const cx = pos.head[0] + 264, cn = node(cx, pos.head[1] + 4, 'council', assemblyIcon(H.council.ico), H.council.ico + ' ' + H.council.nm, H.succ === 'elect' ? 'избирает главу' : 'совещательный орган', buffDesc(H.council.b));
     cn.title = H.council.nm + ': ' + buffDesc(H.council.b) + (H.note ? '\n' + H.note : '');
+    if (CF_ON(p)) {
+      const v = cfOf(p), bar = document.createElement('div'); bar.className = 'cf-bar';
+      bar.innerHTML = '<u style="width:' + Math.round(v) + '%;background:' + cfCol(v) + '"></u><em>' + Math.round(v) + ' · ' + cfLvl(v) + '</em>';
+      const it0 = cn.querySelector('i'); if (it0) { if (v < 30) { it0.style.textDecoration = 'line-through'; it0.style.color = '#c77'; } else if (v >= 75) it0.textContent = '×2: ' + it0.textContent; }
+      cn.querySelector('div').appendChild(bar); cn.style.borderColor = cfCol(v);
+      cn.title += '\n\nМнение совета: ' + Math.round(v) + '/100 (' + cfLvl(v) + ')\n' + cfLikes(p) + '\n' + CF_EFF;
+      if (!view) { const why = cfWhy(p), bt = document.createElement('button'); bt.type = 'button'; bt.className = 'cf-gift'; bt.textContent = '🎁 ' + CF_GIFT; bt.title = why || 'Задобрить совет: ' + CF_GIFT + ' золота → мнение +12 (раз в ' + CF_GIFT_CD + ' дней)'; bt.disabled = !!why; bt.onclick = e => { e.stopPropagation(); cfGiftUI(); }; cn.querySelector('div').appendChild(bt); cn.classList.add('cfg'); }
+    }
     lines += '<path d="M' + (pos.head[0] + 210) + ' ' + (pos.head[1] + 40) + ' L' + cx + ' ' + (pos.head[1] + 40) + '" stroke="#6b8ab0" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>';
   }
   for (const sl of COURT_SLOTS) {
@@ -8101,6 +9171,29 @@ $('hmClose').onclick = closeHierView;
 $('hierModal').onclick = e => { if (e.target === $('hierModal')) closeHierView(); };
 $('btnState').onclick = () => { ctPop = null; ctKey = ''; toggleStatePanel(); };
 $('btnAlly').onclick = () => toggleAllyPanel();
+$('btnFam').onclick = () => { if (FM.open) closeFam(); else openFam(G.me); };
+$('cpFam').onclick = () => { const q = cpOwner; closeCountryPanel(); openFam(q); };
+$('fmClose').onclick = closeFam;
+$('bdOk').onclick = () => bdClose(true);
+$('bdRe').onclick = bdReroll;
+$('bdUp').onclick = bdUpload;
+$('bdName').onkeydown = e => { if (e.key === 'Enter') bdClose(true); e.stopPropagation(); };
+$('fmZIn').onclick = () => famZoom(1.25);
+$('fmZOut').onclick = () => famZoom(0.8);
+$('fmTree').addEventListener('wheel', e => { if (!FM.open) return; e.preventDefault(); famZoom(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY); }, { passive: false });
+{ let dr = null; const T = $('fmTree');
+  T.addEventListener('pointerdown', e => { if (e.target.closest('.fm-card,.fm-lab')) return; dr = { x: e.clientX, y: e.clientY, l: T.scrollLeft, t: T.scrollTop }; T.style.cursor = 'grabbing'; });
+  window.addEventListener('pointermove', e => { if (!dr) return; T.scrollLeft = dr.l - (e.clientX - dr.x); T.scrollTop = dr.t - (e.clientY - dr.y); });
+  window.addEventListener('pointerup', () => { dr = null; T.style.cursor = ''; }); }
+$('fmWho').onchange = () => { FM.q = +$('fmWho').value; FM.sel = 0; FM.key = ''; updFam(true); };
+$('cpPeace').onclick = () => openPeace(cpOwner);
+$('pcClose').onclick = closePeace;
+$('pcBorder').onclick = pcBorder;
+$('pcClear').onclick = () => { PC.sel.clear(); updPeacePanel(); invalidate(); };
+$('pcPup').onclick = () => { PC.pup = PC.pup ? 0 : 1; updPeacePanel(); };
+$('pcGold').onchange = () => { PC.gold = +$('pcGold').value; updPeacePanel(); };
+$('pcSend').onclick = () => pcSend(false);
+$('pcWhite').onclick = () => pcSend(true);
 $('alClose').onclick = () => { $('alPanel').style.display = 'none'; };
 $('alMapChk').onclick = () => { BLOCV = !BLOCV; const b = $('alMapChk'); b.classList.toggle('on', BLOCV); b.textContent = '🗺 Блоки на карте: ' + (BLOCV ? 'вкл' : 'выкл'); invalidate(); };
 $('sClose').onclick = closeStatePanel;
@@ -8265,6 +9358,7 @@ function updDipButtons() {
   const j = own ? 0 : G.just[G.me][q], left = j ? Math.max(0, Math.ceil(DIP.JUSTIFY - (G.gt - j))) : 0;
   set('cpJust', 'justify', j ? (left ? 'Оправдание целей войны… ' + left + ' дн.' : '✔ Цели войны оправданы') : 'Оправдать цели войны (' + DIP.JUSTIFY + ' дн.)');
   set('cpWar', 'war', war ? '⚔ Идёт война' : !own && allyAtWarWith(G.me, q) && !allied(G.me, q) ? '⚔ Вступить в войну (за союзника)' : 'Объявить войну');
+  { const b = $('cpPeace'); b.style.display = war && !own ? '' : 'none'; const pd = G.offers.some(o => o.k === 'peace' && ((o.a === G.me && o.b === q) || (o.a === q && o.b === G.me))); b.disabled = !!spect || pd; b.title = pd ? 'Предложение мира уже ждёт ответа' : ''; setTxt(b, '🕊 Мирный договор · перевес ' + (warScore(G.me, q) > 0 ? '+' : '') + warScore(G.me, q)); }
   const tr = !own && trading(G.me, q), al = !own && allied(G.me, q);
   { const b = $('cpTrade'); b.disabled = own || war; b.title = own ? 'Это ваша страна' : war ? 'С врагом не торгуют' : ''; setTxt(b, '💰 Торговля: купить товар'); }
   set('cpAlly', al ? 'unally' : 'ally', al ? (facLead(G.me) === G.me ? 'Исключить из союза' : 'Выйти из союза') : !own && facOf(q) && !facOf(G.me) ? 'Попроситься в союз «' + facOf(q).name + '»' : facOf(G.me) ? 'Пригласить в союз' : 'Предложить союз');
@@ -8416,13 +9510,16 @@ function updRoleBar(R) {
   if (R.kind === 'opp' || R.kind === 'exile' || capF) {   // эмиграция
     const offs = emigOffers(pi), sel = document.createElement('select'); sel.add(new Option(offs.length ? '✈ Попроситься на службу за границу…' : '✈ За границей вакансий нет', ''));
     offs.forEach((o, i) => sel.add(new Option(o.txt, String(i))));
-    sel.onchange = () => { const o = offs[+sel.value]; if (!o) return; if (!confirm('Покинуть свою партию и поступить на службу: ' + o.txt + '?')) { sel.value = ''; return; } if (isHost) { emigrate(pi, o.q, o.kind, o.k, o.sl); pushSnap(); } else send({ t: 'emig', q: o.q, kind: o.kind, k: o.k, sl: o.sl }); roleKey = ''; refresh(); };
+    sel.onchange = () => { const o = offs[+sel.value]; if (!o) return; if (!confirm(o.kind === 'ask' ? 'Попроситься в правительство страны ' + pname(o.q) + '?' : 'Покинуть свою партию и поступить на службу: ' + o.txt + '?')) { sel.value = ''; return; } if (isHost) { emigrate(pi, o.q, o.kind, o.k, o.sl); pushSnap(); } else send({ t: 'emig', q: o.q, kind: o.kind, k: o.k, sl: o.sl }); if (o.kind === 'ask') flash('Просьба отправлена правителю страны ' + pname(o.q) + ' — ждите ответа'); roleKey = ''; refresh(); };
     bar.appendChild(sel);
   }
 }
 function refresh() {
   if (!G) return;
   if (alOpen()) try { updAllyPanel(); } catch (e) { reportErr(e); }
+  if (PC.open) try { updPeacePanel(); } catch (e) { reportErr(e); }
+  { const t = flagTag(G.me); if (t !== (window._myFlagT || '')) { window._myFlagT = t; try { drawFlag($('myFlag'), cleanFlag(G.players[G.me].flag)); drawFlag($('lossA'), cleanFlag(G.players[G.me].flag)); } catch (e) {} } }
+  if (FM.open) try { updFam(); } catch (e) { reportErr(e); }
   if (hierView >= 0) try { drawHierView(); } catch (e) { reportErr(e); }
   if (captOpen >= 0) try { drawCapt(); } catch (e) { reportErr(e); }
   try { roleSync(); } catch (e) { reportErr(e); }
@@ -8698,7 +9795,7 @@ function normalizeCountry(c) {
     ideo: c.iv === 2 ? Math.max(0, Math.min(IDEO.length - 1, c.ideo | 0)) : IDEO_OLD[Math.max(0, Math.min(10, c.ideo | 0))], iv: 2,
     rel: Math.max(0, Math.min(REL.length - 1, c.rel | 0)),
     color: (typeof c.color === 'string' && /^#[0-9a-f]{6}$/i.test(c.color)) ? c.color.toLowerCase() : d.color,
-    photo: photo(c.photo), thumb: photo(c.thumb), hier: cleanHier(c.hier),
+    photo: photo(c.photo), thumb: photo(c.thumb), hier: cleanHier(c.hier), spName: str(c.spName, 28), spF: c.spF === 0 ? 0 : 1, spPhoto: photo(c.spPhoto), spThumb: photo(c.spThumb),
     generals: d.generals.map((g, i) => {
       const s0 = (Array.isArray(c.generals) && c.generals[i]) || {};
       return { role: g.role, cls: g.cls === null ? null : Math.max(0, Math.min(CMD_CLASSES.length - 1, s0.cls | 0)), name: str(s0.name, 28), photo: photo(s0.photo), thumb: photo(s0.thumb) };
@@ -8823,7 +9920,7 @@ let ofKey = null;   // null — «перерисовать обязательн�
 function updOffers() {
   const box = $('offerBar'), L = spect || !G.offers ? [] : G.offers.filter(o => o.b === G.me), CP = spect || !G.capt ? [] : G.capt.filter(c => c.by === G.me && c.ppl.length);
   const TB = tacBattles();
-  const key = TB.map(b => b.j + (tacBlocked(b.j) ? 'f' : '')).join(',') + '#' + CP.map(c => c.id + '.' + c.ppl.length).join(',') + '|' + L.map(o => o.id).join(',') + (L.some(o => o.k === 'emig') ? ':' + exileVacs(G.me).join('.') + ':' + genOvVer : '');
+  const key = TB.map(b => b.j + (tacBlocked(b.j) ? 'f' : '')).join(',') + '#' + CP.map(c => c.id + '.' + c.ppl.length).join(',') + '|' + L.map(o => o.id).join(',') + (L.some(o => o.k === 'emig' || o.k === 'hemig') ? ':' + exileVacs(G.me).join('.') + ':' + genOvVer : '');
   if (key === ofKey) return; ofKey = key;
   box.innerHTML = ''; box.style.display = L.length || CP.length || TB.length ? 'flex' : 'none';
   for (const b of TB) {
@@ -8850,8 +9947,17 @@ function updOffers() {
     if (ex) { const im = document.createElement('img'); im.className = 'of-ph'; im.src = portraitURL(ex.key, ex.kind) || ''; r.appendChild(im); }
     const t = document.createElement('span'); t.textContent = o.k === 'emig' ? '✈ ' + (ex ? (ex.was ? ex.was[0].toUpperCase() + ex.was.slice(1) + ' ' : '') + ex.nm + ' из страны ' + pname(o.a) : 'Изгнанник') + ' просится к вам на службу. Куда его поставить?' : o.k === 'sale' ? '💰 ' + pname(o.a) + ' хочет купить у вас: ' + GOODS[o.g].name.toLowerCase() + ' ' + GOODS[o.g].lot * o.n + ' за ' + o.price + ' золота' : (o.k === 'trade' ? '💰 ' : '🤝 ') + pname(o.a) + ' предлагает ' + (o.k === 'trade' ? 'торговлю' : 'военный союз');
     if (o.k === 'ally') { const fa = facOf(o.a), fb = facOf(o.b), ct = commonThreat(o.a, o.b); t.textContent = fb ? '🤝 ' + pname(o.a) + ' просится в ваш союз «' + fb.name + '»' : fa ? '🤝 ' + pname(o.a) + ' приглашает вас в союз «' + fa.name + '» (' + fa.m.length + ' стран). Страна может быть только в одном союзе.' : '🤝 ' + pname(o.a) + ' предлагает создать ' + (ct >= 0 ? 'коалицию против ' + pname(ct) : 'новый военный союз'); }
+    if (o.k === 'marry') { const h = famP(o.n), t2 = famP(o.g); t.textContent = '💍 ' + pname(o.a) + ' сватается: ' + (h ? h.nm + ' (' + famAge(h) + ')' : '?') + ' просит руки ' + (t2 ? t2.nm + ' (' + famAge(t2) + ')' : '?') + '. ' + (t2 && famHeirOf(o.b, t2) ? 'Это ваш наследник! ' : '') + (h && t2 && h.f === t2.f ? 'Брак однополый — детей не будет. ' : '') + 'Супруг(а) переедет к их двору, отношения +20.'; }
+    if (o.k === 'peace') { const T = { pv: o.pv || [], pup: o.g, gold: o.n }; t.textContent = '🕊 ' + pname(o.a) + ' предлагает мир: вы должны ' + peaceTxt(T) + (T.pv.length ? ' (отмечены красным на карте)' : '') + '. Ваш перевес в войне: ' + warScore(o.b, o.a) + '. Отказ — война продолжится.'; }
+    if (o.k === 'inh') { const c = inhOf(o.g); t.textContent = '👑 ' + pname(o.a) + ' просит по праву брака ' + (o.n === 2 ? 'наследство: ' + (c ? inhGold(c) : '?') + ' золота' : 'удел: одну пограничную провинцию') + '. Откажете — отношения −10.'; }
+    if (o.k === 'hemig') t.textContent = '🙏 ' + (G.players[o.a].humanName || 'Игрок') + ' (бывший правитель страны ' + pname(o.a) + ') просится к вам в правительство. Какой пост дать?';
     if (o.k === 'call') t.textContent = '📯 Союзник ' + pname(o.a) + ' зовёт вас на войну против ' + pname(o.g) + '. Вступить? (откажете — отношения с союзником −20)';
     let sel = null;
+    if (o.k === 'hemig') {   // любой пост, кроме постов других игроков
+      const vac = hemigPosts(G.me); sel = document.createElement('select'); sel.className = 'of-sel';
+      if (!vac.length) sel.add(new Option('Все посты заняты игроками', '')); else vac.forEach(n => sel.add(new Option(hemigTxt(G.me, n), String(n))));
+      sel.onclick = e => e.stopPropagation(); sel.onpointerup = e => e.stopPropagation();
+    }
     if (o.k === 'emig') {   // выбор места: только посты погибших или ушедших (не правитель!)
       const vac = exileVacs(G.me); sel = document.createElement('select'); sel.className = 'of-sel';
       if (!vac.length) sel.add(new Option('Свободных мест нет', '')); else vac.forEach(n => sel.add(new Option(exileSlotTxt(G.me, n), String(n))));
@@ -9051,7 +10157,7 @@ function sprStyle(p) {   // мундир страны: цвет, отделка,
   _sty.set(p, st); return st;
 }
 function sprFlagImg(p) {   // маленький флаг страны для знамени
-  const k = 'flag' + p; let c = _spr.get(k); if (c) return c;
+  const k = 'flag' + p + flagTag(p); let c = _spr.get(k); if (c) return c;
   c = document.createElement('canvas'); c.width = 60; c.height = 40; try { drawFlag(c, cleanFlag(G.players[p].flag)); } catch (e) {}
   _spr.set(k, c); return c;
 }
